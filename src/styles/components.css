@@ -1,0 +1,22 @@
+@tailwind components;
+
+@layer components {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: content-box;
+    max-width: 1216px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    &__main {
+      flex-grow: 1;
+    }
+  }
+}

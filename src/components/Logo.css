@@ -1,0 +1,5 @@
+.logo {
+  &__svg {
+    height: 30px;
+  }
+}

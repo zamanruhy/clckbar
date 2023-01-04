@@ -1,0 +1,101 @@
+@tailwind base;
+
+@layer base {
+  @font-face {
+    font-family: "Muller";
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerHairline.woff2) format("woff2"),
+      url(/static/fonts/MullerHairline.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerUltraLight.woff2) format("woff2"),
+      url(/static/fonts/MullerUltraLight.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerLight.woff2) format("woff2"),
+      url(/static/fonts/MullerLight.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerRegular.woff2) format("woff2"),
+      url(/static/fonts/MullerRegular.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerMedium.woff2) format("woff2"),
+      url(/static/fonts/MullerMedium.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerBold.woff2) format("woff2"),
+      url(/static/fonts/MullerBold.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerExtraBold.woff2) format("woff2"),
+      url(/static/fonts/MullerExtraBold.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Muller";
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerBlack.woff2) format("woff2"),
+      url(/static/fonts/MullerBlack.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Golos";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/GolosText-Regular.woff2) format("woff2"),
+      url(/static/fonts/GolosText-Regular.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Golos";
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/GolosText-DemiBold.woff2) format("woff2"),
+      url(/static/fonts/GolosText-DemiBold.woff) format("woff");
+  }
+
+  * {
+    outline-offset: 4px;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    background-color: #ffffff;
+    font-family: theme(fontFamily.muller);
+    font-size: 16px;
+    line-height: 1.5;
+    color: theme(colors.body);
+  }
+}
