@@ -44,6 +44,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
+    "postcss-functions": "^4.0.2",
     "postcss-import": "^14.1.0",
     "postcss-mixins": "^9.0.3",
     "postcss-nested": "^6.0.0",

@@ -17,6 +17,7 @@ importers:
       imask: ^6.4.2
       lint-staged: ^13.0.3
       postcss: ^8.4.16
+      postcss-functions: ^4.0.2
       postcss-import: ^14.1.0
       postcss-mixins: ^9.0.3
       postcss-nested: ^6.0.0
@@ -53,6 +54,7 @@ importers:
       husky: 8.0.1
       lint-staged: 13.0.3
       postcss: 8.4.16
+      postcss-functions: 4.0.2_postcss@8.4.16
       postcss-import: 14.1.0_postcss@8.4.16
       postcss-mixins: 9.0.3_postcss@8.4.16
       postcss-nested: 6.0.0_postcss@8.4.16
@@ -2364,6 +2366,15 @@ packages:
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /postcss-functions/4.0.2_postcss@8.4.16:
+    resolution: {integrity: sha512-htDZN6t97uW4GBXquTsz/DVaNVAHtHx5tLCALquVM2u58UwHki+RwHbANKiiI0ImA8T7Iml2MnvLUM7aGtlpqA==}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.4.16
+      postcss-value-parser: 4.2.0
     dev: true
 
   /postcss-import/14.1.0_postcss@8.4.16:
