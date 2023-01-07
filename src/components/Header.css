@@ -1,28 +1,69 @@
 .header {
   flex-shrink: 0;
+  position: relative;
+  z-index: 1000;
+  background-color: #fff;
+
+  @screen max-lg {
+    position: sticky;
+    top: 0;
+    box-shadow: inset 0 -1px #d8e1ef;
+  }
 
   &__inner {
-    height: 104px;
-    /* padding: 26px 0; */
+    height: var(--header-height);
     display: flex;
     align-items: center;
+
+    @screen lg {
+      padding-top: 16px;
+    }
   }
 
   &__logo {
     margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   &__auth {
+    @apply transition;
     line-height: 1;
     font-size: 18px;
     display: flex;
     align-items: center;
-    background-color: theme(colors.body);
+    background-color: theme(colors.body.DEFAULT);
     height: 52px;
     padding: 0 24px;
     border-radius: 52px;
     color: #ffffff;
     font-weight: 500;
     margin-left: 48px;
+    will-change: transform;
+
+    @screen max-xl {
+      margin-left: 40px;
+    }
+    @screen max-lg {
+      height: 48px;
+      padding: 0 20px;
+      font-size: 17px;
+    }
+    @screen max-md {
+      height: 32px;
+      padding: 0 16px;
+      font-size: 15px;
+      margin-left: 20px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: theme(colors.body.DEFAULT / 75%);
+      }
+
+      &:active {
+        transform: scale(0.96);
+      }
+    }
   }
   &__auth-text {
     display: block;
@@ -32,7 +73,7 @@
   &__auth-badge {
     font-size: 14px;
     font-weight: 700;
-    color: theme(colors.body);
+    color: theme(colors.body.DEFAULT);
     height: 24px;
     padding: 1px 8px 0;
     border-radius: 8px;
@@ -40,5 +81,18 @@
     margin-left: 16px;
     display: flex;
     align-items: center;
+
+    @screen max-lg {
+      height: 22px;
+      margin-left: 14px;
+      font-size: 14px;
+      border-radius: 7px;
+    }
+    @screen max-md {
+      height: 20px;
+      margin-left: 12px;
+      font-size: 13px;
+      border-radius: 6px;
+    }
   }
 }

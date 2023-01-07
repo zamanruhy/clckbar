@@ -6,6 +6,7 @@ export default function Nav(props) {
     <nav
       className="nav"
       classList={{ [props.className]: Boolean(props.className) }}
+      aria-label="Основная"
     >
       <ul className="nav__list">
         <li className="nav__item">
@@ -21,7 +22,7 @@ export default function Nav(props) {
         <li className="nav__item">
           <a href="#" className="nav__link mr-[7px]">
             Инструменты
-            <CaretIcon className="ml-[12px] h-[7px] fill-current" />
+            <CaretIcon className="relative -top-px ml-[12px] h-[7px] fill-current" />
           </a>
         </li>
         <li className="nav__item">

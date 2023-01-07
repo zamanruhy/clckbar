@@ -3,17 +3,15 @@ import './Hamburger.css'
 
 export default function Hamburger(props) {
   const [, rest] = splitProps(props, ['active', 'class', 'classList'])
-
   return (
     <button
       class="hamburger"
       classList={{
         [props.class]: Boolean(props.class),
-        ...props.classList,
-        hamburger_active: props.active
+        ...props.classList
       }}
       type="button"
-      aria-label="Toggle menu"
+      aria-label="Переключить навигацию"
       {...rest}
     >
       <span class="hamburger__bar" />

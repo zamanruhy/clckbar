@@ -1,21 +1,28 @@
-/** @type {import('tailwindcss').Config} */
-
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+const screens = {
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
+  '2xl': '1400px'
+}
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', 'src/**/*.{js,jsx,ts,tsx,html}'],
   darkMode: 'class',
   theme: {
     screens: {
-      ...defaultTheme.screens,
-      ...Object.keys(defaultTheme.screens)
+      ...screens,
+      ...Object.keys(screens)
         .reverse()
         .reduce(
           (acc, key) => ({
             ...acc,
             [`max-${key}`]: {
-              raw: `not all and (min-width: ${defaultTheme.screens[key]})`
+              raw: `not all and (min-width: ${screens[key]})`
             }
           }),
           {}
@@ -27,7 +34,14 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-      body: '#050509'
+      body: { DEFAULT: '#050509' },
+      pink: { DEFAULT: '#ff76d9' },
+      lime: {
+        light: '#d4ff51',
+        DEFAULT: '#b7fe02',
+        dark: '#9fe500'
+      },
+      aquamarine: { DEFAULT: '#50fcf5' }
     },
     fontSize: {
       11: ['11px', { lineHeight: '16px' }],

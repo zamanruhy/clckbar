@@ -1,0 +1,60 @@
+.button {
+  @apply text-18 font-medium transition;
+  display: inline-flex;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 9px 24px 7px;
+  border-radius: 9999px;
+
+  @screen max-md {
+    @apply text-16;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media (hover: hover) {
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &_primary {
+    background-color: theme(colors.body.DEFAULT);
+    color: #ffffff;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: theme(colors.body.DEFAULT / 75%);
+      }
+    }
+  }
+  &_secondary {
+    background-color: theme(colors.lime.DEFAULT);
+    color: theme(colors.body.DEFAULT);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: theme(colors.lime.dark);
+      }
+    }
+  }
+
+  &_md {
+    min-height: 52px;
+
+    @screen max-md {
+      min-height: 44px;
+    }
+  }
+  &_lg {
+    min-height: 64px;
+
+    @screen max-md {
+      min-height: 44px;
+    }
+  }
+}

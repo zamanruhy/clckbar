@@ -100,7 +100,9 @@ export default defineConfig({
         assetFileNames({ name }) {
           // console.log('===NAME===', name)
           if (name.match(/\.css$/)) {
-            return name === 'style.css' ? 'static/css/app.css' : 'static/css/[name].css'
+            return name === 'style.css'
+              ? 'static/css/app.css'
+              : 'static/css/[name].css'
           }
           if (name.match(/\.(png|jpe?g|gif|svg|webp|avif)$/)) {
             return 'static/img/[name].[ext]'

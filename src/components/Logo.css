@@ -1,5 +1,16 @@
 .logo {
   &__svg {
     height: 30px;
+
+    @screen max-md {
+      height: 20px;
+      margin-left: -2px;
+    }
+  }
+  &__ground {
+    fill: theme(colors.lime.DEFAULT);
+    @screen max-md {
+      display: none;
+    }
   }
 }

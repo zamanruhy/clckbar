@@ -82,8 +82,25 @@
       url(/static/fonts/GolosText-DemiBold.woff) format("woff");
   }
 
-  * {
+  /* * {
     outline-offset: 4px;
+  } */
+
+  :focus-visible {
+    outline: 3px solid theme(colors.pink.DEFAULT);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  :root {
+    --header-height: 88px;
+
+    @screen max-lg {
+      --header-height: 78px;
+    }
+    @screen max-md {
+      --header-height: 48px;
+    }
   }
 
   html {
@@ -92,10 +109,12 @@
 
   body {
     height: 100%;
+    width: 100%;
     background-color: #ffffff;
     font-family: theme(fontFamily.muller);
     font-size: 16px;
     line-height: 1.5;
-    color: theme(colors.body);
+    color: theme(colors.body.DEFAULT);
+    /* background-color: tomato; */
   }
 }

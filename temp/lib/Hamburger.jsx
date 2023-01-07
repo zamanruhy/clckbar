@@ -5,7 +5,7 @@ export default function Hamburger(props) {
 
   return (
     <button
-      class="box-content flex h-[20px] w-[24px] flex-col justify-between rounded py-2.5 px-2 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500/50"
+      class="focus-visible:ring-blue-500/50 box-content flex h-[20px] w-[24px] flex-col justify-between rounded py-2.5 px-2 transition focus:outline-none focus-visible:ring focus-visible:ring-offset-2"
       classList={{ [props.class]: Boolean(props.class), ...props.classList }}
       type="button"
       aria-label="Toggle menu"

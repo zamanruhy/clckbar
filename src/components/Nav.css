@@ -1,17 +1,39 @@
 .nav {
-  background-color: #ffffff;
-
-  @screen lg {
-    margin-top: 1px;
-  }
-
   @screen max-lg {
-    display: none;
+    background-color: #ffffff;
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 27px 24px;
+
+    @apply transition-[clip-path,visibility] duration-300;
+    clip-path: inset(0 0 100%);
+    visibility: hidden;
+
+    &_open {
+      clip-path: inset(0);
+      visibility: visible;
+    }
   }
 
   &__list {
     display: flex;
     gap: 48px;
+
+    @screen max-xl {
+      gap: 40px;
+    }
+    @screen max-lg {
+      flex-direction: column;
+      gap: 18px;
+    }
   }
   &__item {
   }
@@ -19,31 +41,35 @@
     @apply text-18;
     display: flex;
     align-items: center;
-    padding: 2px 0;
+    justify-content: center;
+    padding: 3px 0 1px;
     position: relative;
     isolation: isolate;
 
-    @media (hover: hover) {
-      &::after {
-        @apply transition-all duration-200 ease-out;
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        bottom: 7px;
-        height: 7px;
-        background-color: #ff76d9;
-        z-index: -1;
-        border-radius: 10px;
-        /* clip-path: inset(0 0 100%);
-      transform: translate3d(0, 100%, 0); */
-        /* display: none; */
-        right: 0;
+    @screen max-lg {
+      padding: 8px 0 6px;
+    }
+
+    &::after {
+      @apply transition-all duration-200 ease-out;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      bottom: 6px;
+      height: 7px;
+      background-color: theme(colors.pink.DEFAULT);
+      z-index: -1;
+      border-radius: 10px;
+      right: 0;
+
+      @screen max-lg {
+        bottom: 11px;
       }
+    }
+
+    @media (hover: hover) {
       &:hover::after {
-        /* clip-path: inset(0);
-      transform: translate3d(0, 0, 0); */
-        /* display: block; */
         @apply delay-[50ms];
         width: 100%;
         left: 0;

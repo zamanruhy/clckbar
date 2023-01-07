@@ -1,0 +1,109 @@
+.intro {
+  padding-top: 59px;
+  /* padding-bottom: 119px; */
+  overflow: hidden;
+  border-bottom-style: solid;
+  /* border-bottom: 12px solid; */
+
+  @screen md {
+    border-bottom-width: 12px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+      to right,
+      theme(colors.aquamarine.DEFAULT),
+      50%,
+      #5df15d
+    );
+  }
+
+  @screen max-md {
+    padding-top: 23px;
+    border-bottom-width: 8px;
+    border-color: theme(colors.lime.DEFAULT);
+  }
+
+  &__inner {
+    display: flex;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 1208px;
+      height: 1208px;
+      border-radius: 50%;
+      background-color: theme(colors.lime.DEFAULT);
+      opacity: 0.16;
+      filter: blur(122px);
+      position: absolute;
+      z-index: -1;
+      top: 92px;
+      right: -450px;
+    }
+  }
+  &__main {
+    flex-grow: 1;
+  }
+  &__title {
+    font-size: 56px;
+    line-height: 72px;
+    font-weight: 800;
+    position: relative;
+
+    @screen max-md {
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+    }
+  }
+  &__phrase {
+  }
+  &__hook {
+    height: 0.411em;
+    fill: theme(colors.pink.DEFAULT);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0.15em 0 0 0.4em;
+  }
+  &__text {
+    @apply text-22;
+    margin-top: 76px;
+    max-width: 490px;
+  }
+  &__action {
+    position: relative;
+    margin-top: 142px;
+    margin-bottom: 119px;
+    /* width: fit-content; */
+  }
+  &__tag {
+    @apply text-15;
+    background-color: theme(colors.body.DEFAULT);
+    color: #ffffff;
+    border-radius: 10px;
+    transform: rotate(-10deg);
+    font-weight: 700;
+    padding: 5px 12px;
+    position: absolute;
+    left: 36.5%;
+    bottom: 100%;
+    margin-bottom: -4px;
+    pointer-events: none;
+    white-space: nowrap;
+
+    @screen max-md {
+      @apply text-13;
+      padding: 2px 8px 1px;
+      left: 27%;
+      margin-bottom: -2px;
+      border-radius: 6px;
+    }
+  }
+
+  &__side {
+    width: 559px;
+    padding-right: 48px;
+    margin-top: 15px;
+    align-self: flex-end;
+  }
+}
