@@ -1,0 +1,4 @@
+.step {
+  background-color: theme(colors.body.DEFAULT);
+  border-radius: 40px;
+}

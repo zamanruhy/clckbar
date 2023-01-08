@@ -1,0 +1,11 @@
+.steps {
+  margin-top: 91px;
+
+  @screen max-md {
+    margin-top: 32px;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+  }
+}

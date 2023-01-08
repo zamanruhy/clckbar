@@ -41,7 +41,8 @@ module.exports = {
         DEFAULT: '#b7fe02',
         dark: '#9fe500'
       },
-      aquamarine: { DEFAULT: '#50fcf5' }
+      aquamarine: { DEFAULT: '#50fcf5' },
+      violet: { DEFAULT: '#582ef5' }
     },
     fontSize: {
       11: ['11px', { lineHeight: '16px' }],

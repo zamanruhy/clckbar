@@ -37,4 +37,17 @@
       flex-grow: 1;
     }
   }
+
+  .title {
+    @apply text-56;
+    font-weight: 800;
+
+    @screen max-lg {
+      @apply text-40;
+    }
+    @screen max-md {
+      @apply text-24;
+      font-weight: 700;
+    }
+  }
 }

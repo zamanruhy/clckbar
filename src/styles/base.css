@@ -82,10 +82,6 @@
       url(/static/fonts/GolosText-DemiBold.woff) format("woff");
   }
 
-  /* * {
-    outline-offset: 4px;
-  } */
-
   :focus-visible {
     outline: 3px solid theme(colors.pink.DEFAULT);
     outline-offset: 3px;

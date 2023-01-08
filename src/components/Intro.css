@@ -17,6 +17,9 @@
     );
   }
 
+  @screen max-lg {
+    padding-top: 60px;
+  }
   @screen max-md {
     padding-top: 23px;
     border-bottom-width: 8px;
@@ -34,16 +37,26 @@
 
     &::after {
       content: "";
-      width: 1208px;
-      height: 1208px;
       border-radius: 50%;
       background-color: theme(colors.lime.DEFAULT);
       opacity: 0.16;
       filter: blur(122px);
       position: absolute;
       z-index: -1;
-      top: 92px;
-      right: -450px;
+
+      @screen md {
+        width: 1208px;
+        height: 1208px;
+        top: 92px;
+        right: -450px;
+      }
+      @screen max-md {
+        width: 564px;
+        height: 564px;
+        bottom: -116px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
   &__main {
@@ -75,6 +88,31 @@
       font-size: 24px;
       line-height: 32px;
       text-align: center;
+    }
+  }
+  &__emoji {
+    @apply inline w-[1em] align-[-0.06em];
+  }
+  &__decor {
+    @apply my-[0.07em] mx-[0.3em] inline w-[1.285em];
+  }
+  &__pointer {
+    @apply inline fill-current;
+    height: 36px;
+    vertical-align: -1.68px;
+
+    @screen max-xl {
+      height: 30px;
+      vertical-align: -3px;
+    }
+    @screen max-lg {
+      height: 28px;
+      vertical-align: -4px;
+    }
+    @screen max-md {
+      margin-left: 0.1em;
+      height: 26px;
+      vertical-align: middle;
     }
   }
   &__phrase {
@@ -123,6 +161,9 @@
     @screen max-md {
       width: 256px;
     }
+  }
+  &__button-icon {
+    @apply ml-[23px] mb-[2px] mr-[5px] h-[12px] max-md:ml-[18px] max-md:h-[10px];
   }
   &__tag {
     @apply text-15;
