@@ -5,7 +5,40 @@
     margin-top: 32px;
   }
 
+  &__inner {
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background: theme(colors.pink.DEFAULT);
+      position: absolute;
+      z-index: -1;
+      left: -312px;
+      top: -248px;
+      opacity: 0.16;
+      filter: blur(122px);
+
+      @screen max-lg {
+        display: none;
+      }
+    }
+  }
   &__title {
-    margin-bottom: 48px;
+    margin-bottom: 46px;
+
+    @screen max-md {
+      margin-bottom: 24px;
+    }
+  }
+  &__stack {
+    display: grid;
+    gap: 48px;
+
+    @screen max-md {
+      gap: 24px;
+    }
   }
 }

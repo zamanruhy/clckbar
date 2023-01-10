@@ -37,7 +37,7 @@ export default function Facts() {
             Не нужен большой сайт, чтобы рассказать <br class="max-sm:hidden" />
             о себе и своих услугах. Посадочная страница готова за 10 минут.
           </p>
-          <WowIcon class="facts__decor" />
+          <WowIcon class="facts__decor" aria-hidden="true" />
           <div className="facts__grid">
             {items.map(({ num, unit, text, src }) => (
               <article class="facts__item">

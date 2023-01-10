@@ -26,7 +26,7 @@ export default function Intro() {
               </div>
               <div className="text-pink">
                 <span className="intro__phrase">больше клиентов</span>{' '}
-                <UpCircleIcon className="intro__pointer" />
+                <UpCircleIcon className="intro__pointer" aria-hidden="true" />
               </div>
               <div>
                 с живой
@@ -40,7 +40,7 @@ export default function Intro() {
               <div>
                 кликбар <span class="text-pink">уже сегодня</span>
               </div>
-              <HookIcon className="intro__hook" />
+              <HookIcon className="intro__hook" aria-hidden="true" />
             </h1>
             <p className="intro__text">
               Создай страницу кликбар, настрой рекламу по нашему гайду и собирай
@@ -55,7 +55,7 @@ export default function Intro() {
                 size="md"
               >
                 Создать кликбар
-                <UpRightIcon class="intro__button-icon" />
+                <UpRightIcon class="intro__button-icon" aria-hidden="true" />
                 <span className="intro__tag">7 дней доступа</span>
               </Button>
             </div>

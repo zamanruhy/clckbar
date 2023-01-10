@@ -1,0 +1,146 @@
+.appeal {
+  margin-top: 88px;
+  border: 12px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    theme(colors.aquamarine.DEFAULT),
+    50%,
+    #5df15d
+  );
+
+  @screen max-md {
+    border-width: 8px;
+    margin-top: 32px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    padding: 63px 0 92px;
+
+    @screen max-md {
+      flex-direction: column;
+      padding: 25px 0 24px;
+      align-items: center;
+    }
+    @screen max-sm {
+      /* align-items: flex-start; */
+    }
+  }
+  &__main {
+    flex-grow: 1;
+    margin-top: 31px;
+
+    @screen max-lg {
+      margin-top: 26px;
+    }
+    @screen max-md {
+      margin-top: 0;
+      display: contents;
+    }
+  }
+  &__title {
+    @apply text-56;
+    margin-bottom: 39px;
+    font-weight: 800;
+
+    @screen max-xl {
+      @apply text-40;
+    }
+    @screen max-lg {
+      @apply text-32;
+    }
+    @screen max-md {
+      @apply text-24;
+      font-weight: 700;
+      margin-bottom: 7px;
+      max-width: 22ch;
+    }
+  }
+  &__text {
+    @apply text-22;
+    max-width: 33ch;
+    margin-bottom: 76px;
+
+    @screen max-lg {
+      @apply text-20;
+    }
+    @screen max-md {
+      @apply text-16;
+      margin-bottom: 8px;
+    }
+  }
+  &__decor {
+    position: relative;
+    width: fit-content;
+    margin-bottom: -86px;
+
+    @screen max-xl {
+      display: none;
+    }
+  }
+  &__decor-svg {
+    height: 251px;
+  }
+  &__decor-img {
+    width: 27.5%;
+    position: absolute;
+    top: 4%;
+    left: 56%;
+  }
+  &__action {
+    @screen max-md {
+      order: 9999;
+      margin-top: 48px;
+      align-self: stretch;
+    }
+  }
+  &__button {
+    @screen max-md {
+      width: 100%;
+    }
+  }
+  &__button-icon {
+    @apply ml-[23px] mb-[2px] mr-[5px] h-[12px] max-md:ml-[18px] max-md:h-[10px];
+  }
+  &__tag {
+    @apply text-15;
+    background-color: theme(colors.lime.DEFAULT);
+    color: theme(colors.body.DEFAULT);
+    border-radius: 10px;
+    transform: rotate(-10deg);
+    font-weight: 700;
+    padding: 6px 12px 4px;
+    position: absolute;
+    left: 32%;
+    bottom: 100%;
+    margin-bottom: -5px;
+    pointer-events: none;
+    white-space: nowrap;
+
+    @screen max-md {
+      @apply text-14;
+      padding: 3px 8px 1px;
+      left: 11%;
+      margin-bottom: -8px;
+      border-radius: 8px;
+    }
+  }
+
+  &__side {
+    flex-shrink: 0;
+    width: 48.9%;
+    margin-left: 24px;
+
+    @screen max-md {
+      /* width: 328px; */
+      margin: 0;
+      width: 100%;
+      max-width: 360px;
+      /* margin-left: -40px; */
+    }
+  }
+  &__img {
+  }
+}
