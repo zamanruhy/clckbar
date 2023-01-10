@@ -1,0 +1,64 @@
+.client {
+  display: flex;
+  border-radius: 32px;
+  padding: 40px 40px 0;
+  overflow: hidden;
+
+  width: 592px;
+
+  @screen max-md {
+    border-radius: 24px;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  &_master {
+    background-color: #f0f4ff;
+  }
+  &_owner {
+    background-color: #ccf5dc;
+  }
+  &_shop {
+    background-color: #e3ffb6;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    @apply text-32;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+    @screen max-md {
+      @apply text-18;
+      margin-bottom: 8px;
+    }
+  }
+  &__text {
+    @apply text-18;
+    margin: auto 0 39px;
+
+    @screen max-md {
+      @apply text-15;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__side {
+    flex-shrink: 0;
+    aspect-ratio: 0.5418;
+    width: 214px;
+    position: relative;
+    margin-left: 40px;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+  }
+}

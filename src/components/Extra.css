@@ -1,13 +1,28 @@
 .extra {
   margin-top: 91px;
 
+  @screen max-md {
+    margin-top: 32px;
+  }
+
   &__title {
     margin-bottom: 48px;
+
+    @screen max-md {
+      margin-bottom: 24px;
+    }
   }
   &__items {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
+
+    @screen max-md {
+      gap: 24px;
+    }
+    @screen max-sm {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
   &__item {
     @apply transition;
@@ -18,15 +33,60 @@
     position: relative;
     outline-width: 4px;
     isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    min-height: 400px;
 
     &:active {
       transform: scale(0.99);
+    }
+
+    @screen max-lg {
+      padding: 30px;
+    }
+    @screen max-md {
+      padding: 24px;
+      border-radius: 23px;
+      max-height: 430px;
+      min-height: 340px;
+    }
+
+    &_one {
+      background-color: theme(colors.violet.DEFAULT);
+      color: #ffffff;
+    }
+    &_two {
+      background-color: theme(colors.lime.DEFAULT);
+      color: theme(colors.body.DEFAULT);
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid theme(colors.lime.DEFAULT);
+        border-radius: inherit;
+        z-index: -1;
+        pointer-events: none;
+      }
     }
   }
   &__item-text {
     @apply text-28;
     font-weight: 700;
     max-width: 15ch;
+
+    @screen max-xl {
+      @apply text-24;
+    }
+    @screen max-lg {
+      @apply text-22;
+    }
+    @screen max-md {
+      @apply text-18;
+    }
   }
   &__item-pointer {
     @apply transition;
@@ -40,23 +100,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    will-change: transform;
+    /* will-change: transform; */
+
+    @screen max-md {
+      width: 44px;
+      height: 44px;
+      bottom: 24px;
+      left: 24px;
+    }
   }
   &__item-icon {
     height: 12px;
     color: #ffffff;
   }
-  &__item:hover &__item-pointer {
-    /* opacity: 0.9; */
-    /* transform: scale(1.05); */
-    /* transform: rotate(5deg) scale(1.1); */
-    background-color: theme(colors.body.DEFAULT / 70%);
+  @media (hover: hover) {
+    &__item:hover &__item-pointer {
+      opacity: 0;
+      /* transform: scale(1.05); */
+      /* transform: rotate(5deg) scale(1.1); */
+      /* background-color: theme(colors.body.DEFAULT / 70%); */
+    }
   }
   &__item-img {
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 1%;
+    bottom: 0;
     z-index: -1;
+  }
+
+  &__button {
+    margin-top: 48px;
+    width: 100%;
+
+    @screen max-md {
+      margin-top: 24px;
+    }
+  }
+  &__button-icon {
+    height: 16px;
+    fill: #ffffff;
+    margin-left: 20px;
+
+    @screen max-md {
+      height: 14px;
+      margin-left: 15px;
+    }
   }
 }

@@ -1,8 +1,9 @@
+import Intro from '@/components/Intro'
+import Facts from '@/components/Facts'
+import Steps from '@/components/Steps'
 import Appeal from '@/components/Appeal'
 import Extra from '@/components/Extra'
-import Facts from '@/components/Facts'
-import Intro from '@/components/Intro'
-import Steps from '@/components/Steps'
+import Clients from '@/components/Clients'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Steps />
       <Appeal />
       <Extra />
+      <Clients />
     </>
   )
 }
