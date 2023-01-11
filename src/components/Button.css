@@ -7,7 +7,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 9px 24px 7px;
   border-radius: 9999px;
 
   @screen max-md {
@@ -42,9 +41,20 @@
       }
     }
   }
+  &_tertiary {
+    background-color: #ffffff;
+    color: theme(colors.body.DEFAULT);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: theme(colors.lime.dark);
+      }
+    }
+  }
 
   &_md {
     min-height: 52px;
+    padding: 9px 24px 7px;
 
     @screen max-md {
       min-height: 44px;
@@ -52,6 +62,7 @@
   }
   &_lg {
     min-height: 64px;
+    padding: 9px 24px 7px;
 
     @screen max-md {
       min-height: 44px;

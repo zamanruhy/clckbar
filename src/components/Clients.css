@@ -1,5 +1,5 @@
 .clients {
-  margin-top: 92px;
+  margin-top: 90px;
 
   @screen max-md {
     margin-top: 32px;
@@ -10,30 +10,85 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px 32px;
-  }
-  &__title {
     margin-bottom: 64px;
+    justify-content: space-between;
 
     @screen max-md {
       margin-bottom: 24px;
     }
   }
+  &__title {
+  }
+  &__avas {
+    display: flex;
+    position: relative;
+    top: -2px;
+
+    @screen max-md {
+      display: none;
+    }
+  }
+  &__ava {
+    & + & {
+      margin-left: -32px;
+    }
+  }
+  &__ava-img {
+    border-radius: 50%;
+    width: 72px;
+    display: block;
+  }
+  &__content {
+    position: relative;
+  }
   &__viewport {
     overflow: hidden;
-    /* margin-left: -16px;
-    margin-right: -16px; */
-    /* margin-left: -300px; */
   }
   &__wrapper {
     display: flex;
+    margin: 0 calc(theme(container-padding) - 16px);
+
+    @screen max-md {
+      margin: 0 calc(theme(container-padding) - 8px);
+    }
   }
   &__item {
     flex-shrink: 0;
     padding: 0 16px;
-    /* width: calc(100% / 3); */
+    display: flex;
 
     @screen max-md {
-      width: 100%;
+      width: 92%;
+      padding: 0 8px;
     }
+  }
+  &__prev,
+  &__next {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    &:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @screen max-md {
+      display: none;
+    }
+
+    svg {
+      height: 16px;
+      fill: currentColor;
+    }
+  }
+  &__prev {
+    left: max(calc((100vw - 1300px) / 2), 20px);
+  }
+  &__next {
+    right: max(calc((100vw - 1300px) / 2), 20px);
   }
 }

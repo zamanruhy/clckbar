@@ -14,6 +14,7 @@ module.exports = {
   content: ['./index.html', 'src/**/*.{js,jsx,ts,tsx,html}'],
   darkMode: 'class',
   theme: {
+    'container-padding': '24px',
     screens: {
       ...screens,
       ...Object.keys(screens)

@@ -1,0 +1,144 @@
+.promo {
+  margin-top: 88px;
+
+  @screen max-md {
+    margin-top: 32px;
+  }
+
+  &__content {
+    border-radius: 32px;
+    background-color: theme(colors.body.DEFAULT);
+    color: #ffffff;
+    padding: 74px 80px 60px;
+
+    @screen max-lg {
+      padding: 50px 60px 50px;
+    }
+    @screen max-md {
+      border-radius: 0;
+      margin: 0 calc(theme(container-padding) * -1);
+      padding: 32px theme(container-padding);
+    }
+  }
+  &__title {
+    max-width: 15ch;
+    margin-bottom: 70px;
+
+    @screen max-lg {
+      margin-bottom: 60px;
+    }
+    @screen max-md {
+      margin-bottom: 24px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__emoji {
+    position: relative;
+    top: -0.22em;
+    display: inline;
+    width: 1em;
+  }
+  &__plate {
+    position: relative;
+    border-radius: 32px;
+    background-color: theme(colors.violet.DEFAULT);
+    isolation: isolate;
+
+    @screen max-lg {
+      overflow: hidden;
+      padding: 33px 32px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    @screen max-md {
+      padding: 24px 24px 0;
+      border-radius: 24px;
+    }
+  }
+  &__plate-inner {
+    position: relative;
+    border-radius: inherit;
+    overflow: hidden;
+    padding: 33px 32px;
+
+    @screen max-lg {
+      display: contents;
+    }
+  }
+  &__text {
+    @apply text-22;
+    max-width: 26ch;
+    margin-bottom: 27px;
+
+    @screen max-md {
+      @apply text-18;
+      margin-bottom: 24px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__button {
+    @screen max-md {
+      width: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__button-icon {
+    height: 20px;
+    margin-right: 18px;
+    margin-left: 2px;
+    position: relative;
+    top: -1px;
+
+    @screen max-md {
+      height: 18px;
+      margin-right: 14px;
+    }
+  }
+  &__how {
+    position: absolute;
+    z-index: -1;
+    fill: #ffffff;
+    opacity: 0.08;
+    height: 326px;
+    top: -87px;
+    left: -22px;
+
+    @screen max-lg {
+      height: 240px;
+      bottom: 12px;
+      left: 0;
+      top: auto;
+    }
+    @screen max-md {
+      height: 192px;
+      bottom: 12px;
+      left: -28px;
+      top: auto;
+    }
+  }
+  &__img {
+    position: absolute;
+    width: 423px;
+    bottom: 0;
+    right: 29px;
+
+    @screen max-xl {
+      width: 369px;
+    }
+    @screen max-lg {
+      position: static;
+      margin-top: 32px;
+    }
+    @screen max-md {
+      width: 278px;
+      margin-top: 24px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

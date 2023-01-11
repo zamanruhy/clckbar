@@ -1,6 +1,6 @@
-import womenImg from '../images/women.png?format=png;webp'
+import womanImg from '../images/woman.png?format=png;webp'
 import skateImg from '../images/skateboarder.png?format=png;webp'
-import emojiWomenImg from '../images/emoji-women.png?format=png;webp'
+import emojiWomanImg from '../images/emoji-woman.png?format=png;webp'
 import EasyIcon from '../icons/easy.svg?component'
 import UpRightIcon from '../icons/up-right.svg?component'
 import Image from './Image'
@@ -16,8 +16,8 @@ export default function Appeal() {
             <h2 className="appeal__title">
               Тебе уже пишут{' '}
               <Image
-                class="relative top-[-0.2em] inline w-[1em]"
-                src={emojiWomenImg}
+                class="appeal__emoji"
+                src={emojiWomanImg}
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -55,7 +55,7 @@ export default function Appeal() {
           <div className="appeal__side">
             <Image
               class="appeal__img"
-              src={womenImg}
+              src={womanImg}
               alt=""
               loading="lazy"
               decoding="async"

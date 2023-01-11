@@ -58,6 +58,9 @@
       max-width: 22ch;
     }
   }
+  &__emoji {
+    @apply relative top-[-0.2em] inline w-[1em];
+  }
   &__text {
     @apply text-22;
     max-width: 33ch;

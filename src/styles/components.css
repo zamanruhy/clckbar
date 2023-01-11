@@ -13,8 +13,8 @@
   .container {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: theme(container-padding);
+    padding-right: theme(container-padding);
 
     @media (min-width: 768px) {
       max-width: 750px;
@@ -24,14 +24,14 @@
     }
     @media (min-width: 1200px) {
       /* max-width: 1170px; */
-      max-width: calc(1216px + 15px * 2);
+      max-width: calc(1216px + theme(container-padding) * 2);
     }
 
     /* temp */
-    @screen max-sm {
+    /* @screen max-sm {
       padding-left: 24px;
       padding-right: 24px;
-    }
+    } */
   }
 
   .app {
