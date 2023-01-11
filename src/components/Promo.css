@@ -9,7 +9,7 @@
     border-radius: 32px;
     background-color: theme(colors.body.DEFAULT);
     color: #ffffff;
-    padding: 74px 80px 60px;
+    padding: 74px 80px 63px;
 
     @screen max-lg {
       padding: 50px 60px 50px;
@@ -44,16 +44,19 @@
     border-radius: 32px;
     background-color: theme(colors.violet.DEFAULT);
     isolation: isolate;
+    margin-bottom: 64px;
 
     @screen max-lg {
       overflow: hidden;
       padding: 33px 32px 0;
       display: flex;
       flex-direction: column;
+      margin-bottom: 50px;
     }
     @screen max-md {
       padding: 24px 24px 0;
       border-radius: 24px;
+      margin-bottom: 32px;
     }
   }
   &__plate-inner {
@@ -88,6 +91,7 @@
     }
   }
   &__button-icon {
+    fill: currentColor;
     height: 20px;
     margin-right: 18px;
     margin-left: 2px;
@@ -139,6 +143,59 @@
       margin-top: 24px;
       margin-left: auto;
       margin-right: auto;
+    }
+  }
+
+  &__benefits {
+    display: grid;
+    grid-template-columns: 23% 24% 23% 1fr;
+    row-gap: 44px;
+    column-gap: 33px;
+
+    @screen max-xl {
+      column-gap: 20px;
+    }
+    @screen max-lg {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    @screen max-md {
+      row-gap: 24px;
+    }
+  }
+  &__benefit {
+    @apply text-22;
+
+    @screen lg {
+      &:nth-child(1) {
+        grid-column-start: 1;
+      }
+      &:nth-child(2) {
+        grid-column-start: 2;
+        grid-row-start: 2;
+      }
+      &:nth-child(3) {
+        grid-column-start: 3;
+      }
+      &:nth-child(4) {
+        grid-column-start: 4;
+        grid-row-start: 2;
+      }
+    }
+
+    @screen max-xl {
+      @apply text-20;
+    }
+    @screen max-lg {
+      @apply text-18;
+      width: 60%;
+      max-width: max-content;
+
+      &:nth-child(even) {
+        justify-self: end;
+      }
+    }
+    @screen max-md {
+      @apply text-16;
     }
   }
 }

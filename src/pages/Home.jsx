@@ -5,6 +5,7 @@ import Appeal from '@/components/Appeal'
 import Extra from '@/components/Extra'
 import Clients from '@/components/Clients'
 import Promo from '@/components/Promo'
+import Results from '@/components/Results'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Extra />
       <Clients />
       <Promo />
+      <Results />
     </>
   )
 }

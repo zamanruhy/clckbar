@@ -47,7 +47,8 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: theme(colors.lime.dark);
+        background-color: theme(colors.body.DEFAULT);
+        color: #ffffff;
       }
     }
   }

@@ -46,6 +46,18 @@ export default function Promo() {
               decoding="async"
             />
           </div>
+          <div className="promo__benefits">
+            <div className="promo__benefit">
+              Адекватные расходы на&nbsp;продвижение
+            </div>
+            <div className="promo__benefit">
+              Удобная форма заявки в&nbsp;1&nbsp;клик
+            </div>
+            <div className="promo__benefit">
+              Фокус на главном, не&nbsp;теряются акценты
+            </div>
+            <div className="promo__benefit">Молниеносная загрузка страницы</div>
+          </div>
         </div>
       </div>
     </section>

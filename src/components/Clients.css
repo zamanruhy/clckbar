@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px 32px;
+    gap: 16px 32px;
     margin-bottom: 64px;
     justify-content: space-between;
 

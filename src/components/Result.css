@@ -1,0 +1,106 @@
+.result {
+  @apply transition;
+  background-color: #ffffff;
+  border: 2px solid theme(colors.body.DEFAULT);
+  border-radius: 32px;
+  padding: 40px;
+  position: relative;
+  outline-width: 4px;
+  display: flex;
+  flex-direction: column;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: theme(colors.violet.DEFAULT);
+      border-color: theme(colors.violet.DEFAULT);
+      color: #ffffff;
+    }
+  }
+
+  @screen max-md {
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &__pic {
+    width: 56px;
+    height: 56px;
+    margin-right: 24px;
+    flex-shrink: 0;
+
+    @screen max-md {
+      width: 52px;
+      height: 52px;
+      margin-right: 12px;
+    }
+  }
+  &__ava {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  &__title {
+    @apply text-28;
+    font-weight: 700;
+
+    @screen max-md {
+      @apply text-18;
+    }
+  }
+  &__text {
+    @apply text-22;
+    min-height: calc(30px * 4);
+    margin-bottom: auto;
+
+    @screen max-md {
+      @apply text-18;
+      min-height: calc(26px * 5);
+    }
+  }
+  &__meta {
+    @apply text-22;
+    display: block;
+    margin-top: 43px;
+
+    @screen max-md {
+      @apply text-18;
+    }
+  }
+
+  &__pointer {
+    @apply transition;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background-color: theme(colors.body.DEFAULT);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @screen max-md {
+      width: 44px;
+      height: 44px;
+      bottom: 24px;
+      right: 24px;
+    }
+  }
+  &__pointer-icon {
+    height: 12px;
+    color: #ffffff;
+  }
+  @media (hover: hover) {
+    &:hover &__pointer {
+      opacity: 0;
+    }
+  }
+}
