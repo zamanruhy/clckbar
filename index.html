@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Кликбар</title>
+    <meta name="description" content="Кликбар" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#bbbbbb" />
+    <script>
+      (() => {
+        const themeColorEl = document.head.querySelector('meta[name="theme-color"]');
+        const colorSchemeEl = document.head.querySelector('meta[name="color-scheme"]');
+        const forcedTheme = window.localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = forcedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        colorSchemeEl && (colorSchemeEl.content = theme);
+        themeColorEl && (themeColorEl.content = theme === "dark" ? "#333333" : "#bbbbbb");
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Site title" />
+    <meta property="og:description" content="Site description" />
+    <meta property="og:image" content="http://via.placeholder.com/1200x630.jpg" />
+    <meta property="og:url" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" crossorigin src="static/js/app.js"></script>
+    <link rel="modulepreload" crossorigin href="static/js/vendor.js" />
+    <link rel="stylesheet" href="static/css/app.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="header">
+        <div class="container">
+          <div class="header__inner">
+            <a href="." class="logo header__logo" aria-label="Главная"
+              ><svg viewBox="0 0 146 30" class="logo__svg" aria-hidden="true">
+                <path
+                  d="M2.2 25.8c0-1.82 1.92-3.3 4.28-3.3h132.18c2.37 0 4.28 1.48 4.28 3.3 0 1.84-1.91 3.32-4.28 3.32H6.48c-2.36 0-4.27-1.48-4.27-3.31Z"
+                  class="logo__ground"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M81.9 12.84c-.05.43-.48.71-.92.63l-4.23-.8a.9.9 0 0 1-.7-.95 5.63 5.63 0 0 0 0-.65.9.9 0 0 1 .7-.95l4.23-.8c.44-.08.87.2.93.63a10.94 10.94 0 0 1 0 2.89ZM79.49 4.4c.29.36.18.87-.2 1.11L75.7 7.78a.93.93 0 0 1-1.17-.18 5.97 5.97 0 0 0-.51-.5c-.35-.29-.46-.8-.2-1.16l2.39-3.38a.79.79 0 0 1 1.1-.2c.8.6 1.53 1.28 2.16 2.04ZM71.52.1c.46.05.75.47.66.91l-.83 3.97c-.09.43-.52.7-.97.68a6.57 6.57 0 0 0-.76 0c-.45.03-.88-.25-.97-.68l-.83-3.97a.76.76 0 0 1 .66-.92 12.75 12.75 0 0 1 3.04 0ZM10.28 23.8v-5.3h1.07l3.51 5.3h5.63l-4.94-7.12 4.64-6.9h-5.65L11.4 14.7h-1.13V9.8H5.22v14h5.06Zm18.6-10.22h2.52v10.23h5.07V9.78H24.26c-.27 5.61-.57 10.11-2.71 10.11-.24 0-.5-.06-.8-.17v3.94a8.1 8.1 0 0 0 2.56.47c4.04 0 5.2-4.7 5.56-10.55Zm20.14 3.6-5.09 6.63H39.5V9.78h5.06v6.64l5.09-6.64h4.44v14.03h-5.07v-6.63Zm13.16 6.63v-5.32h1.07l3.51 5.32h5.63l-4.94-7.13 4.64-6.9h-5.65L63.3 14.7h-1.13V9.8h-5.06v14h5.06Zm43.38-6.86c0-4.5-2.57-6.9-5.98-6.9-2.16 0-3.5.96-4.34 2.01 0-1.17.75-2.85 2.21-3.57 1.1-.54 2.22-.67 3.27-.8 1.32-.16 2.56-.3 3.59-1.23v-4.5c-.93.9-2.28 1.1-3.89 1.36-1.77.28-3.85.61-6.02 1.97C91.83 6.9 90 9.69 90 15c0 6.6 3.62 8.85 7.78 8.85 4.31 0 7.78-2.25 7.78-6.9Zm-10.32 0c0-1.02.3-3 2.54-3 2.25 0 2.55 1.98 2.55 3s-.3 3-2.55 3c-2.24 0-2.54-1.98-2.54-3Zm26.31 2.34v-4.02c0-5.13-2.93-6.72-7.51-6.72-2.13 0-4.4.57-5.6.96v4.3a13.5 13.5 0 0 1 5.03-1.12c2.03 0 3 .78 3 1.8V15a14.8 14.8 0 0 0-3.12-.33c-2.78 0-6.23 1.11-6.23 4.74 0 2.8 2.25 4.44 5 4.44 2.04 0 3.62-.66 5-1.74.66 1.02 1.83 1.6 3.41 1.6.96 0 1.89-.19 2.58-.46V20.1c-.18.06-.4.1-.57.1-.51 0-.99-.22-.99-.9Zm-9.19-.3c0-1.14 1.08-1.56 2.28-1.56.68 0 1.37.12 1.82.27v1.95c-.78.57-1.52.75-2.36.75-1.08 0-1.74-.66-1.74-1.4ZM129.7 9v1.95c.72-1.2 2.3-2.4 4.88-2.4 4.82 0 6.94 3.93 6.94 7.65s-2.12 7.65-6.94 7.65c-2 0-3.42-.72-4.28-1.62V30h-5.1V9h4.5Zm3.5 10.65c2.16 0 3.08-1.77 3.08-3.45 0-1.68-.93-3.45-3.08-3.45-1.4 0-2.45.87-2.9 1.8v3.3c.44.93 1.5 1.8 2.9 1.8Z"
+                  fill="currentColor"
+                ></path></svg
+            ></a>
+            <nav class="nav" aria-label="Основная">
+              <ul class="nav__list">
+                <li class="nav__item"><a href="#" class="nav__link">Все возможности</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Тарифы</a></li>
+                <li class="nav__item">
+                  <a href="#" class="nav__link mr-[7px]"
+                    >Инструменты<svg
+                      viewBox="0 0 12 7"
+                      class="relative -top-px ml-[12px] h-[7px] fill-current"
+                    >
+                      <path
+                        d="m10.88 2.13-4.6 4.6c-.1.1-.21.17-.33.2a1.1 1.1 0 0 1-.37.07 1.1 1.1 0 0 1-.38-.06.87.87 0 0 1-.32-.22l-4.6-4.6a.95.95 0 0 1-.28-.7.95.95 0 0 1 .98-.98 1 1 0 0 1 .7.29l3.9 3.9 3.9-3.9a.95.95 0 0 1 .7-.28c.28 0 .51.1.7.27.18.19.27.42.27.7 0 .29-.1.52-.27.7Z"
+                      ></path></svg
+                  ></a>
+                </li>
+                <li class="nav__item"><a href="#" class="nav__link">Блог</a></li>
+              </ul>
+            </nav>
+            <a href="#" class="header__auth"
+              ><span class="header__auth-text">Войти</span
+              ><span class="header__auth-badge">Free</span></a
+            ><button class="hamburger" type="button" aria-label="Переключить навигацию">
+              <span class="hamburger__bar"></span><span class="hamburger__bar"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="app__main">
+        <section class="intro">
+          <div class="container">
+            <div class="intro__inner">
+              <div class="intro__main">
+                <h1 class="intro__title">
+                  <div class="">
+                    <img
+                      class="intro__emoji"
+                      src="data:image/webp;base64,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"
+                      alt=""
+                    />
+                    <span class="intro__phrase">Получайте</span>
+                  </div>
+                  <div class="text-pink">
+                    <span class="intro__phrase">больше клиентов</span>
+                    <svg viewBox="0 0 36 36" class="intro__pointer" aria-hidden="true">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M18 .13a17.87 17.87 0 1 0 0 35.74A17.87 17.87 0 0 0 18 .13Zm.97 10.02a1.38 1.38 0 0 0-1.94 0l-5.5 5.5a1.38 1.38 0 0 0 1.94 1.95l3.15-3.16v10.44a1.37 1.37 0 1 0 2.75 0V14.44l3.16 3.16a1.38 1.38 0 0 0 1.94-1.95l-5.5-5.5Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    с живой<img
+                      class="intro__decor"
+                      src="data:image/webp;base64,UklGRoAJAABXRUJQVlA4WAoAAAAQAAAAjwAAjwAAQUxQSKoCAAABoFXbbt3Q2hAMQRDCIGHQMkgYtAxSBj4MDKEQBCEQBEEQ9NFX4kg69/ETEROAU5dhWdtzE7G3IsxtXaaCiMtSWW135XqlSMq1inW4tWsJodzYOuaZnCtXtu55doweaqeURj5NbCdukz8T28l58mVic5DJD3qak42ceKj5+fBgEnNV6Gzlj7n7OBdt5rDQie5qLuv9NH/M7XoO2szxjU5AYq4LdTeoOa9DZ4ua+zp3tViIc0eLBTl3s1iYcyeDxqFDF6QWqFIHJBaq0HGbBbsd9sfCrQfdLeD7IaQRKR0hFvJW9ntY0HU3srCnvSQu2elhga+7kEWutEcLzZ47kAU//cbR8U+ThT/9wvHxD5MlcPquZYC/IkshfdNysH4jOdDyabEkXj5xFvgDWRrLuyUPt3ecB35TLJHl5ZqJy0vLRH3ZMiEAyFJZgGsuZqDmogKcCwY0F4piySxTNoYlG/OajbVlo3E2nunYJBuSD/vfq2RD8rFlg5/paNloazbWJRvzkI2xZKNAc6EA54KBmosKLLm4ACUXBEAysQFAzUR7uWbi8lIyUV7AeWC8veVhflfyQO/AWWB8vGRh/lQ0B4Iv1xy0bygH9A04Aw1fTxkYvwPHx/hxim/8BRwd4+cpOvoNz9gadiQNjfbAGtmKfSUuwc5TXLQXalQrdi9bTIIDSSNSOgL3iG44tsZTcfQWzYbDSWIROg6kkSihx0Hj0AF9LnHM6HWJYka/Swwzel7UP53R96De6YDeSXwTQv+0ebYRTln9qjjrXX3SG85L4tFGOPXqTy04OYkvMsLB1RFd4SM1L54EN4k94BGujnw2HuHu2M7EI1ymJufQleD3wv3xpcB3WrgnvhVEWC5t60HqpSBQulTW/ZTrXBBxGee1MYu8E9mebZ2HglMDVlA4ILAGAADQNQCdASqQAJAAPmUqj0WkIqEaSu8EQAZEsoMUzgQH4AfoBqAH4AfoBAgP4B+AFZ0dlO1v5tFWTw4wlQTcoTMOq5a7AjlMbEnKh0TfoBF8Sapqu366NfrLBdSgn+a8AJETKRLx2UYrUmPmCrRUL1C9KOqGqbwCm3Zpqz4IXip8xOpA84R9SFJdJ/kb8XIlqbWLCpBgvw2r/eGIHsjC82ylQeRBT7YlVRlEiy9llYpK8ncnLv85L0eUvPZEjFfjYQcV0wXYt/D85Rd6cxvCzfM+MpAwHt1JjJxdi6KlaENbWhwAmK+Xct7FrinTz1OgMMbmKGb6YQc4tiiWH7Kzz9m8kT9Gjxruopv+xbd5IHdkLESH8pvQx85hn/2t+unEfotDWufE2dGXJLR8xbELYSKH/haoOkTP/2tKlhJ16XHOI8OK4XbW+wgBBw0+uLfTBbUi5I35ni3F0jf9ODKyO9l+wbISgFFTqlmz1CA9eJy7RkiPJY7h7Y9xn/kP/8jpRPLCIuTneW2bRmFP3mHdWLdJABMe583AT6VHg07E7ajcaI99rEoDEDUM2WO7JWI560QRTIi4ynMAAP7+BtCk/+Yqn1J/cEaflMGTadfcsRTwzJOy1z/+5AQrnE39q3eQGS3CVdh0HG1S+pNbmcu4N2iVy3QN5tuK2w1a/6wwYIFJrB7YQdBxg6/mjdyXGUSr8OsRqJ5uhsNejMYQ/uDi61dbjZkRSb6D1n3g53UoLxzFGy9Le/9JyCqC+cuuxUAv+DEo8hOYJm6XhjAKSNTARQjA50/sn2qGYMT2lT+bpvbzDAQ6VVlMjm7kMXwYnBNDBmnBKEbhkpp/ghGTfWyHWKlSaskHIDU1tXCw3PQJ54YHpCO/bwaYgSgNvBGXdaGHwpYOEzLkgOXQ0F6vD3coWV+frg8RYDBEzZ4GXz/JhFDXLQCNo6chcDoeRjvu0sVtuFafsiiFETZ1DdZU3xjDpkfqZLN0deFuxJBFm581Jv0evzgeE8TfDDYSPKPCtLcrj15h7YuvIDUo2W8qJMXJfz4frIfof6zoMf4xcdd0q5jMBLSvygRI8qtNyyd0Tlk16X8TGtTOCCumDraNF0r9RZRjdEjA8Oryddsb904vG2TeBNdf9Z7gBxbJjzaTfSM7KH5ew0DoEK23MJZvLogWzRTApOJ0zHdMvXv/BWlqEt0bN9IqivVrGO8Vfm934soRH2/18q621HF7ndMc9MyMcEJnOI+oOP4C5uunvK10Lx8EMbHRJHO1O61qZBrlfWyp1uzcr35Nbl10qJCJ4PYTfOt3kbsV6pohPK5GvNVMS9wWmL1LtMrNdAg8xjS/3u4w2rlqqiITmaRK1SNSfxwdEUZmHlBEGIzjqKl0bP1BcW0+zJDECfbsGaUrhE9uAXqaIGJGzoF7C+EuNo3mJOHGDijRHeSFTdqVqyNAP9m2507UNu3VocwABqnmirnWCCAj/8pN+Nj1RK9ra6ZnDfKclebmNC6BP8EaKukSUvGLm6LJALBC9xBumBE5gsWVz8snGDzKNOCNRUCjKu4Lbzh2anej3hKalu5eSdQAqTSpqRFj7cnKym10tC1L85uNxCUFB+Uoq/aZhpPX4+jLYmz63h3nqoXXFFC6HqOKQZJiQNna6BVs/SXFnB3VF5iYKjy9QV32/oVfZol3nMB/kFD2NAzBXZq9wB5uXUWkH2Y9kaai4Aqz5/ol04Jg/rXAI0R2LFWVJI6FIe8oZSnAqU3rv9cRgrrYVQBPBTHEmoq6F9p/GpygmASq4Hxd1GnHgYOIn8VCuWL4l3N6b7MCKdO6jXAdlhLLhJv+iSgkOpDhVbpIAxj5Dh3/EJKgWEq3CiY2ZZ0bdBkB/7M7mNkllXiTZ67qfBnsMNFbPoSUHp4xIWVKnuaT18NhlnYGeNe6LRbTtf6rTu0m+Lq073FmCFlQFTVyPMcDHOzUx4ZtpQ+/NiBgF8a92OZCOFoxwgTCtNt9dvT4Z/vN604VShE9GbgCpn+gV3RFXxrDCeC/VFEBGTNxKFAAkcJQAKhp/wtjxU4QxxvoGHEdlxKrnx4x+aQ9GG5AOt7guypCMh9uMi7251R5khqzTn2N0j77wxhKwR2lEb2N/fxLFfpGqFvQGMR5/x8wgQdF8JAN2gG8LPmmhv4gKgcE641rfV7yor560Gi6FKRov6Q9m8IDiqDGJhTZxxzlDEtPcTi3p2R2Z/7O85cRWTCT5O2BQoiRnKQQlF3b0OmxJPJvMwAlijN74RxfKLSjH3+JBZRqVhCcq7cJ3yAAAA=="
+                      alt=""
+                    />страницей
+                  </div>
+                  <div>кликбар <span class="text-pink">уже сегодня</span></div>
+                  <svg viewBox="0 0 168 23" class="intro__hook" aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M165.93 6.43a39.59 39.59 0 0 1-5.63 3.23c-10.13 4.87-20.89 7.72-31.9 9.67a204.62 204.62 0 0 1-32.55 3.02c-4.43.07-8.85-.14-13.28-.35l-3.37-.16c-5.71-.25-11.41-.59-17.08-1.3a391.14 391.14 0 0 1-15.09-2.3 324.1 324.1 0 0 1-16.76-3.1l-5.98-2.86c3.24.7 6.48 1.34 9.73 1.99 2.44.48 4.88.97 7.32 1.48 3.16.65 6.35 1.08 9.55 1.5 2 .28 3.99.55 5.97.87 6.78 1.1 13.62 1.63 20.45 2.13 4.09.3 8.2.46 12.31.11.29-.02.54-.08.62-.4h.04c.5.46 1.1.4 1.68.36l.55-.03c5.94.03 11.86-.23 17.78-.61 2.2-.15 4.4-.38 6.6-.61 1.5-.16 3-.32 4.51-.45a88 88 0 0 0 11.6-2.04c.3-.07.62-.09.95-.11.86-.06 1.77-.12 2.31-1.03h.05l.05-.03c1.33.46 2.43-.08 3.54-.62l.82-.4c-.07.02-.14.02-.22.03-1.41.18-2.83.36-4.14 1l-.06-.03-.04.05h-.33c-.27 0-.53 0-.8.06a199.33 199.33 0 0 1-33.85 4.08c-2.5.1-5 .18-7.5.26l-3.5.12a1.54 1.54 0 0 1-.04-.04v.04c-2.61-.33-5.23-.42-7.85-.51-1.44-.05-2.87-.1-4.3-.2l-.9-.05a184.1 184.1 0 0 1-16.51-1.52c-1.57-.24-3.16-.4-4.74-.56-1.99-.2-3.98-.4-5.95-.77l-6.42-1.14c-6.15-1.08-12.3-2.16-18.4-3.6l-4.5-1.05L.13.76a247.2 247.2 0 0 0 15.78 3.97c1.09.22 2.18.46 3.27.7 3.5.75 7.01 1.5 10.56 1.9 1.1.13 2.17.39 3.24.65 1.43.35 2.86.7 4.36.71.19 0 .37.03.55.07.45.08.9.16 1.37-.25.25-.2 1.29-.54 1.29.64 0 .19.27.2.52.22l.22.01c.95.13 1.9.3 2.85.46 2.07.36 4.14.71 6.21.7a40.3 40.3 0 0 1 4.97.37c1.23.14 2.46.28 3.7.34.95.04 1.87.3 2.8.56 1.08.3 2.17.6 3.32.58.28 0 .56 0 .84.02.6.03 1.2.07 1.8-.11l.5.07.49.08c2.21.5 4.44.77 6.7.46 2.33.53 4.67.67 7.04.37l.58.07c2.3.3 4.58.6 6.92-.03a6.8 6.8 0 0 1 2.12-.11 13 13 0 0 0 1.24.02l5.06-.26c2.13-.11 4.26-.23 6.4-.32l.47-.05c.56-.06 1.14-.13 1.64.32 1.96.34 3.88.1 5.8-.35 1.3-.35 2.65-.36 4-.38.61 0 1.23 0 1.84-.04h.1c2.47-.16 4.87-.31 7.26-1.2 1.19-.43 2.46-.52 3.75-.6a21.1 21.1 0 0 0 2.6-.3l2.57-.49c3.8-.7 7.62-1.41 11.15-2.84a56.53 56.53 0 0 1 6.3-2c2.75-.76 5.48-1.5 8.05-2.79.4-.2.77-.43 1.15-.66.73-.45 1.46-.9 2.33-1.1 1.35-.32 3.4.45 4.07 1.99l.03.06-2 4.2Zm-10.85 3.52-.2.04c.61-.7 1.42-.88 2.24-1.07l.6-.15c-.7.78-1.67.98-2.64 1.18Z"
+                    ></path>
+                  </svg>
+                </h1>
+                <p class="intro__text">
+                  Создай страницу кликбар, настрой рекламу по нашему гайду и собирай заявки от
+                  клиентов с помощью всего одной ссылки.
+                </p>
+                <div class="intro__action">
+                  <a
+                    data-hk="0-0-0-0-1-1-0-0-0-2-0-0"
+                    class="button intro__button button_secondary button_md"
+                    href="#"
+                    >Создать кликбар<svg
+                      viewBox="0 0 12 12"
+                      class="intro__button-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                        fill="currentColor"
+                      ></path></svg
+                    ><span class="intro__tag">7 дней доступа</span></a
+                  >
+                </div>
+              </div>
+              <div class="intro__side">
+                <picture
+                  ><source srcset="/static/img/hand.webp" type="image/webp" />
+                  <img
+                    src="static/img/hand.png"
+                    width="1022"
+                    height="1526"
+                    class="intro__hand"
+                    alt=""
+                    fetchpriority="high"
+                /></picture>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="facts">
+          <div class="container">
+            <div class="facts__inner">
+              <h2 class="title facts__title">Вместо сайта и лендинга</h2>
+              <p class="facts__text">
+                Не нужен большой сайт, чтобы рассказать <br class="max-sm:hidden" />о себе и своих
+                услугах. Посадочная страница готова за 10 минут.
+              </p>
+              <svg viewBox="0 0 437 162" fill="none" class="facts__decor" aria-hidden="true">
+                <path
+                  d="m179.32 52.36 4.5 2.13a46.33 46.33 0 0 1-2.74 5.39 25.5 25.5 0 0 1-3.64 5 87.4 87.4 0 0 1-5.54 4.73 17.25 17.25 0 0 1-7.3 3.5c-2.63.4-5.82.73-9.56.97-3.56.11-7.45-.8-11.67-2.72-2.17 6.92-4.4 12.63-6.68 17.12-3 6-6.06 10.85-9.2 14.56a56.29 56.29 0 0 1-10.74 10.47 36.55 36.55 0 0 1-8.28 5.28 51.46 51.46 0 0 1-16.93 4.94c-4.74.42-8.76-.67-12.08-3.26-3.31-2.59-5.8-6.35-7.48-11.27a88.67 88.67 0 0 1-3.27-15.23c-.64-5.4-.92-11.57-.85-18.48C55.98 95.6 40.1 105.39 20.2 104.8c-7.07-.1-12.2-2.96-15.38-8.59C1.68 90.43.27 83.14.63 74.33c.38-8.96 1.18-18.02 2.39-27.18a763.17 763.17 0 0 0 3.57-27C7.76 11.3 7.9 5.04 7 1.36L9.24.97c1-.17 2.85-.21 5.57-.13 2.91-.04 5.62.12 8.14.5 2.52.38 5.2 1.27 8.06 2.66 3.03 1.26 5.5 3 7.43 5.22 2.08 2.25 3.62 5.38 4.63 9.4 1.16 4.03 1.5 8.76 1.01 14.16-.53 4.59-1.25 11-2.16 19.24-2.27 18.34-2.7 28.75-1.3 31.21 1.53 2.65 5.38.57 11.56-6.23 6.97-7.82 12.55-16 16.73-24.55.6-10.38.87-16.54.84-18.47 1.02-.34 2.27-.63 3.76-.89 1.67-.4 4.52-.61 8.55-.65 4.03-.04 7.57.57 10.6 1.83 3.21 1.13 6.12 3.74 8.73 7.84 2.63 3.94 3.93 9.2 3.9 15.8.04 20.14.96 33.89 2.75 41.24 2.3-1.42 4.81-3.62 7.51-6.6a57.97 57.97 0 0 0 8.2-11.1 86.75 86.75 0 0 0 6.52-14.47l.14-.95c.22-.45.43-.74.61-.87a182.97 182.97 0 0 1-7.43-5.22 35.76 35.76 0 0 1-6.78-6.34c-2.45-2.94-4.09-6-4.9-9.19-.53-1.85-.78-3.9-.77-6.15.1-1.76.57-3.78 1.4-6.07 1.9-4.07 4.83-7 8.81-8.83a16.3 16.3 0 0 1 12.58-1.73c2.37.35 4.48 1.31 6.34 2.88a14.86 14.86 0 0 1 4.79 5.07 55.8 55.8 0 0 1 2.5 5.93c.27 1.33.54 3.3.8 5.92.18 1.96.15 3.8-.11 5.54.06.65 0 1.6-.2 2.87l-.35 2.36a119.1 119.1 0 0 1-2.66 12.89c.61.25 1.45.54 2.53.86 1.24.35 3.43.76 6.58 1.23 3.33.34 6.33.23 9-.34 2.81-.54 5.77-2.03 8.88-4.46 3.1-2.44 5.53-5.78 7.3-10.02Zm-43.52-4.6.28-1.9c.26-1.72.38-3.07.37-4.04-.2-2.93-.6-5.09-1.2-6.47-1-1.92-2.28-3.07-3.83-3.47a7.8 7.8 0 0 0-5.88.57 8.35 8.35 0 0 0-4.46 3.92 10.05 10.05 0 0 0-.61 5.7c.36 1.83 1.33 3.99 2.89 6.48a63.6 63.6 0 0 0 5.2 5.61l4.73 3.85c.03-.16.27-1.25.74-3.27a39.06 39.06 0 0 0 1.21-4.9c.2-.28.4-.98.56-2.08Z"
+                  fill="#FDDFF5"
+                ></path>
+                <path
+                  d="m288.31 66.07 2.09 5.38c-.88.52-2.1 1.14-3.66 1.87-.18.13-.53.32-1.05.57-.5.08-.84.2-1.02.33l-2.34 1.1c-.18.13-.6.3-1.29.53-.52.24-.94.42-1.28.53-.34.1-.86.35-1.56.73-.7.38-1.22.62-1.56.73-1.85.53-2.96.93-3.32 1.2-.37.26-.97.57-1.83.93-.84.2-1.43.35-1.76.46a9.1 9.1 0 0 1-1.06.57c-.33.1-.58.15-.74.13l-1.02.33c-.15-.03-.32.03-.5.16-.19.14-.35.2-.51.17a5.3 5.3 0 0 0-2.03.66c-.66.06-1.33.28-2.04.66-1.85.53-4.78 1.3-8.8 2.3-2.5.6-5.57 1.18-9.2 1.76l-2.23.39a9.9 9.9 0 0 1-1.7-.01 54.22 54.22 0 0 1-3.4 8.18c-5.78 11.7-13.89 20.14-24.33 25.34-10.42 5.04-20.21 5.34-29.37.9-9.16-4.43-14.9-12.3-17.23-23.6-2.3-11.46-.56-23.11 5.25-34.97 5.78-11.69 13.88-20.06 24.3-25.1 10.44-5.2 20.25-5.57 29.4-1.14 6.15 3.02 10.8 7.99 13.95 14.9 3.18 6.76 4.46 14.28 3.86 22.57l.71.1c4.06-.2 6.82-.34 8.28-.45 1.29.04 4-.28 8.12-.95a16.9 16.9 0 0 0 2-.43 8.34 8.34 0 0 1 1.95-.19l1.02-.33.47.07c.19-.13.35-.18.51-.16.18-.13.44-.26.78-.37.5-.08.82-.11.98-.1l3.76-.88c1-.17 2.07-.41 3.25-.72 1.35-.44 2.36-.69 3.01-.75 1.35-.44 2.28-.7 2.78-.8a2.6 2.6 0 0 1 1.01-.32 5.3 5.3 0 0 0 1.29-.54l2.23-.38 3.83-1.36Zm-60.28-3.98c-2.85-1.4-6.38-.96-10.59 1.3.22.69.74 1.57 1.54 2.66a13.54 13.54 0 0 0 3.59 3.43 5.7 5.7 0 0 0 2.42 1.58c1.82.75 2.8 1.14 2.97 1.17 1.82.75 3.67 1.27 5.56 1.56-.2-6.16-2.03-10.05-5.5-11.7Zm-25.71 52.19c3.75 1.85 8.16.9 13.23-2.85 5.1-3.9 9.39-9.46 12.89-16.67.91-1.8 1.92-4.22 3.02-7.27-3.2-.16-5.65-.45-7.36-.87l-1.65-.24a7.87 7.87 0 0 0-1.85-.52l-1.35-.69a41.63 41.63 0 0 1-4.78-1.93 27.9 27.9 0 0 1-7.64-5.49c-.85-.77-1.4-1.34-1.67-1.7l-3.25 5.55c-3.5 7.2-5.25 14.03-5.25 20.47.18 6.31 2.07 10.38 5.66 12.2Z"
+                  fill="#FDDFF5"
+                ></path>
+                <path
+                  d="m431.95 90.3 4.51 2.12a46.2 46.2 0 0 1-2.74 5.39 25.49 25.49 0 0 1-3.65 5 87.51 87.51 0 0 1-5.54 4.73 17.26 17.26 0 0 1-7.29 3.5c-2.64.4-5.83.73-9.57.97-3.56.11-7.45-.8-11.67-2.72-2.16 6.93-4.39 12.63-6.67 17.12-3 6-6.06 10.85-9.2 14.56a56.28 56.28 0 0 1-10.75 10.47 36.57 36.57 0 0 1-8.28 5.28c-4.88 2.49-10.53 4.13-16.93 4.94-4.73.42-8.76-.67-12.07-3.26-3.32-2.59-5.81-6.34-7.49-11.27a88.68 88.68 0 0 1-3.27-15.22c-.64-5.41-.92-11.58-.85-18.5-11.88 20.13-27.76 29.9-47.64 29.33-7.08-.1-12.2-2.96-15.38-8.59-3.16-5.79-4.56-13.08-4.2-21.89.38-8.96 1.17-18.02 2.39-27.18a763.86 763.86 0 0 0 3.57-27c1.16-8.85 1.3-15.1.4-18.79l2.23-.39c1-.17 2.85-.21 5.58-.12 2.9-.05 5.62.11 8.14.5 2.52.37 5.2 1.26 8.06 2.65 3.03 1.26 5.5 3 7.43 5.22 2.07 2.25 3.62 5.38 4.62 9.4 1.17 4.04 1.5 8.76 1.02 14.16-.53 4.6-1.25 11-2.17 19.24-2.27 18.34-2.7 28.75-1.3 31.21 1.53 2.65 5.39.57 11.56-6.23 6.98-7.81 12.55-16 16.74-24.55.59-10.38.87-16.54.84-18.47 1.01-.33 2.27-.63 3.75-.89 1.67-.4 4.52-.6 8.56-.65a26.8 26.8 0 0 1 10.6 1.84c3.2 1.12 6.11 3.73 8.72 7.83 2.63 3.94 3.93 9.2 3.9 15.8.05 20.14.96 33.89 2.76 41.25 2.3-1.43 4.8-3.63 7.51-6.6a58.03 58.03 0 0 0 8.19-11.1 86.8 86.8 0 0 0 6.52-14.48l.14-.95c.23-.44.44-.74.62-.87a183.05 183.05 0 0 1-7.43-5.22 35.76 35.76 0 0 1-6.78-6.34 23.4 23.4 0 0 1-4.9-9.19c-.53-1.85-.79-3.9-.77-6.15.1-1.76.57-3.78 1.4-6.07 1.9-4.07 4.83-7 8.8-8.83a16.3 16.3 0 0 1 12.59-1.73c2.36.35 4.47 1.32 6.33 2.88a14.86 14.86 0 0 1 4.8 5.07c.86 1.74 1.7 3.72 2.49 5.93.28 1.33.55 3.3.8 5.92.19 1.96.15 3.8-.1 5.54.06.65 0 1.61-.2 2.87l-.35 2.36a119.1 119.1 0 0 1-2.66 12.9c.6.24 1.45.53 2.53.85 1.23.35 3.43.76 6.58 1.23 3.33.34 6.32.23 8.99-.34 2.82-.54 5.78-2.03 8.88-4.46 3.1-2.44 5.54-5.77 7.3-10.02Zm-43.52-4.61.29-1.89c.26-1.73.38-3.08.36-4.05-.2-2.93-.6-5.09-1.2-6.46-1-1.93-2.27-3.08-3.83-3.48a7.8 7.8 0 0 0-5.88.57c-1.87.68-3.36 2-4.45 3.92a10.07 10.07 0 0 0-.62 5.7c.37 1.83 1.33 4 2.9 6.48a63.76 63.76 0 0 0 5.2 5.61l4.73 3.85c.02-.15.27-1.24.73-3.27a38.84 38.84 0 0 0 1.22-4.89c.2-.29.39-.99.55-2.09Z"
+                  fill="#FDDFF5"
+                ></path>
+              </svg>
+              <div class="facts__grid">
+                <article class="facts__item">
+                  <div class="facts__item-info">
+                    <h3 class="facts__item-title">
+                      <span class="facts__item-num">10</span
+                      ><span class="facts__item-unit">мин</span>
+                    </h3>
+                    <p class="facts__item-text">чтобы собрать <br />страницу в кликбар</p>
+                  </div>
+                  <div class="facts__item-pic">
+                    <picture
+                      ><source srcset="/static/img/lightning.webp" type="image/webp" />
+                      <img
+                        src="static/img/lightning.png"
+                        width="193"
+                        height="193"
+                        class="facts__item-img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    /></picture>
+                  </div>
+                </article>
+                <article class="facts__item">
+                  <div class="facts__item-info">
+                    <h3 class="facts__item-title">
+                      <span class="facts__item-num">7</span
+                      ><span class="facts__item-unit">дней</span>
+                    </h3>
+                    <p class="facts__item-text">бесплатно <br />полная версия</p>
+                  </div>
+                  <div class="facts__item-pic">
+                    <picture
+                      ><source srcset="/static/img/bag.webp" type="image/webp" />
+                      <img
+                        src="static/img/bag.png"
+                        width="193"
+                        height="192"
+                        class="facts__item-img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    /></picture>
+                  </div>
+                </article>
+                <article class="facts__item">
+                  <div class="facts__item-info">
+                    <h3 class="facts__item-title">
+                      <span class="facts__item-num">1</span
+                      ><span class="facts__item-unit">час</span>
+                    </h3>
+                    <p class="facts__item-text">от идеи до запуска <br />с рекламой</p>
+                  </div>
+                  <div class="facts__item-pic">
+                    <picture
+                      ><source srcset="/static/img/rocket.webp" type="image/webp" />
+                      <img
+                        src="static/img/rocket.png"
+                        width="193"
+                        height="192"
+                        class="facts__item-img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    /></picture>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="steps">
+          <div class="container">
+            <div class="steps__inner">
+              <h2 class="title steps__title">Как это работает?</h2>
+              <div class="steps__stack">
+                <article class="step">
+                  <svg viewBox="0 0 197 172" class="step__decor text-lime" aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="m155.22-53.31-1.36 1.36c-2.56-.29-5.2-.7-7.87-.85-2.63-.14-5.28-.03-7.91-.03-2.09 0-4.37-.53-6.2.14-2.05.75-4.28-.02-5.88.84-1.87 1-4.12-.14-5.64 1.52-3.16-.3-5.78 1.64-8.7 2.1-3.27.51-6.22 1.8-9.22 2.94-3.48 1.32-7.07 2.33-10.4 4.08-2.38 1.25-4.94 2.2-7.4 3.25-4.4 1.88-8.16 4.6-12 7.26-2.1 1.45-3.92 3.3-5.87 4.97-1.84 1.57-3.9 2.96-5.5 4.75-5.68 6.34-11.7 12.44-15.37 20.3-2.53 2.26-3.55 5.51-4.82 8.42-1.27 2.9-3.16 5.67-3.49 8.97-2.78 4.58-3.88 9.82-5.4 14.84-1.2 3.94-2.98 7.85-2.93 12.14-1.52 1.24-.65 3.21-1.48 4.82a9.98 9.98 0 0 0-1.07 5.81c.28 2-1.15 3.79-.85 5.92.25 1.82-.03 3.64-.65 5.52-.6 1.81.07 3.96-.88 5.9-.23.47.62 1.38.7 2.12.07.52-.66 1.33-.46 1.6 1.12 1.53.17 3.22.52 4.5l-1.6 3 1.81.97c0 5.5 0 10.6.02 15.7 0 .19.37.39.57.59l-.8.89c.68 2.66 1.73 5.22 1.72 8.06-.01 1.55.4 3.13.8 4.65.83 3.14 1.5 6.35 2.08 9.52.67 3.58 2.56 6.5 4.04 9.61 1.45 3.08 3.46 5.78 6.6 7.67 4.35 2.6 8.6 5.37 13.17 7.5 2.2 1.02 4.6 1.77 6.78 2.74 2.29 1 4.73 1.44 7.02 2.12 2.04.6 4.43.81 6.68 1.02 1.85.16 3.66.03 5.53.76 1.66.65 3.79-.48 5.46.92.08.07.27 0 .4 0 6.85-.04 13.69 1.8 20.48.72 4.6-.73 9.43-.78 13.7-3.05 6.64-.84 12.38-4.47 18.78-6 1.76-1.66 4.24-1.85 6.23-3.09 1.96-1.21 4.22-1.9 6.25-3.01 7.16-3.9 14.36-7.75 21.2-12.22 1.33-.87 2.28-2.13 3.79-2.9 1.87-.94 3.45-2.55 4.98-4.05 1.43-1.4 2.95-2.7 3.94-4.6.98-1.86 2.85-3.15 4.16-4.91 3.06-4.12 6.3-8.16 8.32-12.85 1.26-2.92 2.47-5.93 3.54-8.96 1.04-2.93 1.4-6.01 2.63-8.9.95-2.25.72-5 .97-7.52.3-3.08.67-6.16.8-9.24.15-3.2.23-6.4-.02-9.58a63.01 63.01 0 0 0-1.4-9.39c-.41-1.76-.88-3.61-.98-5.42-.16-2.84-1.33-5.29-2.38-7.8-2.1-4.97-5.15-9.31-8.39-13.66-3.58-4.8-8.72-7.73-12.54-12.16-1.6-1.84-3.89-3.19-6.05-4.42-1.65-.93-3.65-1.13-5.43-1.98-2.19-1.04-4.66-1.49-7-2.21-.24-.07-.44-.33-.68-.36-2.94-.3-5.88-.6-8.82-.83a14.5 14.5 0 0 0-3.33.03c-.91.14-1.72-1.36-2.62-.11-1.47-1.13-2.81.55-4.36.15-1.36-.35-2.8.1-4.27.62-1.67.59-3.7-.06-5.46.94-1.09.61-2.33.97-3.57 1.47l-1.35-1.34c-.17.13-.5.27-.5.38.1 1.35-.33 2.21-1.64 2.9-2.3 1.19-4.46 2.66-6.82 4.1l-1.97-1.14-.49 1.93 1 .48c-2.02 1.99-4.03 3.89-5.96 5.86a69.76 69.76 0 0 0-11.5 15.66c-1.59 2.95-3.3 5.85-4.67 8.9-1.69 3.75-3.42 7.47-4.72 11.39-.94 2.81-1.97 5.58-2.84 8.42-.55 1.76-.23 3.56-1.09 5.38-1.02 2.17-.41 5.06-1.09 7.47-.79 2.82-.66 5.6-.79 8.43-.04.87-.52 1.71-.8 2.6.25.3.52.6.8.9l-.48.54c.18 1.14.5 2.23.5 3.33 0 3.22.83 6.26 1.68 9.32 1.32 4.8 4.65 7.96 9.01 9.67 5.12 2.01 10.53 2.96 16.07 3.64 4.51.55 8.97.27 13.38.68 2.07-1.47 4.53-2 6.66-3.28.7-.43 1.63-.67 2.37-1.29 3.07-2.6 6.44-4.8 9.42-7.56 1.33-1.23 2.9-2.38 4.25-3.66 4.28-4.05 6.95-9.1 8.87-14.6.64-1.82.76-3.93 1.77-5.49 1.17-1.8-.04-4.08 1.58-5.62.27-3.36.87-6.73.72-10.07-.1-2.37-.95-4.71-.74-7.16.05-.54-2.83-7.14-3.47-7.71-1.38-1.26-2.89-2.39-4.34-3.57-1.45.79-2.6-1.16-4.35-.21a7.64 7.64 0 0 1-5.24.48c-1.81-.51-.57.94-1.19 1.23-4.94 2.35-8.09 6.98-12.54 9.98-.22.15-.36.4-.14.15-.51 1.78-.53 3.31-1.3 4.23-2.22 2.68-2.72 6.14-4.42 9.03-.38.64-.4 1.51-.5 2.28-.23 1.7.53 3.53-.8 5.11-.28.33-.15 1.1-.03 1.63.37 1.48.82 2.94 1.32 4.68 5.44-3.7 7.43-9.85 11.36-14.42h3.04l-2.03 4.48c1.27-.54 1.89-.65 2.3-1 .95-.82 1.79-1.76 2.72-2.69 1.24.83 1.9 2.22 3.06 3.19 1.08.9 1.43 2.67 2.44 4.77.04 3.1-2.58 6.2-3.38 9.87-1.5 1-3.2 1.58-3.46 3.95-.16 1.4-1.56 2.68-2.2 3.68-1.78.8-3.22.08-4.72.97-2.1 1.26-4.33-.98-6.63-.61-3.24-2.15-7.1-2.98-10.4-5.13-2.5-1.62-4.05-3.83-5.72-6-1.16-1.51-1.71-3.47-2.74-5.1-1.01-1.6-1.01-3.51-1.47-5.2-.7-2.6-.62-5.6-.07-8.27.78-3.76 1.46-7.6 3.2-11.16a46.07 46.07 0 0 1 8.28-11.97c3.19-3.3 6.4-6.56 10.45-8.93 2.63-1.54 5.57-2.02 8.25-3.26 1.26-.58 2.42.88 3.95.1 1.1-.57 2.73-.22 4.1-.09 1.43.15 3.35.05 4.14.9 1.78 1.91 4.88.82 6.25 3.2 2.65 0 4.3 1.97 6.06 3.43 4.51 3.73 9.22 7.36 11.37 13.16l.88 2.54 1.1.25 1.84 6.86-.57.73 1.78 2.84-2.71.43-.09 1.33h1.87l.47.43c-1.16 1.06.71 2.02.12 3-1.38 2.28-.53 4.78-.85 7.16-.24 1.8-.62 3.61-1.2 5.33-.38 1.09-1.23 2-1.86 3 1.72 2.53-1.5 5.02-.4 7.75l-1.12.23-2.9 6.33v2.79c-.93 2.23-1.98 3.89-4.12 4.5v1.84c-2.3 2.25-4.5 4.8-7.13 6.8-1.04.79-2.05 1.65-3.1 2.45-.95.72-2.06 1.26-2.88 2.1-2.73 2.77-6.19 4.43-9.57 6.1-4.74 2.35-11.51 3.4-16.73 2.83-1.9-.2-3.74-.96-5.83-1.52-.45.17-1.27.83-1.87.67-6.62-1.75-13.43-2.57-19.87-5.36-4.79-2.08-9.43-4.36-13.57-7.36a30.62 30.62 0 0 1-7.8-8.34c-2.45-3.84-4.92-7.62-6.16-12.05-.1-.37-.5-.66-.56-1.02-.32-1.96-.77-3.93-.81-5.9-.11-5.42-.29-10.85.06-16.25.2-3.1.87-6.25 1.4-9.35.5-2.99 1.2-5.91 1.77-8.88.64-3.34 1.93-6.44 3.02-9.6.88-2.54 1.67-5.22 2.99-7.5 2.27-3.92 3.77-8.19 6.22-12.06 2.35-3.71 4.55-7.57 7.03-11.22 1.26-1.86 2.51-3.8 4.08-5.38 3.84-3.9 7.42-8.13 12-11.22 3.98-2.66 7.86-5.34 12.53-7.02 4.64-1.66 9.2-2.9 14.1-3.2.86-.05 1.71-.52 2.61-.81l.9.78.6-.48c.8.18 1.68.22 2.4.58 1.01.5 1.54-1.17 2.8-.28.84.6 2.39.16 3.62.26 1.04.07 2.25-.46 3.03.72 1.2-1.76 2.28.34 3.43.1 1.53-.32 2.86.4 4.25.81 1.25.37 2.54.58 3.82.86 1.27.27 2.69.28 3.8.88 4.66 2.5 10.25 3.26 13.97 7.42 2.82-.09 4.57 1.98 6.57 3.34C190.14.38 196.15 6.6 202 12.9c5.74 6.16 10.53 13.12 13.51 21.04 1.58 4.2 3.37 8.38 3.96 13 .38 2.95 1.24 5.91 1.48 8.9.25 3.04.06 6.11.06 9.17 0 2.22.02 4.45 0 6.67-.03 2.26.15 4.45-1.28 6.58-.82 1.23-.62 3.14-.87 4.74 1.6.88-1.42 2.45.4 3.24l-3.56 6.91c-.4-.36-.67-.7-1.02-.88-.2-.12-.53 0-.95.02-.28 1.02.92 1.12 1.3 2.12v3.4l-1.45 1.45.64.83c-1.76 1.77-1.98 4.35-3.21 6.44-1.4 2.36-2.63 4.83-4.58 6.54l-3.5-.93-.2.6 1.79.78-2.07 1.42.3.56 2.22-.5.25 1.95-1.79.65.62 2.94-3.75 2.14-2.07 4.67.37.22c-3.03 3.03-5.85 6.32-9.15 9.03a134.33 134.33 0 0 1-12.52 8.97c-6.11 3.94-12.37 7.66-18.62 11.39-.74.44-1.83.3-2.95.45-1.38 2.53-4.43 2.87-6.78 4.25-2.2 1.29-4.68 2.1-7.14 3.16l-.82-1.65c-1.37 3.34-4.87 3.4-7.63 4.74l-1.63-.92-.51 1.66c-.1.1-.23.3-.3.28-1.7-.57-3.15.52-4.63.93-7.06 1.97-14.26 1.33-21.42 1.66-5.5.25-10.88-.75-16.32-1.03-2.07-.1-4.32-.3-6.28-.86-2.03-.58-4.05-.26-5.93-.76-2.4-.64-4.79-1.2-7.2-1.75-2.62-.6-5.23-1.4-7.78-2.32-2.54-.92-5.16-1.62-7.7-2.54-2.53-.93-4.97-2.11-7.5-3.01-7.42-2.62-13.65-7.36-20.37-11.22-3.06-3.51-6.72-6.41-9.63-10.14a99.02 99.02 0 0 1-6.18-9.17c-2.07-3.36-3.43-7.18-4.54-11.02-1.16-4.03-2.24-8.08-2.53-12.3-.08-1.15-.57-2.26-.8-3.4-.23-1.16.5-2.51-.76-3.46-.14-.1-.06-.52-.08-.79-.28-4.74-.67-9.49-.8-14.24-.14-4.86-.05-9.72 0-14.59 0-.44.47-.89.72-1.33L0 66.66c.3-.7.94-1.45.85-2.11-.5-4.13 1.06-8.08.92-12.17-.04-1.03-.46-2.25.74-3.01-1.3-.9.2-1.72.12-2.63-.1-1.01-.2-2.02.5-3.12.88-1.4-.28-3.49 1.11-4.93.02-4.41 2.08-8.33 3.03-12.5a50.2 50.2 0 0 1 3.22-9.1c1.06-2.45 1.65-5.12 2.61-7.66A187.84 187.84 0 0 1 21-8.14c1.9-3.82 4.75-7.14 6.67-11 2.51-1.2 3.01-4.06 4.83-5.92 1.86-1.9 3.53-4.08 5.44-6.01 1.95-1.98 3.85-4.01 5.9-5.88 3.35-3.05 7.17-5.56 10.6-8.48 3.47-2.95 7.48-4.92 11.23-7.28 3.55-2.22 7.62-3.76 11.64-5.02 2.84-.88 5.48-2.24 8.42-2.87 3.65-.79 7.2-2.07 10.81-3.04 1.52-.41 3.49-.1 4.56-.97 1.62-1.3 3.52.02 4.97-1.21 1.27-1.08 3.34.53 4.52-1.17.05-.07.27-.03.4-.01 3.44.62 6.67-1.02 10.08-.87 3.33.15 6.76-.47 9.98.15 5.2.99 10.6 1.05 15.44 3.96 3.65 2.19 6.73 4.6 8.36 8.57.25.6.26 1.3.37 1.88Z"
+                    ></path>
+                  </svg>
+                  <div class="step__main">
+                    <div class="step__num">1</div>
+                    <h3 class="step__title">Загрузи видео <br />и фото в сторис</h3>
+                    <p class="step__text">
+                      Просто сними видео или фото в формате рассказа о своих услугах или товарах.
+                    </p>
+                  </div>
+                  <div class="step__side">
+                    <picture
+                      ><source srcset="/static/img/profile.webp" type="image/webp" />
+                      <img
+                        src="static/img/profile.png"
+                        width="750"
+                        height="1400"
+                        class="step__img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async" /></picture
+                    ><svg viewBox="0 0 791 529" fill="none" class="step__bg" aria-hidden="true">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M755.97 436.08c.04-3.28-.32-5.67-.8-8.22-.77-4.18-2.16-8.16-3.09-12.26-1.41-6.25-4.18-11.99-6.39-17.91-.72-1.93-1.42-4.07-2.6-5.94a26.75 26.75 0 0 1-2.92-5.8c-.08-.22-.38-.97-1.27-.33.22.9.18 1.8.75 2.96 2.2 4.42 3.58 9.2 5.38 13.79 1.93 4.92 3.48 9.94 4.85 15 .73 2.7 1.59 5.44 2.36 8.08.96 3.28 1.29 6.94 3.73 10.63M498.54 257.17c1.37-.06 1.85 1.31 3.48.75 1.62-.56 2.61-1.67 3.95-2.42 1.86-1.05 2.59-2.87 2.68-4.74.07-1.6 1.38-1.04 2.07-1.78.12-3.23-.04-6.44-3.5-9.16-2.74 6-7.73 10.32-8.68 17.35m114.73 429.25c-7.67 3.75-24.45 16.9-26.73 23.82 2.04-1.28 4.33-1.53 5.04-4.2.25-.98 1.73-1.57 2.34-2.53.88-1.38 2.53-.08 3.52-1.34 1.02-1.3 3-2.03 3.64-3.43.88-1.92 2.9-1.87 4-3.25 1.02-1.3 2.13-2.89 3.55-3.43 1.67-.63 1.86-2.98 3.72-2.85 1.97.14 1.46-2.8 3.41-2.47 1.7-1.99 4.4-2.76 6-4.91.56-.77.84-1.35.03-2.18-2.24.33-3.77 2.05-5.39 3.13-1.18-.17-1.6-1.72-2.83-.86-.08.09-.28.2-.28.33-.03 1.33-.02 2.66-.02 4.17m42.16 19.85c-4.82 1.75-7.49 6.04-11.53 8.6-4.19 2.65-8 5.77-11.82 8.9-3.93 3.22-7.69 6.64-11.5 9.96.8.4 1.86.61 2.58-.14 2.7-2.78 7.35-2.64 9.41-6.34 2.8-.04 4.06-2.38 5.94-3.84 1.33-1.04 2.96-1.72 4.25-1.62 1.2-2.03 2.35-3.25 4.27-4.13 1.59-.73 2.48-2.73 4.41-3.16-1.29-2.74-1.08-2.99 2.94-4.08-.12-.63-1.1-.75-.8-2.04l1.85-2.1M526.83 559.8c5.95-7.67 10.63-15.97 15.06-24.4 5.34-10.13 10.4-20.43 15.65-30.61.6-1.15.64-2-.16-3.14-11 18.43-20.55 37.46-30.52 56.26-.27.5-.04 1.26-.04 1.9M160.56 297.56c-1.7 1.7-3.41 3.17-4.81 4.88-1.38 1.68-3.25 2.76-4.72 4.4-1.96 2.19-3.36 4.78-5.51 6.81-4.26 4.02-7.77 8.7-11.41 13.28-5.71 7.17-10.1 15.16-14.79 22.96-1.08 1.8-1.88 3.77-2.8 5.67 15.17-18.7 28.14-38.97 44.37-56.72.11-.13-.14-.58-.33-1.28M388.04 816.9l.8 3.29c-2.68.13-1.03 3.54-3.6 4.25-2.71.17-5.96-.32-9.1.95-1.45.58-1.32 1.08-.64 2.07 2.4-.05 4.88.46 6.8-1.06 1.16.46.38 1.75 1.44 2.07 3.11 0 6.54.75 9.4-.2 3.15-1.06 6.13-.58 9.17-.77 3.16-.19 6.35-.04 9.52-.04.84 0 1.68.04 2.5-.02.29-.02.56-.26.84-.4.01-.8.3-1.61-.2-2.36-2.96 1.15-2.88 1.01-4.89-.77-1.06-.94.07-1.55-.12-2.16-.55-1.84-2.6-.91-3.58-1.81-.91-.62.7-1.96-.95-2.43-.7 1.58.64 3.88-1.83 4.77-2.67-1.26-2.67-1.26-4.44 1.5-.08 1.25 1.9.08 1.87 1.59-1.24-.17-2.67 1-3.03-1.39-.1-.71-2.03-1.15-2.66-1.48-1.16-.08-1.17 1.14-1.97.64-1.3-.83-1.42-2.28-2.09-3.33.58-.86 1.6-1.21 1.75-2.1-1.64-1.03-2.07 1.25-3.4.68l-1.59-1.5m31.9-127.25c.15-3.56 2.54-6.33 3.36-9.65 1-4.09 2.33-8.08 3.42-12.14.92-3.48 2.02-6.87 2.68-10.44.68-3.65 2.15-7.13 3.04-10.77.92-3.78 1.69-7.63 2.98-11.3.72-2.06 1.53-4.05 1.98-6.2.5-2.44 1.01-4.94 2.05-7.17 1.06-2.26.1-5.24 2.68-6.96.63-.4.34-1.52.1-2.3-.12-.38-.67-.98-.62-1.03 2.12-2 1.34-4.93 2.6-7.48-.95.18-1.5 0-1.89 1.18-1.76 5.45-3.88 10.77-5.6 16.23-.6 1.92-1.77 3.78-1.37 5.96-2.39 3.97-2.84 8.61-3.8 12.93-.98 4.45-2.28 8.84-3.43 13.2-2.55 9.62-4.6 19.4-7.85 28.82.58 2.42-2.07 4.5-.33 7.12M95.8 634.86c-.6-1.19-.95-2.51-1.8-3.3-.47-.43-1.22-.29-1.51-1.36-1.2-4.34-2.4-8.69-4.05-12.86-.84-2.14-1.1-4.53-2.77-6.4-4.45-4.97-8.78-10.05-13.14-15.1-.41-.48-1.11-.73-1.1-1.56 0-1.16-1.11-1.58-1.78-2.25-.58-.59-.98-1.58-2.51-1.65 3.02 7.04 6.68 13.32 10.44 19.53 3.56 5.9 7.21 11.75 10.98 17.52 1.72 2.63 3.12 5.4 4.61 8.13.2.36.64.57.84.73l1.79-1.43m277.46-281.1c2.13-.35 1.59-2.4 2.79-3.41 1.19-1 2.17-2.3 3.11-3.65 3.57-5.13 7.6-9.94 11.49-14.84 2.8-3.53 5.75-7.03 8.3-10.67 2.57-3.64 5.62-6.92 7.98-10.69 2.24-3.58 5.93-6.16 7.05-10.5-2.38-1.68-4.2-1.69-6.09.6-2.72 3.32-5.2 6.85-7.72 10.33-1.76 2.44-3.21 5.1-5.12 7.4-3.76 4.53-6.74 9.59-9.87 14.5-3.79 5.95-7.56 11.92-11.42 17.82-.72 1.11-.9 1.98-.5 3.1M579.54 725.9c1.91-1.96 4.48-2.77 6.81-4.01 2.76-1.48 5.28-3.4 8-4.94 1.03-.6.71-2.6 2.5-2.22 2.67-4.84 7-7.93 11.41-11.07l1.56 1.06 1.44-1.36-.96-1.06c.67-1.18 2.31.33 2.9-1.14l-1.77-.67c.17-3.06.17-3.07 2.98-3.68.55-.12.88-.33.88-.93.13-.82-.64-1.08-1-1.59.55-1.14 2.82-1.53 1.8-3.28-3.21 1.03-4.96 3.71-7.34 5.57-2.76 2.16-5.68 4.11-8.33 6.46a229.04 229.04 0 0 1-7.8 6.68c-2.97 2.42-6.3 4.41-9.01 7.2-.94.95-1.74 2.32-2.88 2.72-1.51.54-2.4 1.62-3.44 2.6-1.11 1.05-2.17 2.16-3.2 3.18 2 1.76 3.79-2 5.45.48M537.9 851.16c.98.67 1.87.55 2.81.13 3.95-1.8 8.12-3.09 12.18-4.55 7.3-2.65 14.38-5.76 21.41-9a372.8 372.8 0 0 0 35.12-18.33c4.85-2.9 9.67-5.86 14.35-9.03 5-3.39 9.74-7.17 14.72-10.59 4.79-3.28 9.05-7.2 13.66-10.68 3.88-2.94 7.06-6.7 11.23-9.28.83-.51 1.46-1.37 2.15-2.1.67-.73 1.58-1.33 1.93-2.19-1.14-.64-1.61-.19-2.08.33-2.1 2.3-4.68 4.17-7.14 5.9-5.92 4.17-11.28 9-17.06 13.3-3.08 2.31-6.01 4.98-9.22 6.95-7.22 4.45-14.11 9.39-21.36 13.8-9.75 5.94-19.9 11.1-29.78 16.73-2.35 1.34-5.02 1.76-7.28 3.06a89.75 89.75 0 0 1-15.56 7.34c-4.11 1.4-7.84 3.64-12.1 4.83-2.63.73-5.52 1.69-7.98 3.38M43.82 328.89l1.48-1.55c-1.08-.82-1.16-2.16-1.82-3.14.63-1.93 3.35.36 3.78-1.89-.39-.85-1.72-.03-1.93-1.16-.3-1.73 1-2.9 1.51-4.32.8-.21 1.71.38 2.4-.4-.8-1.05-1.5-2.13-.6-3.43 1.78-2.59 2.27-5.99 4.97-7.98.99-.72.58-2.24 1.76-2.8-.69-2.37 1.04-3.93 2.04-5.67 3.28-5.69 6.48-11.43 10.07-16.92 4.78-7.27 9.57-14.58 14.99-21.38 3.73-4.69 7.07-9.77 11.6-13.82.7-.63.79-1.32.14-1.82-18.28 15.81-30.74 35.8-41.32 57.16-.62-.66-1.12-1.4-2.15-.95-.8 1.65-1.41 3.46-2.45 4.97-1.3 1.87-1.3 3.5.15 4.91l-2.66 5.03c-.82.08-1.86-.08-2.05.25-1.3 2.31-3.46 4.39-2.28 7.49-2.25-.16-1.96 1.99-3.04 2.76.82 1.7-2.28 2.8-.55 4.84 1.22 1.45.52 2.9-1.34 3.57l-.82-.81c.18 1.51-2.07 2.12-1.33 3.7.82.85 1.13-1.4 2.02.09-1.06 2.57-1.9 5.46-3.4 7.94-1.01 1.66-.8 2.87-.38 4.72 1.17-2.02 1.43-4.18 3.6-4.88-.7-.7-1.5-1.26-.51-2.46.9-1.1 1.97-.97 3.1-1.07.42-.03.48-.44.25-.67l-2.02-.72c1.92-3.63 3.24-7.42 5.74-10.65l1.05 1.06m44.59-21.04c3.8-2.1 5.49-5.6 8.04-8.22 2.2-2.24 4.08-4.95 6.03-7.5 2.12-2.74 4.72-5 6.79-7.71 3.05-4 6.06-8 9.64-11.54.95-.94 2.26-1.74 2.73-2.89 1.28-3.07 4.12-4.65 6.17-6.96 2.06-2.3 3.45-5.16 5.96-7.12.67-.51 1.48-.44 2.15-1.46 2.78-4.23 7.25-7.08 9.9-11.5 2.03-.28 2.18-2.45 3.46-3.51 1.3-1.08 2.43-2.38 3.74-3.69-2.42-1.05-2.9 1.08-4.03 1.74a84.66 84.66 0 0 0-13.85 10.18c-8.3 7.54-15.72 15.95-22.66 24.75-1.72 2.18-3.76 4.07-5.36 6.3a910.83 910.83 0 0 0-15.96 22.99 15.9 15.9 0 0 0-2.75 6.14m180.38-180.7c-1.93-1.45-3.14-.63-4.36.28v3.43c-3.04.16-2.35 3.96-5.15 5.17-2.3 1-3.95 3.45-5.87 5.24.48 1.12 2.06.27 2.42 1.7 1.69-1.5 2.87-3.74 5.57-3.21v-2.38c1.98-.52 3.15-2.12 4.5-3.47 1.29-1.28 3.74-1.4 3.86-3.84 2.4.23 2.3-2.56 4.04-3.36 1.57-.72 2.71-2.4 4-3.7 1.38-1.36 2.41-3.13 3.71-4.4 1.31-1.27 2.22-2.93 3.72-3.98 1.56-1.09 3.6-1.76 4.3-3.66.77-2.05 2.3-2.97 4.16-3.8-.77-3.21 1.82-3.37 4.1-3.82l-1-1c.05-1.21 1.39-.26 1.76-1.05 1-2.16 1.93-4.6 3.95-5.84 2.27-1.4 3.4-3.66 5.15-5.41a541.53 541.53 0 0 1 21.26-20.14c.5-.45.9-1.23 1.45-1.34 3.3-.7 4.96-3.5 7.35-5.36 2.59-2.02 4.77-4.64 7.46-6.3 4.04-2.52 7.99-5.04 11.17-8.4.66.24.71 1 1.07.81 1.93-1.78 3.43-4.26 5.38-4.7 2.64-.6 3.43-2.56 5.79-4.06-4.77.5-4.77.5-7.32 2.99-1.58-1.2-3.22 1.19-5.07-.08-.44 1.82-.13 4.29-3.15 3.93-.6-.07-1.04.23-1.23.65-1.4 3.1-4.67 4.01-7.08 5.88-1.9 1.47-3.94 3.33-6.56 2.64a9.54 9.54 0 0 1-4.6 5.1l-1.33-1.24-1.74 3.86c-1.74.05-3.23.92-4.74 1.76v2c-1.6.23-2.53 1.43-3.49 2.5-.88 1-2.46.95-2.94 2.73-.34 1.27-2 2.17-3.06 3.24-1.13.24-2.42-.3-3.74.57l2.77 1.09c-2.7.09-2.7 2.22-3.91 3.29-2.01 1.76-3.82 3.75-5.72 5.65.84 2.03-2.17.89-2.07 2.6.1 2-2.45-.08-2.83 1.5l.3.37-6.81 6.82c-.52.7-.65-1.25-1.45-.31-1.4 1.43 2.3 1.97.47 3.43-.67.2-.69-1.08-1.54-.52-.5.79.37 1.98-.67 2.72-.52-.66-1.05-1.32-1.51-1.15-1.1.47-.98 1.02-.97 1.5.04 2.13-.38 4-2.7 4.83-.03 2.06-2.24 1.9-3.17 3.1-1.02 1.32-2.64 2.22-3.46 3.62-2.67 4.51-7.02 7.39-10.47 11.52M5.08 415.8c-1.44-.9-1.27-2.5-.9-3.6 2.29-6.98 3.45-14.25 5.51-21.3 1.09-3.71 2-7.64 2.48-11.57.38-3.12 1.93-5.93 2.4-9.07.5-3.38 1.94-6.57 2.69-9.94.62-2.85 2.26-5.4 3-8.3a126.2 126.2 0 0 1 3.99-12.41c.95-2.62 1.55-5.43 3.42-7.62.5-.57.38-1.2.6-1.78.9-2.47 1.72-4.95 2.92-7.33 2.52-4.97 4.56-10.2 7.15-15.12 1.88-3.58 3.54-7.25 5.31-10.88a290.9 290.9 0 0 1 5.33-10.35c4.33-8 9-15.8 14.24-23.25a189.37 189.37 0 0 1 13.36-16.64c3.84-4.33 7.56-8.79 11.91-12.54 3.5-3.02 6.57-6.56 10.27-9.2 3.48-2.5 6.86-5.2 10.26-7.76a374.82 374.82 0 0 1 24.26-16.82c4.89-3.11 9.87-6.14 14.69-9.32 5.65-3.72 11.68-6.78 17.34-10.5 3.31-2.16 7.03-3.97 10.54-5.95 3.4-1.93 7.03-3.37 10.3-5.5 3.28-2.13 6.88-3.76 10.3-5.53 3.23-1.66 6.29-4.18 10.17-4.53 1.66-2.74 4.92-2.73 7.37-4.1 2.41-1.34 5-2.58 7.31-4.06 2.38-1.53 4.85-3.02 7.25-4.47 4.87-2.93 9.43-6.31 14.26-9.24 2.96-1.8 5.15-4.34 7.86-6.33a97.13 97.13 0 0 0 14.28-12.98 25.58 25.58 0 0 1 5.88-5.01c1.7-1 1.76-3 3.18-4.18 2.3-1.92 4.3-4.23 6.46-6.33.72-.7 1.35-1.39 1.16-2.46l2.56-.27c.77-.76-.49-.67-.4-1.3.8-.94 1.42-2.17 2.88-2.61 1.37-.42 1.13-2.07 2.2-2.9 2.36-1.83 2.92-5.52 6.4-6.28.96-2.78 3.3-4.58 4.94-6.9a5.82 5.82 0 0 1 3.46-2.52c1.32-.3.44-2.77 2.4-2.5 2.02-4.57 6.56-6.68 10.05-9.65 5.6-4.76 10.86-9.97 17.3-13.82 3.22-1.92 6-4.86 9.25-6.88 7.3-4.55 14.3-9.6 22.13-13.26 3.24-1.52 6.15-3.76 9.4-5.24 6.9-3.15 13.8-6.31 20.93-8.93 1.33-.49 2.57-1.23 4.14-.95 1.7.29 2.28-1.65 3.8-2.16 1.8-.6 3.7-.26 5.53-1.24 1-.54 2.8-.65 3.96-1.27 3.8-2.02 8.3-1.6 12.05-3.72 1.41-.8 3.2-.49 4.72-.58 5.14-.33 9.85-3 15.03-2.62 2.84.2 5.45-.43 7.93-1.53.8-.35 1.62-.75 2.28-.48 2.29.98 4.51-.02 6.72-.15 2.36-.13 4.66-1.09 7.13-.93 2.5.15 5.22.63 7.5-.1 4.07-1.3 8.13-.77 12.19-.8 2.02-.02 4.23-.9 6.16.88 1.01.94 1.87-2.17 3.39-.51.9.98 1.92.7 3.08.1 1.06-.56 2.3 1.23 3.33.4 1-.82 2.65-1.47 3.01-.87.92 1.53 2.33-.56 3 .75.05.1.28.19.41.17 4.46-.53 8.67 1.44 13.16 1.13 2.63-.18 5.43.45 7.97 1.28 2.43.8 4.95 1.11 7.38 1.49 4.24.65 8.1 2.55 12.3 3.15 1.14.17 1.42 2.96 3.25 1.08.92 1.45 2.44.6 3.61 1 .87.29 1.54 1.16 2.52 1.95 2.36-.22 4.55.86 6.96 1.82 4.63 1.85 9.16 3.89 13.48 6.28 5.95 3.29 12.13 6.33 16.88 11.38.98 1.04 2.19.18 3.14 1 5.55 4.74 11.57 8.9 16.27 14.67 1.97 2.41 4.9 4.2 6.94 6.65 4.1 4.94 8.82 9.29 12.25 14.9 2.03 3.32 4.66 6.43 6.82 9.77 4.5 6.94 8.72 14.05 11.44 21.9 2.04 5.86 4.21 11.69 5.78 17.72.54 2.08.34 4.25 1.02 6.1a14 14 0 0 1 .84 5.67c-.07 1.51 1.43 2.44 1.13 4.12-.24 1.32-.52 2.83.76 4.2.6.64.14 2.24.15 3.41 0 1.68.26 3.4-.08 5.01-.28 1.32 1.85 2.42.15 3.68 1.59 1.29.79 3.07.91 4.64.12 1.5.03 3.01.03 4.52v5.03c0 1.5-.4 3.15.08 4.49.91 2.59.22 5.23.78 7.86.62 2.88.24 6 .11 9.01-.11 2.63 1.46 4.92 1.1 7.64-.33 2.63-.67 5.54.1 7.98.86 2.76 0 5.7 1.07 8.08 1.27 2.82.05 5.6.83 8.2 1.7 5.7 1.55 11.72 3.11 17.33 1.97 7.08 3.04 14.36 5.36 21.37 1.5 4.57 3.17 9.1 4.67 13.67 1.5 4.52 3.91 8.77 6.17 13a112.9 112.9 0 0 0 9.87 15.04c3.67 4.8 8.01 9 11.73 13.74 1.7 2.15 3.75 3.95 5.4 6.18 1.77 2.4 4.47 4.1 6.25 6.5 4.46 5.99 10.48 10.67 14.28 17.19 6.83 6.47 11.13 14.9 16.96 22.15 2.9 3.62 4.8 8.04 7.21 12.06 4 6.68 7.3 13.7 10.67 20.7a162.2 162.2 0 0 1 7.82 19.89c1.6 4.87 2.97 9.82 4.65 14.66.7 1.97-.27 4.27 1.4 5.95-.18 4.71 2.35 9.02 2 13.75 1.56 2.73 1.12 5.74.94 8.62-.13 2.2 1.58 3.85 1.16 6.14-.39 2.1-.7 4.59.05 6.47 1.37 3.42.78 6.8.83 10.19.13 7.87.14 15.75 0 23.62-.06 2.58.8 5.26-.58 7.79-1.21 2.21.48 4.86-1.04 7.11-.55.82 1 1.34.7 2.46-.59 2.17.67 4.5-.79 6.73-1.13 1.73.59 4.17-1.09 6.09-1.01 1.15 2.38 2.8-.16 4.1.42 2.8-.56 5.43-1.02 8.12-.38 2.23.65 4.52-.7 6.76-1.15 1.91.64 4.6-1.3 6.48.72 3.33-1.19 6.34-1.11 9.64.06 2.49-.62 5.04-1.24 7.5-.96 3.8-1.82 7.63-2.57 11.46a38.1 38.1 0 0 1-1.12 4.09c-.23.75-1.05 1.1-1.04 2.1.05 6.27-2.27 12.08-4.14 17.88-1.12 3.5-1.94 7.18-3.72 10.53-.48.9-.44 2.59-1.2 3.48-2.25 2.6-2.8 5.93-3.85 8.97a17.53 17.53 0 0 1-2.23 4.61c-.2.27-.67.48-.67.72-.07 4.48-3 7.82-4.7 11.63-1.65 3.68-3.98 7.07-5.53 10.78-3.12 7.5-7.76 14.18-11.16 21.51-1.11 2.4-2.72 4.56-3.76 6.25-.55 1.67.96 1.8.73 3.1-.24 1.15-1.4 1.62-2.95 2.01.69 3.67-2.1 6.07-3.73 8.81a275.38 275.38 0 0 1-12.42 18.98c-2.9 4.04-5.68 8.15-9.09 11.88a726.5 726.5 0 0 1-33.58 34.25c-4.4 4.21-8.8 8.47-13.42 12.45-3.92 3.38-7.86 6.81-11.97 9.92-9.62 7.27-19.25 14.54-29.42 21.09-7.77 5-15.8 9.5-23.84 14.04a212.41 212.41 0 0 1-15.77 8.04 621.03 621.03 0 0 1-26.01 11.24c-8.24 3.33-17.04 4.83-25.08 8.6-5.47.01-10.24 3.41-15.74 3.25-2.33 1.6-5.2 1.33-7.75 1.82-2.63.5-5.23 1.72-8.1 1.28-1.31-.2-2.5 1.24-4.1.98-1.34-.22-2.8-.29-4 .7-1.22-1.58-2 .82-3.33.35a6.86 6.86 0 0 0-4.45-.01c-3.2 1.27-6.69.08-9.6 1.1-3.17 1.13-6.29.03-9.17.92-3.54 1.1-6.85-.85-10.27-.15-.3.06-.74-.58-1.12-.9-.73.3-.37 1.11-.83 1.85-1.12-.63-2.2-1.56-3.43-1.83-1.43-.32-3-.08-4.75-.08l-2.6 3.17c-2-.48-3.57.21-5.26-.66-.73-.38-2.55.34-3.87.58-1.73.3-3.25-1.65-4.48-.8-1.64 1.1-3.2.69-4.75.7-14.58.06-29.15.05-43.73 0-1.56 0-3.35.73-4.64-.9-1.6 2.47-3.04-.49-4.68-.16-1.5.3-3.08-.32-4.64-.73-2.67-.7-5.65-.13-8.5-.21-1.9-.06-3.76.29-5.68-.87-1.54-.92-3.69-.24-5.67-.75-2.38-.6-4.9-1.43-7.5-1.39-1.76.03-3.45.07-5.17-.9-1.28-.71-3.31.6-4.55-1.1-3.43.2-6.5-1.24-9.74-1.95-7.79-1.7-15.38-4-22.9-6.62-6.3-2.2-12.63-4.28-18.9-6.54a90.47 90.47 0 0 1-6.04-2.42c-7.08-3.14-14.3-6.12-20.96-10-5.94-3.48-12.04-6.68-17.85-10.42-3.08-1.99-6.63-3.38-9.86-5.26a335.05 335.05 0 0 1-22.32-14.05c-6.35-4.39-12.82-8.61-18.27-14.19-1.43-1.46-3.28-2.51-4.8-3.9-1.74-1.56-3.14-3.6-5.05-4.87-2.48-1.66-4.35-3.97-6.7-5.68-1.82-1.33-1.61-4.18-4.47-4.77-2.08-.44-2.14-3.84-4.59-4.43-.82-3.1-4.3-3.76-5.8-6.54-1.44-2.68-4.32-4.6-6.57-6.85-2.26-2.25-4.8-4.3-6.7-6.81-3.53-4.63-8.12-8.27-11.7-12.77-3.4-4.29-7.75-7.85-10.25-12.8-.59-1.18-1.63-.7-2.3-1.44-.69-.78-.59-1.82-1.34-2.5-3.04-2.73-5.55-5.96-8.1-9.13-3.63-4.5-7.14-9.1-10.8-13.56-5.67-6.93-10.6-14.33-15.5-21.78-3.2-4.85-6.2-9.81-9.28-14.74-3.56-5.73-7.17-11.42-10.61-17.22-2.62-4.42-4.94-9.02-7.51-13.47a299.33 299.33 0 0 0-6.39-10.42c-3-4.77-5.85-9.64-8.82-14.41a213.13 213.13 0 0 1-11.35-20.97c-1.73-3.61-3.5-7.23-4.77-11.1-.8-2.43-1.82-5-2.98-7.28-2.37-4.68-3.35-9.7-4.94-14.56-.56-1.72-.64-3.45-1.07-5.1-.4-1.55-.63-3.08-.95-4.63-.94-4.63-1.03-9.44-2.77-13.91a2.08 2.08 0 0 1-.16-.94c.6-5.28-1.49-10.36-1.08-15.67.37-4.73-1.62-9.37-.94-14.16-1.71-2.71-.44-5.81-1.07-8.61-1.7-7.54-.72-15.15-.9-22.72-.18-7.53-.02-15.08-.05-22.62-.02-5.34 1.33-10.5 2.17-15.73.18-1.12.95-2.33.84-3.62a7.43 7.43 0 0 1 2-5.7"
+                        fill="#D1D8EE"
+                      ></path>
+                    </svg>
+                  </div>
+                </article>
+                <article class="step">
+                  <svg viewBox="0 0 198 173" class="step__decor text-pink" aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="m112 71.73-1.06-2.18-33.58 12 .64 1.68 34-11.5Zm55.16-19.28.62 1.69 161.5-40.07-.4-1.6-161.72 39.98ZM121.4 31.38l-.81-1.62C84.04 42.18 47.73 55.2 13.4 76.1c36.82-15.25 72.4-29.99 108-44.72Zm3.94 136.01-5.66 4.66-12.81-2.31-.16-1.75-5.22 4.68c-6.44-5.7-12.34-11-9.5-21.4 5.56-20.38 10.29-40.98 15.33-61.49 1.1-4.5 2.1-9.03 3.5-15.03-8.41 2.83-15.74 4.87-22.7 7.79-4.77 2-9 5.24-13.5 7.87a20.2 20.2 0 0 1-3.77 1.77c-12.17 4.05-24.33 8.14-36.56 12.03-4.88 1.56-9.92 2.65-14.88 3.96l.53-2.6c-3.66-2.68-7.06-5.86-11.03-7.96-9.73-5.15-12.36-18.64-3.56-25.44 9.96-7.7 20.55-15.21 32-20.27 26.6-11.78 53.82-22.2 80.95-32.77 4.91-1.91 7.35-4.21 8.78-9.47A307.98 307.98 0 0 1 138.9-25.7c1.79-4.37 6.4-7.65 9.96-11.2.84-.83 2.9-1.33 3.94-.9 4.17 1.79 8.17 3.99 12.22 6.05 10.11 5.17 13.12 13.83 12.2 24.53-.23 2.47-.04 4.99-.04 8.29 17.06-4.02 33.1-8.48 49.41-11.53 48.3-9.01 96.64-17.73 145.07-25.97 12-2.03 24.36-1.94 36.58-2.55 2.84-.14 5.74.88 8.6 1.37l.47 2.73c-6.01 1.75-11.94 4.65-18.04 5.06-38.56 2.59-76.34 10.11-114 18.1-34.5 7.32-68.73 15.83-103.07 23.86-2.38.55-4.66 1.5-6.99 2.27l.42 1.88c1.8-.27 3.62-.45 5.4-.84 51-11.14 101.83-23.05 153.03-33.16 26.46-5.22 53.55-7.31 80.37-10.62 2.52-.31 5.2.79 7.8 1.23-1.25 2.1-2.5 4.19-3.94 6.57 12.95-2.48 4.51 8.05 6.37 12.87l-7.53 3.9 4.67 1.13.16 1.08-31.87 6.16-.48-1.62 10.32-2.5-.41-1.49-47.7 9.04.14 1.61 13.48-1.78.37 1.5c-4.94 1.17-9.89 2.3-14.81 3.51-60.29 14.91-120.57 29.85-180.87 44.73-4.5 1.1-7.72 2.9-8.17 8.2-.14 1.51-2.44 2.82-3.71 4.27-.6.67-1.72 1.8-1.54 2.08 6.02 9.9-3.41 17.48-3.97 26.37-.13 2.05-.68 4.5-1.96 5.94-1.47 1.67.85 7.88-5.03 4.7l-3.06 9.2c-4.78 11.8-9.76 23.5-14.25 35.4-1.63 4.32-2.1 9.08-3.09 13.63Z"
+                    ></path>
+                  </svg>
+                  <div class="step__main">
+                    <div class="step__num">2</div>
+                    <h3 class="step__title">Добавь нужные <br />способы связи</h3>
+                    <p class="step__text">
+                      Кликбар соберет все ссылки <br class="max-sm:hidden" />на одну страницу за
+                      пару кликов.
+                    </p>
+                  </div>
+                  <div class="step__side">
+                    <picture
+                      ><source srcset="/static/img/profile.webp" type="image/webp" />
+                      <img
+                        src="static/img/profile.png"
+                        width="750"
+                        height="1400"
+                        class="step__img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async" /></picture
+                    ><svg viewBox="0 0 791 529" fill="none" class="step__bg" aria-hidden="true">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M755.97 436.08c.04-3.28-.32-5.67-.8-8.22-.77-4.18-2.16-8.16-3.09-12.26-1.41-6.25-4.18-11.99-6.39-17.91-.72-1.93-1.42-4.07-2.6-5.94a26.75 26.75 0 0 1-2.92-5.8c-.08-.22-.38-.97-1.27-.33.22.9.18 1.8.75 2.96 2.2 4.42 3.58 9.2 5.38 13.79 1.93 4.92 3.48 9.94 4.85 15 .73 2.7 1.59 5.44 2.36 8.08.96 3.28 1.29 6.94 3.73 10.63M498.54 257.17c1.37-.06 1.85 1.31 3.48.75 1.62-.56 2.61-1.67 3.95-2.42 1.86-1.05 2.59-2.87 2.68-4.74.07-1.6 1.38-1.04 2.07-1.78.12-3.23-.04-6.44-3.5-9.16-2.74 6-7.73 10.32-8.68 17.35m114.73 429.25c-7.67 3.75-24.45 16.9-26.73 23.82 2.04-1.28 4.33-1.53 5.04-4.2.25-.98 1.73-1.57 2.34-2.53.88-1.38 2.53-.08 3.52-1.34 1.02-1.3 3-2.03 3.64-3.43.88-1.92 2.9-1.87 4-3.25 1.02-1.3 2.13-2.89 3.55-3.43 1.67-.63 1.86-2.98 3.72-2.85 1.97.14 1.46-2.8 3.41-2.47 1.7-1.99 4.4-2.76 6-4.91.56-.77.84-1.35.03-2.18-2.24.33-3.77 2.05-5.39 3.13-1.18-.17-1.6-1.72-2.83-.86-.08.09-.28.2-.28.33-.03 1.33-.02 2.66-.02 4.17m42.16 19.85c-4.82 1.75-7.49 6.04-11.53 8.6-4.19 2.65-8 5.77-11.82 8.9-3.93 3.22-7.69 6.64-11.5 9.96.8.4 1.86.61 2.58-.14 2.7-2.78 7.35-2.64 9.41-6.34 2.8-.04 4.06-2.38 5.94-3.84 1.33-1.04 2.96-1.72 4.25-1.62 1.2-2.03 2.35-3.25 4.27-4.13 1.59-.73 2.48-2.73 4.41-3.16-1.29-2.74-1.08-2.99 2.94-4.08-.12-.63-1.1-.75-.8-2.04l1.85-2.1M526.83 559.8c5.95-7.67 10.63-15.97 15.06-24.4 5.34-10.13 10.4-20.43 15.65-30.61.6-1.15.64-2-.16-3.14-11 18.43-20.55 37.46-30.52 56.26-.27.5-.04 1.26-.04 1.9M160.56 297.56c-1.7 1.7-3.41 3.17-4.81 4.88-1.38 1.68-3.25 2.76-4.72 4.4-1.96 2.19-3.36 4.78-5.51 6.81-4.26 4.02-7.77 8.7-11.41 13.28-5.71 7.17-10.1 15.16-14.79 22.96-1.08 1.8-1.88 3.77-2.8 5.67 15.17-18.7 28.14-38.97 44.37-56.72.11-.13-.14-.58-.33-1.28M388.04 816.9l.8 3.29c-2.68.13-1.03 3.54-3.6 4.25-2.71.17-5.96-.32-9.1.95-1.45.58-1.32 1.08-.64 2.07 2.4-.05 4.88.46 6.8-1.06 1.16.46.38 1.75 1.44 2.07 3.11 0 6.54.75 9.4-.2 3.15-1.06 6.13-.58 9.17-.77 3.16-.19 6.35-.04 9.52-.04.84 0 1.68.04 2.5-.02.29-.02.56-.26.84-.4.01-.8.3-1.61-.2-2.36-2.96 1.15-2.88 1.01-4.89-.77-1.06-.94.07-1.55-.12-2.16-.55-1.84-2.6-.91-3.58-1.81-.91-.62.7-1.96-.95-2.43-.7 1.58.64 3.88-1.83 4.77-2.67-1.26-2.67-1.26-4.44 1.5-.08 1.25 1.9.08 1.87 1.59-1.24-.17-2.67 1-3.03-1.39-.1-.71-2.03-1.15-2.66-1.48-1.16-.08-1.17 1.14-1.97.64-1.3-.83-1.42-2.28-2.09-3.33.58-.86 1.6-1.21 1.75-2.1-1.64-1.03-2.07 1.25-3.4.68l-1.59-1.5m31.9-127.25c.15-3.56 2.54-6.33 3.36-9.65 1-4.09 2.33-8.08 3.42-12.14.92-3.48 2.02-6.87 2.68-10.44.68-3.65 2.15-7.13 3.04-10.77.92-3.78 1.69-7.63 2.98-11.3.72-2.06 1.53-4.05 1.98-6.2.5-2.44 1.01-4.94 2.05-7.17 1.06-2.26.1-5.24 2.68-6.96.63-.4.34-1.52.1-2.3-.12-.38-.67-.98-.62-1.03 2.12-2 1.34-4.93 2.6-7.48-.95.18-1.5 0-1.89 1.18-1.76 5.45-3.88 10.77-5.6 16.23-.6 1.92-1.77 3.78-1.37 5.96-2.39 3.97-2.84 8.61-3.8 12.93-.98 4.45-2.28 8.84-3.43 13.2-2.55 9.62-4.6 19.4-7.85 28.82.58 2.42-2.07 4.5-.33 7.12M95.8 634.86c-.6-1.19-.95-2.51-1.8-3.3-.47-.43-1.22-.29-1.51-1.36-1.2-4.34-2.4-8.69-4.05-12.86-.84-2.14-1.1-4.53-2.77-6.4-4.45-4.97-8.78-10.05-13.14-15.1-.41-.48-1.11-.73-1.1-1.56 0-1.16-1.11-1.58-1.78-2.25-.58-.59-.98-1.58-2.51-1.65 3.02 7.04 6.68 13.32 10.44 19.53 3.56 5.9 7.21 11.75 10.98 17.52 1.72 2.63 3.12 5.4 4.61 8.13.2.36.64.57.84.73l1.79-1.43m277.46-281.1c2.13-.35 1.59-2.4 2.79-3.41 1.19-1 2.17-2.3 3.11-3.65 3.57-5.13 7.6-9.94 11.49-14.84 2.8-3.53 5.75-7.03 8.3-10.67 2.57-3.64 5.62-6.92 7.98-10.69 2.24-3.58 5.93-6.16 7.05-10.5-2.38-1.68-4.2-1.69-6.09.6-2.72 3.32-5.2 6.85-7.72 10.33-1.76 2.44-3.21 5.1-5.12 7.4-3.76 4.53-6.74 9.59-9.87 14.5-3.79 5.95-7.56 11.92-11.42 17.82-.72 1.11-.9 1.98-.5 3.1M579.54 725.9c1.91-1.96 4.48-2.77 6.81-4.01 2.76-1.48 5.28-3.4 8-4.94 1.03-.6.71-2.6 2.5-2.22 2.67-4.84 7-7.93 11.41-11.07l1.56 1.06 1.44-1.36-.96-1.06c.67-1.18 2.31.33 2.9-1.14l-1.77-.67c.17-3.06.17-3.07 2.98-3.68.55-.12.88-.33.88-.93.13-.82-.64-1.08-1-1.59.55-1.14 2.82-1.53 1.8-3.28-3.21 1.03-4.96 3.71-7.34 5.57-2.76 2.16-5.68 4.11-8.33 6.46a229.04 229.04 0 0 1-7.8 6.68c-2.97 2.42-6.3 4.41-9.01 7.2-.94.95-1.74 2.32-2.88 2.72-1.51.54-2.4 1.62-3.44 2.6-1.11 1.05-2.17 2.16-3.2 3.18 2 1.76 3.79-2 5.45.48M537.9 851.16c.98.67 1.87.55 2.81.13 3.95-1.8 8.12-3.09 12.18-4.55 7.3-2.65 14.38-5.76 21.41-9a372.8 372.8 0 0 0 35.12-18.33c4.85-2.9 9.67-5.86 14.35-9.03 5-3.39 9.74-7.17 14.72-10.59 4.79-3.28 9.05-7.2 13.66-10.68 3.88-2.94 7.06-6.7 11.23-9.28.83-.51 1.46-1.37 2.15-2.1.67-.73 1.58-1.33 1.93-2.19-1.14-.64-1.61-.19-2.08.33-2.1 2.3-4.68 4.17-7.14 5.9-5.92 4.17-11.28 9-17.06 13.3-3.08 2.31-6.01 4.98-9.22 6.95-7.22 4.45-14.11 9.39-21.36 13.8-9.75 5.94-19.9 11.1-29.78 16.73-2.35 1.34-5.02 1.76-7.28 3.06a89.75 89.75 0 0 1-15.56 7.34c-4.11 1.4-7.84 3.64-12.1 4.83-2.63.73-5.52 1.69-7.98 3.38M43.82 328.89l1.48-1.55c-1.08-.82-1.16-2.16-1.82-3.14.63-1.93 3.35.36 3.78-1.89-.39-.85-1.72-.03-1.93-1.16-.3-1.73 1-2.9 1.51-4.32.8-.21 1.71.38 2.4-.4-.8-1.05-1.5-2.13-.6-3.43 1.78-2.59 2.27-5.99 4.97-7.98.99-.72.58-2.24 1.76-2.8-.69-2.37 1.04-3.93 2.04-5.67 3.28-5.69 6.48-11.43 10.07-16.92 4.78-7.27 9.57-14.58 14.99-21.38 3.73-4.69 7.07-9.77 11.6-13.82.7-.63.79-1.32.14-1.82-18.28 15.81-30.74 35.8-41.32 57.16-.62-.66-1.12-1.4-2.15-.95-.8 1.65-1.41 3.46-2.45 4.97-1.3 1.87-1.3 3.5.15 4.91l-2.66 5.03c-.82.08-1.86-.08-2.05.25-1.3 2.31-3.46 4.39-2.28 7.49-2.25-.16-1.96 1.99-3.04 2.76.82 1.7-2.28 2.8-.55 4.84 1.22 1.45.52 2.9-1.34 3.57l-.82-.81c.18 1.51-2.07 2.12-1.33 3.7.82.85 1.13-1.4 2.02.09-1.06 2.57-1.9 5.46-3.4 7.94-1.01 1.66-.8 2.87-.38 4.72 1.17-2.02 1.43-4.18 3.6-4.88-.7-.7-1.5-1.26-.51-2.46.9-1.1 1.97-.97 3.1-1.07.42-.03.48-.44.25-.67l-2.02-.72c1.92-3.63 3.24-7.42 5.74-10.65l1.05 1.06m44.59-21.04c3.8-2.1 5.49-5.6 8.04-8.22 2.2-2.24 4.08-4.95 6.03-7.5 2.12-2.74 4.72-5 6.79-7.71 3.05-4 6.06-8 9.64-11.54.95-.94 2.26-1.74 2.73-2.89 1.28-3.07 4.12-4.65 6.17-6.96 2.06-2.3 3.45-5.16 5.96-7.12.67-.51 1.48-.44 2.15-1.46 2.78-4.23 7.25-7.08 9.9-11.5 2.03-.28 2.18-2.45 3.46-3.51 1.3-1.08 2.43-2.38 3.74-3.69-2.42-1.05-2.9 1.08-4.03 1.74a84.66 84.66 0 0 0-13.85 10.18c-8.3 7.54-15.72 15.95-22.66 24.75-1.72 2.18-3.76 4.07-5.36 6.3a910.83 910.83 0 0 0-15.96 22.99 15.9 15.9 0 0 0-2.75 6.14m180.38-180.7c-1.93-1.45-3.14-.63-4.36.28v3.43c-3.04.16-2.35 3.96-5.15 5.17-2.3 1-3.95 3.45-5.87 5.24.48 1.12 2.06.27 2.42 1.7 1.69-1.5 2.87-3.74 5.57-3.21v-2.38c1.98-.52 3.15-2.12 4.5-3.47 1.29-1.28 3.74-1.4 3.86-3.84 2.4.23 2.3-2.56 4.04-3.36 1.57-.72 2.71-2.4 4-3.7 1.38-1.36 2.41-3.13 3.71-4.4 1.31-1.27 2.22-2.93 3.72-3.98 1.56-1.09 3.6-1.76 4.3-3.66.77-2.05 2.3-2.97 4.16-3.8-.77-3.21 1.82-3.37 4.1-3.82l-1-1c.05-1.21 1.39-.26 1.76-1.05 1-2.16 1.93-4.6 3.95-5.84 2.27-1.4 3.4-3.66 5.15-5.41a541.53 541.53 0 0 1 21.26-20.14c.5-.45.9-1.23 1.45-1.34 3.3-.7 4.96-3.5 7.35-5.36 2.59-2.02 4.77-4.64 7.46-6.3 4.04-2.52 7.99-5.04 11.17-8.4.66.24.71 1 1.07.81 1.93-1.78 3.43-4.26 5.38-4.7 2.64-.6 3.43-2.56 5.79-4.06-4.77.5-4.77.5-7.32 2.99-1.58-1.2-3.22 1.19-5.07-.08-.44 1.82-.13 4.29-3.15 3.93-.6-.07-1.04.23-1.23.65-1.4 3.1-4.67 4.01-7.08 5.88-1.9 1.47-3.94 3.33-6.56 2.64a9.54 9.54 0 0 1-4.6 5.1l-1.33-1.24-1.74 3.86c-1.74.05-3.23.92-4.74 1.76v2c-1.6.23-2.53 1.43-3.49 2.5-.88 1-2.46.95-2.94 2.73-.34 1.27-2 2.17-3.06 3.24-1.13.24-2.42-.3-3.74.57l2.77 1.09c-2.7.09-2.7 2.22-3.91 3.29-2.01 1.76-3.82 3.75-5.72 5.65.84 2.03-2.17.89-2.07 2.6.1 2-2.45-.08-2.83 1.5l.3.37-6.81 6.82c-.52.7-.65-1.25-1.45-.31-1.4 1.43 2.3 1.97.47 3.43-.67.2-.69-1.08-1.54-.52-.5.79.37 1.98-.67 2.72-.52-.66-1.05-1.32-1.51-1.15-1.1.47-.98 1.02-.97 1.5.04 2.13-.38 4-2.7 4.83-.03 2.06-2.24 1.9-3.17 3.1-1.02 1.32-2.64 2.22-3.46 3.62-2.67 4.51-7.02 7.39-10.47 11.52M5.08 415.8c-1.44-.9-1.27-2.5-.9-3.6 2.29-6.98 3.45-14.25 5.51-21.3 1.09-3.71 2-7.64 2.48-11.57.38-3.12 1.93-5.93 2.4-9.07.5-3.38 1.94-6.57 2.69-9.94.62-2.85 2.26-5.4 3-8.3a126.2 126.2 0 0 1 3.99-12.41c.95-2.62 1.55-5.43 3.42-7.62.5-.57.38-1.2.6-1.78.9-2.47 1.72-4.95 2.92-7.33 2.52-4.97 4.56-10.2 7.15-15.12 1.88-3.58 3.54-7.25 5.31-10.88a290.9 290.9 0 0 1 5.33-10.35c4.33-8 9-15.8 14.24-23.25a189.37 189.37 0 0 1 13.36-16.64c3.84-4.33 7.56-8.79 11.91-12.54 3.5-3.02 6.57-6.56 10.27-9.2 3.48-2.5 6.86-5.2 10.26-7.76a374.82 374.82 0 0 1 24.26-16.82c4.89-3.11 9.87-6.14 14.69-9.32 5.65-3.72 11.68-6.78 17.34-10.5 3.31-2.16 7.03-3.97 10.54-5.95 3.4-1.93 7.03-3.37 10.3-5.5 3.28-2.13 6.88-3.76 10.3-5.53 3.23-1.66 6.29-4.18 10.17-4.53 1.66-2.74 4.92-2.73 7.37-4.1 2.41-1.34 5-2.58 7.31-4.06 2.38-1.53 4.85-3.02 7.25-4.47 4.87-2.93 9.43-6.31 14.26-9.24 2.96-1.8 5.15-4.34 7.86-6.33a97.13 97.13 0 0 0 14.28-12.98 25.58 25.58 0 0 1 5.88-5.01c1.7-1 1.76-3 3.18-4.18 2.3-1.92 4.3-4.23 6.46-6.33.72-.7 1.35-1.39 1.16-2.46l2.56-.27c.77-.76-.49-.67-.4-1.3.8-.94 1.42-2.17 2.88-2.61 1.37-.42 1.13-2.07 2.2-2.9 2.36-1.83 2.92-5.52 6.4-6.28.96-2.78 3.3-4.58 4.94-6.9a5.82 5.82 0 0 1 3.46-2.52c1.32-.3.44-2.77 2.4-2.5 2.02-4.57 6.56-6.68 10.05-9.65 5.6-4.76 10.86-9.97 17.3-13.82 3.22-1.92 6-4.86 9.25-6.88 7.3-4.55 14.3-9.6 22.13-13.26 3.24-1.52 6.15-3.76 9.4-5.24 6.9-3.15 13.8-6.31 20.93-8.93 1.33-.49 2.57-1.23 4.14-.95 1.7.29 2.28-1.65 3.8-2.16 1.8-.6 3.7-.26 5.53-1.24 1-.54 2.8-.65 3.96-1.27 3.8-2.02 8.3-1.6 12.05-3.72 1.41-.8 3.2-.49 4.72-.58 5.14-.33 9.85-3 15.03-2.62 2.84.2 5.45-.43 7.93-1.53.8-.35 1.62-.75 2.28-.48 2.29.98 4.51-.02 6.72-.15 2.36-.13 4.66-1.09 7.13-.93 2.5.15 5.22.63 7.5-.1 4.07-1.3 8.13-.77 12.19-.8 2.02-.02 4.23-.9 6.16.88 1.01.94 1.87-2.17 3.39-.51.9.98 1.92.7 3.08.1 1.06-.56 2.3 1.23 3.33.4 1-.82 2.65-1.47 3.01-.87.92 1.53 2.33-.56 3 .75.05.1.28.19.41.17 4.46-.53 8.67 1.44 13.16 1.13 2.63-.18 5.43.45 7.97 1.28 2.43.8 4.95 1.11 7.38 1.49 4.24.65 8.1 2.55 12.3 3.15 1.14.17 1.42 2.96 3.25 1.08.92 1.45 2.44.6 3.61 1 .87.29 1.54 1.16 2.52 1.95 2.36-.22 4.55.86 6.96 1.82 4.63 1.85 9.16 3.89 13.48 6.28 5.95 3.29 12.13 6.33 16.88 11.38.98 1.04 2.19.18 3.14 1 5.55 4.74 11.57 8.9 16.27 14.67 1.97 2.41 4.9 4.2 6.94 6.65 4.1 4.94 8.82 9.29 12.25 14.9 2.03 3.32 4.66 6.43 6.82 9.77 4.5 6.94 8.72 14.05 11.44 21.9 2.04 5.86 4.21 11.69 5.78 17.72.54 2.08.34 4.25 1.02 6.1a14 14 0 0 1 .84 5.67c-.07 1.51 1.43 2.44 1.13 4.12-.24 1.32-.52 2.83.76 4.2.6.64.14 2.24.15 3.41 0 1.68.26 3.4-.08 5.01-.28 1.32 1.85 2.42.15 3.68 1.59 1.29.79 3.07.91 4.64.12 1.5.03 3.01.03 4.52v5.03c0 1.5-.4 3.15.08 4.49.91 2.59.22 5.23.78 7.86.62 2.88.24 6 .11 9.01-.11 2.63 1.46 4.92 1.1 7.64-.33 2.63-.67 5.54.1 7.98.86 2.76 0 5.7 1.07 8.08 1.27 2.82.05 5.6.83 8.2 1.7 5.7 1.55 11.72 3.11 17.33 1.97 7.08 3.04 14.36 5.36 21.37 1.5 4.57 3.17 9.1 4.67 13.67 1.5 4.52 3.91 8.77 6.17 13a112.9 112.9 0 0 0 9.87 15.04c3.67 4.8 8.01 9 11.73 13.74 1.7 2.15 3.75 3.95 5.4 6.18 1.77 2.4 4.47 4.1 6.25 6.5 4.46 5.99 10.48 10.67 14.28 17.19 6.83 6.47 11.13 14.9 16.96 22.15 2.9 3.62 4.8 8.04 7.21 12.06 4 6.68 7.3 13.7 10.67 20.7a162.2 162.2 0 0 1 7.82 19.89c1.6 4.87 2.97 9.82 4.65 14.66.7 1.97-.27 4.27 1.4 5.95-.18 4.71 2.35 9.02 2 13.75 1.56 2.73 1.12 5.74.94 8.62-.13 2.2 1.58 3.85 1.16 6.14-.39 2.1-.7 4.59.05 6.47 1.37 3.42.78 6.8.83 10.19.13 7.87.14 15.75 0 23.62-.06 2.58.8 5.26-.58 7.79-1.21 2.21.48 4.86-1.04 7.11-.55.82 1 1.34.7 2.46-.59 2.17.67 4.5-.79 6.73-1.13 1.73.59 4.17-1.09 6.09-1.01 1.15 2.38 2.8-.16 4.1.42 2.8-.56 5.43-1.02 8.12-.38 2.23.65 4.52-.7 6.76-1.15 1.91.64 4.6-1.3 6.48.72 3.33-1.19 6.34-1.11 9.64.06 2.49-.62 5.04-1.24 7.5-.96 3.8-1.82 7.63-2.57 11.46a38.1 38.1 0 0 1-1.12 4.09c-.23.75-1.05 1.1-1.04 2.1.05 6.27-2.27 12.08-4.14 17.88-1.12 3.5-1.94 7.18-3.72 10.53-.48.9-.44 2.59-1.2 3.48-2.25 2.6-2.8 5.93-3.85 8.97a17.53 17.53 0 0 1-2.23 4.61c-.2.27-.67.48-.67.72-.07 4.48-3 7.82-4.7 11.63-1.65 3.68-3.98 7.07-5.53 10.78-3.12 7.5-7.76 14.18-11.16 21.51-1.11 2.4-2.72 4.56-3.76 6.25-.55 1.67.96 1.8.73 3.1-.24 1.15-1.4 1.62-2.95 2.01.69 3.67-2.1 6.07-3.73 8.81a275.38 275.38 0 0 1-12.42 18.98c-2.9 4.04-5.68 8.15-9.09 11.88a726.5 726.5 0 0 1-33.58 34.25c-4.4 4.21-8.8 8.47-13.42 12.45-3.92 3.38-7.86 6.81-11.97 9.92-9.62 7.27-19.25 14.54-29.42 21.09-7.77 5-15.8 9.5-23.84 14.04a212.41 212.41 0 0 1-15.77 8.04 621.03 621.03 0 0 1-26.01 11.24c-8.24 3.33-17.04 4.83-25.08 8.6-5.47.01-10.24 3.41-15.74 3.25-2.33 1.6-5.2 1.33-7.75 1.82-2.63.5-5.23 1.72-8.1 1.28-1.31-.2-2.5 1.24-4.1.98-1.34-.22-2.8-.29-4 .7-1.22-1.58-2 .82-3.33.35a6.86 6.86 0 0 0-4.45-.01c-3.2 1.27-6.69.08-9.6 1.1-3.17 1.13-6.29.03-9.17.92-3.54 1.1-6.85-.85-10.27-.15-.3.06-.74-.58-1.12-.9-.73.3-.37 1.11-.83 1.85-1.12-.63-2.2-1.56-3.43-1.83-1.43-.32-3-.08-4.75-.08l-2.6 3.17c-2-.48-3.57.21-5.26-.66-.73-.38-2.55.34-3.87.58-1.73.3-3.25-1.65-4.48-.8-1.64 1.1-3.2.69-4.75.7-14.58.06-29.15.05-43.73 0-1.56 0-3.35.73-4.64-.9-1.6 2.47-3.04-.49-4.68-.16-1.5.3-3.08-.32-4.64-.73-2.67-.7-5.65-.13-8.5-.21-1.9-.06-3.76.29-5.68-.87-1.54-.92-3.69-.24-5.67-.75-2.38-.6-4.9-1.43-7.5-1.39-1.76.03-3.45.07-5.17-.9-1.28-.71-3.31.6-4.55-1.1-3.43.2-6.5-1.24-9.74-1.95-7.79-1.7-15.38-4-22.9-6.62-6.3-2.2-12.63-4.28-18.9-6.54a90.47 90.47 0 0 1-6.04-2.42c-7.08-3.14-14.3-6.12-20.96-10-5.94-3.48-12.04-6.68-17.85-10.42-3.08-1.99-6.63-3.38-9.86-5.26a335.05 335.05 0 0 1-22.32-14.05c-6.35-4.39-12.82-8.61-18.27-14.19-1.43-1.46-3.28-2.51-4.8-3.9-1.74-1.56-3.14-3.6-5.05-4.87-2.48-1.66-4.35-3.97-6.7-5.68-1.82-1.33-1.61-4.18-4.47-4.77-2.08-.44-2.14-3.84-4.59-4.43-.82-3.1-4.3-3.76-5.8-6.54-1.44-2.68-4.32-4.6-6.57-6.85-2.26-2.25-4.8-4.3-6.7-6.81-3.53-4.63-8.12-8.27-11.7-12.77-3.4-4.29-7.75-7.85-10.25-12.8-.59-1.18-1.63-.7-2.3-1.44-.69-.78-.59-1.82-1.34-2.5-3.04-2.73-5.55-5.96-8.1-9.13-3.63-4.5-7.14-9.1-10.8-13.56-5.67-6.93-10.6-14.33-15.5-21.78-3.2-4.85-6.2-9.81-9.28-14.74-3.56-5.73-7.17-11.42-10.61-17.22-2.62-4.42-4.94-9.02-7.51-13.47a299.33 299.33 0 0 0-6.39-10.42c-3-4.77-5.85-9.64-8.82-14.41a213.13 213.13 0 0 1-11.35-20.97c-1.73-3.61-3.5-7.23-4.77-11.1-.8-2.43-1.82-5-2.98-7.28-2.37-4.68-3.35-9.7-4.94-14.56-.56-1.72-.64-3.45-1.07-5.1-.4-1.55-.63-3.08-.95-4.63-.94-4.63-1.03-9.44-2.77-13.91a2.08 2.08 0 0 1-.16-.94c.6-5.28-1.49-10.36-1.08-15.67.37-4.73-1.62-9.37-.94-14.16-1.71-2.71-.44-5.81-1.07-8.61-1.7-7.54-.72-15.15-.9-22.72-.18-7.53-.02-15.08-.05-22.62-.02-5.34 1.33-10.5 2.17-15.73.18-1.12.95-2.33.84-3.62a7.43 7.43 0 0 1 2-5.7"
+                        fill="#D1D8EE"
+                      ></path>
+                    </svg>
+                  </div>
+                </article>
+                <article class="step">
+                  <svg viewBox="0 0 198 173" class="step__decor text-violet" aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="m153.54 143.53.22.86 4.74-1.43-.16-.62-4.8 1.19ZM331.82-37.84l.03-.68-25.6-1.28-.05.82 25.62 1.14ZM192.25 104.15c36.68-5.87 72.76-14.04 107.27-28.2a761.09 761.09 0 0 1-107.27 28.2Zm-11.92-12.33.17.73c8.4-1.57 16.83-3.03 25.21-4.71 22.14-4.44 44.21-9.16 65.9-15.5 8.77-2.57 17.46-5.42 26.16-8.26 4.41-1.44 8.74-3.14 13.11-4.71l5.05-1.79-.3-.9c-44.03 15.84-89.33 26.76-135.3 35.14Zm118.08-.57-.49-.78c-3.36 1.81-6.64 3.78-10.09 5.4a626.45 626.45 0 0 1-24.04 10.97 916.57 916.57 0 0 1-29.15 11.64c-1.52.58-3.26 2.3-5.12.4-.05-.04-.64.45-.98.7-1.07.77-2.04 1.89-3.24 2.26-18.36 5.79-36.75 11.48-55.13 17.18-2.68.83-5.4 1.57-8.1 2.35 1.58.22 3.03-.02 4.43-.45a17611.1 17611.1 0 0 0 58.67-17.82c1.94-.59 2.8-.45 2.52 1.86-.1.76.43 1.6.67 2.4.43-.72.93-1.41 1.27-2.17.78-1.73.4-3.81 3.02-4.77 9.9-3.6 19.74-7.4 29.5-11.4 6.44-2.65 12.71-5.75 19.04-8.69 4.12-1.9 8.25-3.81 12.3-5.86 1.74-.89 3.29-2.14 4.92-3.22ZM39.93 73.8l.35.6c3.73-2.4 7.4-4.9 11.21-7.2 13.45-8.1 27.4-15.27 42.1-20.82 12.92-4.88 25.87-9.87 39.15-13.56 16.68-4.63 33.67-8.21 50.62-11.81 7.12-1.52 14.47-1.95 21.71-2.83 4.24-.51 8.48-.95 12.73-1.4 4.27-.45 8.55-.87 12.83-1.3-3.32-.38-6.62-.7-9.83-.32-9.82 1.16-19.63 2.5-29.41 3.93-25.6 3.77-50.86 9.13-75.27 17.8-14.46 5.15-28.69 11.01-42.82 17.02A139.51 139.51 0 0 0 39.94 73.8ZM256.01-40.45C217.33-41 156.05-32.12 85.7 3.71c-17.86 9.1-34.82 19.82-50.39 32.56 66.51-47.23 140.17-73.64 220.71-76.72Zm102.55 13.83c-.45.43-.95 1.29-1.33 1.24-3.76-.49-7.5-1.14-11.26-1.7-.7-.1-1.44-.01-2.16-.02.48.53.87 1.2 1.44 1.57 3.32 2.19 6.78 4.17 10.02 6.47C366.2-11.3 372.9-.8 374.8 12.51c.51 3.62.08 7.37.08 11.79 7.93-5.9 14.4-12.02 18.11-20.38 1.81-4.07 2.14-8.66-.82-12.57-5.98-7.9-15.02-10.72-23.76-14.03-3.35-1.26-7.44-.67-9.86-3.94Zm-157.24 52.8 1.63-1.99c-.72-.1-1.3-.33-1.78-.2-1.07.3-2.09.77-3.12 1.18l3.37.91c-.7.53-1.36 1.41-2.1 1.5-1.44.17-3-.43-4.37-.13-2 .41-3.83 1.6-5.82 2.01-15.36 3.2-30.78 6.1-46.08 9.52-6.03 1.36-11.88 3.66-17.7 5.85-9.87 3.7-20.33 5.77-29.83 10.55-.8.4-1.84.3-2.66.67-3.1 1.38-6.19 2.8-9.21 4.34-2.8 1.42-5.43 3.16-8.25 4.5-2.73 1.3-5.66 2.16-8.44 3.36-7.46 3.22-13.49 8.62-19.79 13.53-3.48 2.72-6.42 6.18-9.39 9.5-1.55 1.74-2.73 3.84-3.93 5.88-1.29 2.2-.18 3.36 2.02 3.61 6.48.74 12.97 1.98 19.45 1.98 30.45.02 60.52-4.3 90.53-8.8 16.79-2.52 33.5-5.63 50.18-8.77 27.6-5.2 55-11.35 81.98-19.24 19-5.54 37.77-11.7 56.08-19.25 2.33-.96 2.09-1.84.71-3.36-4.57-5.05-10.54-8.26-16.65-10.43-7.85-2.8-16.23-4.07-24.37-6.08-.58-.14-.96-1-1.5-1.42-.66-.51-1.4-.91-2.1-1.36l-.82 1.01 2.25.42-.53.7c-1.45-.25-2.95-.89-4.34-.7-4.35.63-8.51-.77-12.82-.78-7.33-.02-14.65-.67-21.98-1.07-1.92-.1-3.84-.4-5.76-.41-1.72-.01-3.44.24-5.17.38-1.28.1-2.56.21-3.84.35-1.2.12-2.72.83-3.52.33-2.37-1.46-4.53-.55-6.71.04-1.9.52-3.64 1.34-4.78-1.17-.19-.4-1.05-.52-1.62-.7-.08-.01-.48.56-.42.69 1.16 2.22-.8 1.2-1.47 1.38-.9.25-1.86.35-2.79.5-1.6.23-3.2.47-4.8.67-1.93.26-4.17-.04-5.74.85-1.74 1-2.73.33-4-.36ZM78.35 27.3c-3.26 1.46-6.64 2.71-9.76 4.43A176.69 176.69 0 0 0 29.58 60.6c-4.03 3.97-7.1 8.9-10.68 13.35a31.26 31.26 0 0 0-7.11 18.43c-.1 2 .36 4.58 1.6 6 2.81 3.23 6.69 5.09 11.25 6.24-3.11-5.68-4.42-11.33-1.17-16.82a50.77 50.77 0 0 1 8.25-10.53c9.7-9.39 21.34-15.98 33.2-22.16 18.59-9.7 38.1-17.15 58.08-23.44 25.89-8.15 52.28-13.97 79.28-16.84 9.35-1 18.73-1.76 28.1-2.38 19.1-1.27 38.11-.43 57.02 2.43 10.28 1.56 20.4 3.68 30.17 7.55 9.94 3.95 18.97 8.65 23.83 18.84.6 1.24 1.28 1.66 2.63.96 3.23-1.69 6.57-3.16 9.76-4.9 2.6-1.44 5.6-2.67 7.44-4.82 4.14-4.81 6.74-10.53 7.13-17.03.3-5.09-.53-10.18-3.47-14.18-3.52-4.8-7.18-9.9-12.79-12.47-2.71-1.24-3.78-4.93-7.38-4.57-.3.03-.66-.92-1.03-1.38-1.14-1.43-3.59-.9-4.37-2.89-.16.08-.32.2-.5.23-.76.12-1.63.5-2.28.27-7.85-2.73-15.62-5.66-23.81-7.32-7.5-1.51-14.97-2.4-22.7-1.9-4.8.3-9.67 1.9-14.6.12-.95-.34-2.4 1.1-3.7 1.26-8.43 1.05-16.86 2.18-25.33 2.87-8.25.68-16.18 3.83-24.68 2.84-1.94-.23-4.55-.24-6.41 2.07-.84 1.03-3.2-.33-5.14.66-2.08 1.07-4.89.69-7.38.95-.08 0-.16.1-.24.12-5.48 1.3-10.77 3.32-16.13 4.85-20.3 5.8-40.53 11.77-60.25 19.36-4.45 1.71-8.8 3.72-13.34 5.1-6.06 1.85-12.29 3.05-17.62 6.9-2 1.44-4.67 1.92-6.98 2.95-.9.4-1.67 1.07-2.5 1.63l-7.38 4.36Zm181.35 73.2c-.75.46-1.44 1.16-2.25 1.36-13.97 3.37-27.86 7.14-41.95 9.86-17.95 3.47-36.06 6.14-54.13 9-4.58.72-9.25.78-13.87 1.31-2.9.34-5.77 1.17-8.68 1.47-7.6.79-15.2 1.45-22.82 2.05-1.33.1-2.7-.5-4.05-.47-.82.03-1.62.94-2.44.97-7.14.22-14.3.5-21.44.42-9.72-.1-19.47-.04-29.14-.9-14.73-1.3-29.36-3.63-41.92-12.39C8.78 107.46 1.63 100.9.25 90c-1-7.86 1.07-14.9 5.21-21.32 3.13-4.85 6.94-9.25 10.33-13.94.94-1.3 1.34-2.97 2.22-4.32 1.36-2.1 2.65-4.34 4.43-6.05 10-9.62 21.15-17.82 32.85-25.2A398.47 398.47 0 0 1 81.82 3.6c28.96-15.26 59.04-27.74 90.91-35.6 21.3-5.26 42.84-9.26 64.73-10.58 13.21-.8 26.51-.22 39.77-.16 10.74.05 21.48.25 32.22.38 19.68.22 39.13 2.33 58.02 8.1 9.45 2.9 18.3 7.03 25.35 14.32 8.1 8.38 10.7 23.27 5.46 33.73a55.4 55.4 0 0 1-18.22 20.93c-4.1 2.86-8.37 5.54-12.2 8.74-3.25 2.73-5.78 6.34-8.99 9.13-5.02 4.37-10.44 8.29-15.51 12.6-1.63 1.39-2.6 3.52-4.05 5.14-3.95 4.4-7.56 9.25-12.11 12.92-6.98 5.64-14.56 10.55-22.03 15.55-3.99 2.67-8.28 4.88-12.44 7.3-3.02.17-5.59 1.22-7.38 3.8-4.84 2.19-9.68 4.4-14.54 6.57-1.04.46-2.15.8-3.21 1.19l-11.71 4.67c-1.3.87-2.48 2.02-3.9 2.56a696.04 696.04 0 0 1-87.16 26.98c-18.68 4.44-37.3 9.25-56.12 12.99-16.5 3.27-33.26 5.31-49.93 7.8-2.66.4-5.4.21-8.1.4-3.12.2-5.78-.73-8.07-2.83a4.08 4.08 0 0 0-.9-.6c-.86-.45-1.73-.86-2.59-1.28l2.35-1.73c-.2-.17-.37-.37-.58-.48-.83-.42-1.68-.81-2.52-1.22.96-.58 1.88-1.6 2.87-1.67 33.37-2.28 65.49-11.03 97.7-19.13 37.68-9.47 74.87-20.66 111.1-34.79 8.35-3.25 16.6-6.77 24.76-10.46a142.48 142.48 0 0 0 17.33-9.38c-2.94 1-5.85 2.03-8.8 2.97-6.23 1.97-12.47 3.85-18.68 5.85-.84.26-1.53.98-2.29 1.48l-2.66.71Z"
+                    ></path>
+                  </svg>
+                  <div class="step__main">
+                    <div class="step__num">3</div>
+                    <h3 class="step__title">Или добавь <br />форму для заявок</h3>
+                    <p class="step__text">
+                      Заявки от клиентов будут приходить <br class="max-sm:hidden" />тебе на почту
+                      или в телеграм.
+                    </p>
+                  </div>
+                  <div class="step__side">
+                    <picture
+                      ><source srcset="/static/img/profile.webp" type="image/webp" />
+                      <img
+                        src="static/img/profile.png"
+                        width="750"
+                        height="1400"
+                        class="step__img"
+                        alt=""
+                        loading="lazy"
+                        decoding="async" /></picture
+                    ><svg viewBox="0 0 791 529" fill="none" class="step__bg" aria-hidden="true">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M755.97 436.08c.04-3.28-.32-5.67-.8-8.22-.77-4.18-2.16-8.16-3.09-12.26-1.41-6.25-4.18-11.99-6.39-17.91-.72-1.93-1.42-4.07-2.6-5.94a26.75 26.75 0 0 1-2.92-5.8c-.08-.22-.38-.97-1.27-.33.22.9.18 1.8.75 2.96 2.2 4.42 3.58 9.2 5.38 13.79 1.93 4.92 3.48 9.94 4.85 15 .73 2.7 1.59 5.44 2.36 8.08.96 3.28 1.29 6.94 3.73 10.63M498.54 257.17c1.37-.06 1.85 1.31 3.48.75 1.62-.56 2.61-1.67 3.95-2.42 1.86-1.05 2.59-2.87 2.68-4.74.07-1.6 1.38-1.04 2.07-1.78.12-3.23-.04-6.44-3.5-9.16-2.74 6-7.73 10.32-8.68 17.35m114.73 429.25c-7.67 3.75-24.45 16.9-26.73 23.82 2.04-1.28 4.33-1.53 5.04-4.2.25-.98 1.73-1.57 2.34-2.53.88-1.38 2.53-.08 3.52-1.34 1.02-1.3 3-2.03 3.64-3.43.88-1.92 2.9-1.87 4-3.25 1.02-1.3 2.13-2.89 3.55-3.43 1.67-.63 1.86-2.98 3.72-2.85 1.97.14 1.46-2.8 3.41-2.47 1.7-1.99 4.4-2.76 6-4.91.56-.77.84-1.35.03-2.18-2.24.33-3.77 2.05-5.39 3.13-1.18-.17-1.6-1.72-2.83-.86-.08.09-.28.2-.28.33-.03 1.33-.02 2.66-.02 4.17m42.16 19.85c-4.82 1.75-7.49 6.04-11.53 8.6-4.19 2.65-8 5.77-11.82 8.9-3.93 3.22-7.69 6.64-11.5 9.96.8.4 1.86.61 2.58-.14 2.7-2.78 7.35-2.64 9.41-6.34 2.8-.04 4.06-2.38 5.94-3.84 1.33-1.04 2.96-1.72 4.25-1.62 1.2-2.03 2.35-3.25 4.27-4.13 1.59-.73 2.48-2.73 4.41-3.16-1.29-2.74-1.08-2.99 2.94-4.08-.12-.63-1.1-.75-.8-2.04l1.85-2.1M526.83 559.8c5.95-7.67 10.63-15.97 15.06-24.4 5.34-10.13 10.4-20.43 15.65-30.61.6-1.15.64-2-.16-3.14-11 18.43-20.55 37.46-30.52 56.26-.27.5-.04 1.26-.04 1.9M160.56 297.56c-1.7 1.7-3.41 3.17-4.81 4.88-1.38 1.68-3.25 2.76-4.72 4.4-1.96 2.19-3.36 4.78-5.51 6.81-4.26 4.02-7.77 8.7-11.41 13.28-5.71 7.17-10.1 15.16-14.79 22.96-1.08 1.8-1.88 3.77-2.8 5.67 15.17-18.7 28.14-38.97 44.37-56.72.11-.13-.14-.58-.33-1.28M388.04 816.9l.8 3.29c-2.68.13-1.03 3.54-3.6 4.25-2.71.17-5.96-.32-9.1.95-1.45.58-1.32 1.08-.64 2.07 2.4-.05 4.88.46 6.8-1.06 1.16.46.38 1.75 1.44 2.07 3.11 0 6.54.75 9.4-.2 3.15-1.06 6.13-.58 9.17-.77 3.16-.19 6.35-.04 9.52-.04.84 0 1.68.04 2.5-.02.29-.02.56-.26.84-.4.01-.8.3-1.61-.2-2.36-2.96 1.15-2.88 1.01-4.89-.77-1.06-.94.07-1.55-.12-2.16-.55-1.84-2.6-.91-3.58-1.81-.91-.62.7-1.96-.95-2.43-.7 1.58.64 3.88-1.83 4.77-2.67-1.26-2.67-1.26-4.44 1.5-.08 1.25 1.9.08 1.87 1.59-1.24-.17-2.67 1-3.03-1.39-.1-.71-2.03-1.15-2.66-1.48-1.16-.08-1.17 1.14-1.97.64-1.3-.83-1.42-2.28-2.09-3.33.58-.86 1.6-1.21 1.75-2.1-1.64-1.03-2.07 1.25-3.4.68l-1.59-1.5m31.9-127.25c.15-3.56 2.54-6.33 3.36-9.65 1-4.09 2.33-8.08 3.42-12.14.92-3.48 2.02-6.87 2.68-10.44.68-3.65 2.15-7.13 3.04-10.77.92-3.78 1.69-7.63 2.98-11.3.72-2.06 1.53-4.05 1.98-6.2.5-2.44 1.01-4.94 2.05-7.17 1.06-2.26.1-5.24 2.68-6.96.63-.4.34-1.52.1-2.3-.12-.38-.67-.98-.62-1.03 2.12-2 1.34-4.93 2.6-7.48-.95.18-1.5 0-1.89 1.18-1.76 5.45-3.88 10.77-5.6 16.23-.6 1.92-1.77 3.78-1.37 5.96-2.39 3.97-2.84 8.61-3.8 12.93-.98 4.45-2.28 8.84-3.43 13.2-2.55 9.62-4.6 19.4-7.85 28.82.58 2.42-2.07 4.5-.33 7.12M95.8 634.86c-.6-1.19-.95-2.51-1.8-3.3-.47-.43-1.22-.29-1.51-1.36-1.2-4.34-2.4-8.69-4.05-12.86-.84-2.14-1.1-4.53-2.77-6.4-4.45-4.97-8.78-10.05-13.14-15.1-.41-.48-1.11-.73-1.1-1.56 0-1.16-1.11-1.58-1.78-2.25-.58-.59-.98-1.58-2.51-1.65 3.02 7.04 6.68 13.32 10.44 19.53 3.56 5.9 7.21 11.75 10.98 17.52 1.72 2.63 3.12 5.4 4.61 8.13.2.36.64.57.84.73l1.79-1.43m277.46-281.1c2.13-.35 1.59-2.4 2.79-3.41 1.19-1 2.17-2.3 3.11-3.65 3.57-5.13 7.6-9.94 11.49-14.84 2.8-3.53 5.75-7.03 8.3-10.67 2.57-3.64 5.62-6.92 7.98-10.69 2.24-3.58 5.93-6.16 7.05-10.5-2.38-1.68-4.2-1.69-6.09.6-2.72 3.32-5.2 6.85-7.72 10.33-1.76 2.44-3.21 5.1-5.12 7.4-3.76 4.53-6.74 9.59-9.87 14.5-3.79 5.95-7.56 11.92-11.42 17.82-.72 1.11-.9 1.98-.5 3.1M579.54 725.9c1.91-1.96 4.48-2.77 6.81-4.01 2.76-1.48 5.28-3.4 8-4.94 1.03-.6.71-2.6 2.5-2.22 2.67-4.84 7-7.93 11.41-11.07l1.56 1.06 1.44-1.36-.96-1.06c.67-1.18 2.31.33 2.9-1.14l-1.77-.67c.17-3.06.17-3.07 2.98-3.68.55-.12.88-.33.88-.93.13-.82-.64-1.08-1-1.59.55-1.14 2.82-1.53 1.8-3.28-3.21 1.03-4.96 3.71-7.34 5.57-2.76 2.16-5.68 4.11-8.33 6.46a229.04 229.04 0 0 1-7.8 6.68c-2.97 2.42-6.3 4.41-9.01 7.2-.94.95-1.74 2.32-2.88 2.72-1.51.54-2.4 1.62-3.44 2.6-1.11 1.05-2.17 2.16-3.2 3.18 2 1.76 3.79-2 5.45.48M537.9 851.16c.98.67 1.87.55 2.81.13 3.95-1.8 8.12-3.09 12.18-4.55 7.3-2.65 14.38-5.76 21.41-9a372.8 372.8 0 0 0 35.12-18.33c4.85-2.9 9.67-5.86 14.35-9.03 5-3.39 9.74-7.17 14.72-10.59 4.79-3.28 9.05-7.2 13.66-10.68 3.88-2.94 7.06-6.7 11.23-9.28.83-.51 1.46-1.37 2.15-2.1.67-.73 1.58-1.33 1.93-2.19-1.14-.64-1.61-.19-2.08.33-2.1 2.3-4.68 4.17-7.14 5.9-5.92 4.17-11.28 9-17.06 13.3-3.08 2.31-6.01 4.98-9.22 6.95-7.22 4.45-14.11 9.39-21.36 13.8-9.75 5.94-19.9 11.1-29.78 16.73-2.35 1.34-5.02 1.76-7.28 3.06a89.75 89.75 0 0 1-15.56 7.34c-4.11 1.4-7.84 3.64-12.1 4.83-2.63.73-5.52 1.69-7.98 3.38M43.82 328.89l1.48-1.55c-1.08-.82-1.16-2.16-1.82-3.14.63-1.93 3.35.36 3.78-1.89-.39-.85-1.72-.03-1.93-1.16-.3-1.73 1-2.9 1.51-4.32.8-.21 1.71.38 2.4-.4-.8-1.05-1.5-2.13-.6-3.43 1.78-2.59 2.27-5.99 4.97-7.98.99-.72.58-2.24 1.76-2.8-.69-2.37 1.04-3.93 2.04-5.67 3.28-5.69 6.48-11.43 10.07-16.92 4.78-7.27 9.57-14.58 14.99-21.38 3.73-4.69 7.07-9.77 11.6-13.82.7-.63.79-1.32.14-1.82-18.28 15.81-30.74 35.8-41.32 57.16-.62-.66-1.12-1.4-2.15-.95-.8 1.65-1.41 3.46-2.45 4.97-1.3 1.87-1.3 3.5.15 4.91l-2.66 5.03c-.82.08-1.86-.08-2.05.25-1.3 2.31-3.46 4.39-2.28 7.49-2.25-.16-1.96 1.99-3.04 2.76.82 1.7-2.28 2.8-.55 4.84 1.22 1.45.52 2.9-1.34 3.57l-.82-.81c.18 1.51-2.07 2.12-1.33 3.7.82.85 1.13-1.4 2.02.09-1.06 2.57-1.9 5.46-3.4 7.94-1.01 1.66-.8 2.87-.38 4.72 1.17-2.02 1.43-4.18 3.6-4.88-.7-.7-1.5-1.26-.51-2.46.9-1.1 1.97-.97 3.1-1.07.42-.03.48-.44.25-.67l-2.02-.72c1.92-3.63 3.24-7.42 5.74-10.65l1.05 1.06m44.59-21.04c3.8-2.1 5.49-5.6 8.04-8.22 2.2-2.24 4.08-4.95 6.03-7.5 2.12-2.74 4.72-5 6.79-7.71 3.05-4 6.06-8 9.64-11.54.95-.94 2.26-1.74 2.73-2.89 1.28-3.07 4.12-4.65 6.17-6.96 2.06-2.3 3.45-5.16 5.96-7.12.67-.51 1.48-.44 2.15-1.46 2.78-4.23 7.25-7.08 9.9-11.5 2.03-.28 2.18-2.45 3.46-3.51 1.3-1.08 2.43-2.38 3.74-3.69-2.42-1.05-2.9 1.08-4.03 1.74a84.66 84.66 0 0 0-13.85 10.18c-8.3 7.54-15.72 15.95-22.66 24.75-1.72 2.18-3.76 4.07-5.36 6.3a910.83 910.83 0 0 0-15.96 22.99 15.9 15.9 0 0 0-2.75 6.14m180.38-180.7c-1.93-1.45-3.14-.63-4.36.28v3.43c-3.04.16-2.35 3.96-5.15 5.17-2.3 1-3.95 3.45-5.87 5.24.48 1.12 2.06.27 2.42 1.7 1.69-1.5 2.87-3.74 5.57-3.21v-2.38c1.98-.52 3.15-2.12 4.5-3.47 1.29-1.28 3.74-1.4 3.86-3.84 2.4.23 2.3-2.56 4.04-3.36 1.57-.72 2.71-2.4 4-3.7 1.38-1.36 2.41-3.13 3.71-4.4 1.31-1.27 2.22-2.93 3.72-3.98 1.56-1.09 3.6-1.76 4.3-3.66.77-2.05 2.3-2.97 4.16-3.8-.77-3.21 1.82-3.37 4.1-3.82l-1-1c.05-1.21 1.39-.26 1.76-1.05 1-2.16 1.93-4.6 3.95-5.84 2.27-1.4 3.4-3.66 5.15-5.41a541.53 541.53 0 0 1 21.26-20.14c.5-.45.9-1.23 1.45-1.34 3.3-.7 4.96-3.5 7.35-5.36 2.59-2.02 4.77-4.64 7.46-6.3 4.04-2.52 7.99-5.04 11.17-8.4.66.24.71 1 1.07.81 1.93-1.78 3.43-4.26 5.38-4.7 2.64-.6 3.43-2.56 5.79-4.06-4.77.5-4.77.5-7.32 2.99-1.58-1.2-3.22 1.19-5.07-.08-.44 1.82-.13 4.29-3.15 3.93-.6-.07-1.04.23-1.23.65-1.4 3.1-4.67 4.01-7.08 5.88-1.9 1.47-3.94 3.33-6.56 2.64a9.54 9.54 0 0 1-4.6 5.1l-1.33-1.24-1.74 3.86c-1.74.05-3.23.92-4.74 1.76v2c-1.6.23-2.53 1.43-3.49 2.5-.88 1-2.46.95-2.94 2.73-.34 1.27-2 2.17-3.06 3.24-1.13.24-2.42-.3-3.74.57l2.77 1.09c-2.7.09-2.7 2.22-3.91 3.29-2.01 1.76-3.82 3.75-5.72 5.65.84 2.03-2.17.89-2.07 2.6.1 2-2.45-.08-2.83 1.5l.3.37-6.81 6.82c-.52.7-.65-1.25-1.45-.31-1.4 1.43 2.3 1.97.47 3.43-.67.2-.69-1.08-1.54-.52-.5.79.37 1.98-.67 2.72-.52-.66-1.05-1.32-1.51-1.15-1.1.47-.98 1.02-.97 1.5.04 2.13-.38 4-2.7 4.83-.03 2.06-2.24 1.9-3.17 3.1-1.02 1.32-2.64 2.22-3.46 3.62-2.67 4.51-7.02 7.39-10.47 11.52M5.08 415.8c-1.44-.9-1.27-2.5-.9-3.6 2.29-6.98 3.45-14.25 5.51-21.3 1.09-3.71 2-7.64 2.48-11.57.38-3.12 1.93-5.93 2.4-9.07.5-3.38 1.94-6.57 2.69-9.94.62-2.85 2.26-5.4 3-8.3a126.2 126.2 0 0 1 3.99-12.41c.95-2.62 1.55-5.43 3.42-7.62.5-.57.38-1.2.6-1.78.9-2.47 1.72-4.95 2.92-7.33 2.52-4.97 4.56-10.2 7.15-15.12 1.88-3.58 3.54-7.25 5.31-10.88a290.9 290.9 0 0 1 5.33-10.35c4.33-8 9-15.8 14.24-23.25a189.37 189.37 0 0 1 13.36-16.64c3.84-4.33 7.56-8.79 11.91-12.54 3.5-3.02 6.57-6.56 10.27-9.2 3.48-2.5 6.86-5.2 10.26-7.76a374.82 374.82 0 0 1 24.26-16.82c4.89-3.11 9.87-6.14 14.69-9.32 5.65-3.72 11.68-6.78 17.34-10.5 3.31-2.16 7.03-3.97 10.54-5.95 3.4-1.93 7.03-3.37 10.3-5.5 3.28-2.13 6.88-3.76 10.3-5.53 3.23-1.66 6.29-4.18 10.17-4.53 1.66-2.74 4.92-2.73 7.37-4.1 2.41-1.34 5-2.58 7.31-4.06 2.38-1.53 4.85-3.02 7.25-4.47 4.87-2.93 9.43-6.31 14.26-9.24 2.96-1.8 5.15-4.34 7.86-6.33a97.13 97.13 0 0 0 14.28-12.98 25.58 25.58 0 0 1 5.88-5.01c1.7-1 1.76-3 3.18-4.18 2.3-1.92 4.3-4.23 6.46-6.33.72-.7 1.35-1.39 1.16-2.46l2.56-.27c.77-.76-.49-.67-.4-1.3.8-.94 1.42-2.17 2.88-2.61 1.37-.42 1.13-2.07 2.2-2.9 2.36-1.83 2.92-5.52 6.4-6.28.96-2.78 3.3-4.58 4.94-6.9a5.82 5.82 0 0 1 3.46-2.52c1.32-.3.44-2.77 2.4-2.5 2.02-4.57 6.56-6.68 10.05-9.65 5.6-4.76 10.86-9.97 17.3-13.82 3.22-1.92 6-4.86 9.25-6.88 7.3-4.55 14.3-9.6 22.13-13.26 3.24-1.52 6.15-3.76 9.4-5.24 6.9-3.15 13.8-6.31 20.93-8.93 1.33-.49 2.57-1.23 4.14-.95 1.7.29 2.28-1.65 3.8-2.16 1.8-.6 3.7-.26 5.53-1.24 1-.54 2.8-.65 3.96-1.27 3.8-2.02 8.3-1.6 12.05-3.72 1.41-.8 3.2-.49 4.72-.58 5.14-.33 9.85-3 15.03-2.62 2.84.2 5.45-.43 7.93-1.53.8-.35 1.62-.75 2.28-.48 2.29.98 4.51-.02 6.72-.15 2.36-.13 4.66-1.09 7.13-.93 2.5.15 5.22.63 7.5-.1 4.07-1.3 8.13-.77 12.19-.8 2.02-.02 4.23-.9 6.16.88 1.01.94 1.87-2.17 3.39-.51.9.98 1.92.7 3.08.1 1.06-.56 2.3 1.23 3.33.4 1-.82 2.65-1.47 3.01-.87.92 1.53 2.33-.56 3 .75.05.1.28.19.41.17 4.46-.53 8.67 1.44 13.16 1.13 2.63-.18 5.43.45 7.97 1.28 2.43.8 4.95 1.11 7.38 1.49 4.24.65 8.1 2.55 12.3 3.15 1.14.17 1.42 2.96 3.25 1.08.92 1.45 2.44.6 3.61 1 .87.29 1.54 1.16 2.52 1.95 2.36-.22 4.55.86 6.96 1.82 4.63 1.85 9.16 3.89 13.48 6.28 5.95 3.29 12.13 6.33 16.88 11.38.98 1.04 2.19.18 3.14 1 5.55 4.74 11.57 8.9 16.27 14.67 1.97 2.41 4.9 4.2 6.94 6.65 4.1 4.94 8.82 9.29 12.25 14.9 2.03 3.32 4.66 6.43 6.82 9.77 4.5 6.94 8.72 14.05 11.44 21.9 2.04 5.86 4.21 11.69 5.78 17.72.54 2.08.34 4.25 1.02 6.1a14 14 0 0 1 .84 5.67c-.07 1.51 1.43 2.44 1.13 4.12-.24 1.32-.52 2.83.76 4.2.6.64.14 2.24.15 3.41 0 1.68.26 3.4-.08 5.01-.28 1.32 1.85 2.42.15 3.68 1.59 1.29.79 3.07.91 4.64.12 1.5.03 3.01.03 4.52v5.03c0 1.5-.4 3.15.08 4.49.91 2.59.22 5.23.78 7.86.62 2.88.24 6 .11 9.01-.11 2.63 1.46 4.92 1.1 7.64-.33 2.63-.67 5.54.1 7.98.86 2.76 0 5.7 1.07 8.08 1.27 2.82.05 5.6.83 8.2 1.7 5.7 1.55 11.72 3.11 17.33 1.97 7.08 3.04 14.36 5.36 21.37 1.5 4.57 3.17 9.1 4.67 13.67 1.5 4.52 3.91 8.77 6.17 13a112.9 112.9 0 0 0 9.87 15.04c3.67 4.8 8.01 9 11.73 13.74 1.7 2.15 3.75 3.95 5.4 6.18 1.77 2.4 4.47 4.1 6.25 6.5 4.46 5.99 10.48 10.67 14.28 17.19 6.83 6.47 11.13 14.9 16.96 22.15 2.9 3.62 4.8 8.04 7.21 12.06 4 6.68 7.3 13.7 10.67 20.7a162.2 162.2 0 0 1 7.82 19.89c1.6 4.87 2.97 9.82 4.65 14.66.7 1.97-.27 4.27 1.4 5.95-.18 4.71 2.35 9.02 2 13.75 1.56 2.73 1.12 5.74.94 8.62-.13 2.2 1.58 3.85 1.16 6.14-.39 2.1-.7 4.59.05 6.47 1.37 3.42.78 6.8.83 10.19.13 7.87.14 15.75 0 23.62-.06 2.58.8 5.26-.58 7.79-1.21 2.21.48 4.86-1.04 7.11-.55.82 1 1.34.7 2.46-.59 2.17.67 4.5-.79 6.73-1.13 1.73.59 4.17-1.09 6.09-1.01 1.15 2.38 2.8-.16 4.1.42 2.8-.56 5.43-1.02 8.12-.38 2.23.65 4.52-.7 6.76-1.15 1.91.64 4.6-1.3 6.48.72 3.33-1.19 6.34-1.11 9.64.06 2.49-.62 5.04-1.24 7.5-.96 3.8-1.82 7.63-2.57 11.46a38.1 38.1 0 0 1-1.12 4.09c-.23.75-1.05 1.1-1.04 2.1.05 6.27-2.27 12.08-4.14 17.88-1.12 3.5-1.94 7.18-3.72 10.53-.48.9-.44 2.59-1.2 3.48-2.25 2.6-2.8 5.93-3.85 8.97a17.53 17.53 0 0 1-2.23 4.61c-.2.27-.67.48-.67.72-.07 4.48-3 7.82-4.7 11.63-1.65 3.68-3.98 7.07-5.53 10.78-3.12 7.5-7.76 14.18-11.16 21.51-1.11 2.4-2.72 4.56-3.76 6.25-.55 1.67.96 1.8.73 3.1-.24 1.15-1.4 1.62-2.95 2.01.69 3.67-2.1 6.07-3.73 8.81a275.38 275.38 0 0 1-12.42 18.98c-2.9 4.04-5.68 8.15-9.09 11.88a726.5 726.5 0 0 1-33.58 34.25c-4.4 4.21-8.8 8.47-13.42 12.45-3.92 3.38-7.86 6.81-11.97 9.92-9.62 7.27-19.25 14.54-29.42 21.09-7.77 5-15.8 9.5-23.84 14.04a212.41 212.41 0 0 1-15.77 8.04 621.03 621.03 0 0 1-26.01 11.24c-8.24 3.33-17.04 4.83-25.08 8.6-5.47.01-10.24 3.41-15.74 3.25-2.33 1.6-5.2 1.33-7.75 1.82-2.63.5-5.23 1.72-8.1 1.28-1.31-.2-2.5 1.24-4.1.98-1.34-.22-2.8-.29-4 .7-1.22-1.58-2 .82-3.33.35a6.86 6.86 0 0 0-4.45-.01c-3.2 1.27-6.69.08-9.6 1.1-3.17 1.13-6.29.03-9.17.92-3.54 1.1-6.85-.85-10.27-.15-.3.06-.74-.58-1.12-.9-.73.3-.37 1.11-.83 1.85-1.12-.63-2.2-1.56-3.43-1.83-1.43-.32-3-.08-4.75-.08l-2.6 3.17c-2-.48-3.57.21-5.26-.66-.73-.38-2.55.34-3.87.58-1.73.3-3.25-1.65-4.48-.8-1.64 1.1-3.2.69-4.75.7-14.58.06-29.15.05-43.73 0-1.56 0-3.35.73-4.64-.9-1.6 2.47-3.04-.49-4.68-.16-1.5.3-3.08-.32-4.64-.73-2.67-.7-5.65-.13-8.5-.21-1.9-.06-3.76.29-5.68-.87-1.54-.92-3.69-.24-5.67-.75-2.38-.6-4.9-1.43-7.5-1.39-1.76.03-3.45.07-5.17-.9-1.28-.71-3.31.6-4.55-1.1-3.43.2-6.5-1.24-9.74-1.95-7.79-1.7-15.38-4-22.9-6.62-6.3-2.2-12.63-4.28-18.9-6.54a90.47 90.47 0 0 1-6.04-2.42c-7.08-3.14-14.3-6.12-20.96-10-5.94-3.48-12.04-6.68-17.85-10.42-3.08-1.99-6.63-3.38-9.86-5.26a335.05 335.05 0 0 1-22.32-14.05c-6.35-4.39-12.82-8.61-18.27-14.19-1.43-1.46-3.28-2.51-4.8-3.9-1.74-1.56-3.14-3.6-5.05-4.87-2.48-1.66-4.35-3.97-6.7-5.68-1.82-1.33-1.61-4.18-4.47-4.77-2.08-.44-2.14-3.84-4.59-4.43-.82-3.1-4.3-3.76-5.8-6.54-1.44-2.68-4.32-4.6-6.57-6.85-2.26-2.25-4.8-4.3-6.7-6.81-3.53-4.63-8.12-8.27-11.7-12.77-3.4-4.29-7.75-7.85-10.25-12.8-.59-1.18-1.63-.7-2.3-1.44-.69-.78-.59-1.82-1.34-2.5-3.04-2.73-5.55-5.96-8.1-9.13-3.63-4.5-7.14-9.1-10.8-13.56-5.67-6.93-10.6-14.33-15.5-21.78-3.2-4.85-6.2-9.81-9.28-14.74-3.56-5.73-7.17-11.42-10.61-17.22-2.62-4.42-4.94-9.02-7.51-13.47a299.33 299.33 0 0 0-6.39-10.42c-3-4.77-5.85-9.64-8.82-14.41a213.13 213.13 0 0 1-11.35-20.97c-1.73-3.61-3.5-7.23-4.77-11.1-.8-2.43-1.82-5-2.98-7.28-2.37-4.68-3.35-9.7-4.94-14.56-.56-1.72-.64-3.45-1.07-5.1-.4-1.55-.63-3.08-.95-4.63-.94-4.63-1.03-9.44-2.77-13.91a2.08 2.08 0 0 1-.16-.94c.6-5.28-1.49-10.36-1.08-15.67.37-4.73-1.62-9.37-.94-14.16-1.71-2.71-.44-5.81-1.07-8.61-1.7-7.54-.72-15.15-.9-22.72-.18-7.53-.02-15.08-.05-22.62-.02-5.34 1.33-10.5 2.17-15.73.18-1.12.95-2.33.84-3.62a7.43 7.43 0 0 1 2-5.7"
+                        fill="#D1D8EE"
+                      ></path>
+                    </svg>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="appeal">
+          <div class="container">
+            <div class="appeal__inner">
+              <div class="appeal__main">
+                <h2 class="appeal__title">
+                  Тебе уже пишут
+                  <picture
+                    ><source srcset="/static/img/emoji-woman.webp" type="image/webp" />
+                    <img
+                      src="static/img/emoji-woman.png"
+                      width="112"
+                      height="113"
+                      class="appeal__emoji"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                  клиенты, пока другие делают себе сайты
+                </h2>
+                <p class="appeal__text">
+                  Не нужно тратить время и деньги на разработку большого сайта, чтобы начать
+                  привлекать клиентов и получать заявки.
+                </p>
+                <div class="appeal__decor">
+                  <svg
+                    viewBox="0 0 408 251"
+                    fill="none"
+                    class="appeal__decor-svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="m91.98 120.7 6.02 3.01c-7.89 13.76-16.34 25.37-25.37 34.82-8.88 9.32-17.34 15.77-25.36 19.35-7.88 3.73-15.34 4.87-22.36 3.44-6.88-1.43-12.4-5.52-16.55-12.25-3.72-5.45-6.16-14.98-7.3-28.6a335.98 335.98 0 0 1-.87-37.4C.77 91.61 1.84 76.2 3.42 56.86c1.57-19.35 2.5-31.39 2.8-36.12.28-6.73 3-11.82 8.16-15.26C19.68 2.04 26.2.25 33.94.11c7.74-.29 15.4 0 23 .86 7.74.71 14.9 1.57 21.5 2.58 6.59.86 10.6 1.07 12.03.64.15.57.22 1.3.22 2.15.14.86.21 2.58.21 5.16.15 2.44.15 4.8 0 7.1a31.61 31.61 0 0 1-1.5 7.3c-.86 2.58-2 4.8-3.44 6.67-1.43 1.72-3.51 3.08-6.24 4.08-2.57 1-5.66 1.22-9.24.65-12.9-1.87-21.92-2.94-27.08-3.23a1150.17 1150.17 0 0 0-3.01 43.64c1.15.43 2.86.93 5.16 1.5.43.15.93.29 1.5.43a6.1 6.1 0 0 0 1.5.22 3 3 0 0 0 1.3.21c.14.15.35.22.64.22.29 0 .5.07.65.21.28 0 .71.07 1.29.22h1.29c.28.14.64.21 1.07.21.57 0 .93.07 1.08.22h4.51l.86 8.6h-.86a1.9 1.9 0 0 1-.86.21h-6.67a3.69 3.69 0 0 0-1.5-.21c-.72 0-1.22-.08-1.5-.22h-1.5a3.69 3.69 0 0 0-1.51-.21l-3.23-.65a13.7 13.7 0 0 0-1.93-.43 9.25 9.25 0 0 0-1.72-.21c-1.58 32.96-1.3 55.24.86 66.85 2 10.6 8.6 11.6 19.77 3 9.75-7.44 20.2-19.84 31.39-37.18Z"
+                      fill="#FDDFF5"
+                    ></path>
+                    <path
+                      d="M208.77 97.27h7.1c-.58 2-1.44 4.66-2.59 7.95-1.15 3.16-3.72 8.89-7.74 17.2a157.81 157.81 0 0 1-12.9 21.93c-4.58 6.3-10.67 12.03-18.26 17.2-7.6 5.15-15.48 7.73-23.65 7.73-5.3 0-9.46-1.86-12.47-5.59a27.63 27.63 0 0 1-5.15-13.75c-.58-5.3-.65-11.83-.22-19.57-10.03 9.75-20.63 13.69-31.81 11.83-7.02-1.3-11.54-4.8-13.54-10.54-2.01-5.73-1.58-11.9 1.29-18.48 3-6.6 7.6-11.83 13.75-15.7 10.18-6.3 21.71-8.38 34.61-6.23.43-6.6.29-11.4-.43-14.4.57-.14 1.29-.29 2.15-.43.86-.14 2.5-.22 4.94-.22 2.58-.14 4.95-.07 7.1.22 2.29.29 4.73 1 7.3 2.15a19.65 19.65 0 0 1 6.88 4.73c1.87 1.86 3.3 4.58 4.3 8.17 1.15 3.58 1.5 7.8 1.08 12.68-2.15 29.8-.5 44.78 4.94 44.93 2.15.14 4.8-1.58 7.95-5.16a110.84 110.84 0 0 0 14.84-21.28c4.3-7.89 7.16-14.12 8.6-18.7l1.93-6.67Zm-99.3 21.07c-.3 7.3 2.79 9.88 9.23 7.73 5.16-1.86 10.46-5.73 15.91-11.6.57-5.45 1.07-9.53 1.5-12.26-2.29 0-4.65.22-7.09.65-2.3.29-5.09.93-8.38 1.93-3.15.86-5.8 2.51-7.95 4.95-2.01 2.3-3.08 5.16-3.23 8.6Z"
+                      fill="#FDDFF5"
+                    ></path>
+                    <path
+                      d="m289.07 107.8.86 5.16c-.86-.43-2.08-1-3.66-1.72-1.57-.86-4.58-2.08-9.02-3.65a62.24 62.24 0 0 0-12.26-3.23c-3.87-.71-8.1-.78-12.68-.21-4.44.57-8.1 2.15-10.96 4.73 1.58 2.43 3.8 5.8 6.66 10.1 3.01 4.16 5.38 7.6 7.1 10.32 1.86 2.58 4 5.88 6.44 9.89a81.54 81.54 0 0 1 5.8 9.89 94.65 94.65 0 0 1 3.88 9.02c1.43 3.3 2.15 6.24 2.15 8.82.14 2.43-.07 4.94-.65 7.52a14.3 14.3 0 0 1-3.44 7.1 25.45 25.45 0 0 1-6.88 5.8c-10.17 4.87-18.77 6.52-25.79 4.94h-.22c-.43 0-.71-.07-.85-.21a23 23 0 0 1-5.38-1.5c-2-.58-4.51-1.8-7.52-3.66a33.79 33.79 0 0 1-8.17-7.31 34.48 34.48 0 0 1-6.02-11.6c0-.3-.07-.58-.21-.87v-.86l-.22-.43v-.43l-.21-.86-.22-.64v-.86a5.6 5.6 0 0 1-.21-1.72 35.03 35.03 0 0 1-.65-6.88c0-5.16.58-9.96 1.72-14.4a71.33 71.33 0 0 1 5.6-13.55c0-.14.06-.21.2-.21l.22-.43c-2.3-3.15-4.66-6.6-7.1-10.32-4-6.3-6.8-12.1-8.38-17.41-1.43-5.45-1.79-9.96-1.07-13.54a30.84 30.84 0 0 1 4.08-9.68 22.4 22.4 0 0 1 7.1-6.66 87.76 87.76 0 0 1 7.52-4.3 24.83 24.83 0 0 1 6.23-2.15l2.58-.64c-3.72 9.02.07 22.64 11.4 40.84a35.8 35.8 0 0 1 14.4-4.3c5.3-.57 10.03-.36 14.18.64 4.3 1 8.24 2.23 11.83 3.66a49.86 49.86 0 0 1 8.6 4.08l3.22 1.72Zm-66.2 64.92a31.16 31.16 0 0 0 5.8 4.73l1.29.65c4.87 1.72 7.88.71 9.03-3.01 1.14-3.87.93-8.03-.65-12.47a46.67 46.67 0 0 0-5.59-12.04c-2.3-3.44-5.8-8.31-10.53-14.62-.72-.86-1.22-1.5-1.5-1.93a41.07 41.07 0 0 0-2.8 8.38 49.07 49.07 0 0 0-1.07 11.83l.64 5.58c.14.43.29 1 .43 1.72a40.55 40.55 0 0 0 .86 3.44c.72 2.73 2.08 5.3 4.08 7.74Z"
+                      fill="#FDDFF5"
+                    ></path>
+                    <path
+                      d="m403.7 98.34 4.3 2.58-36.97 46.87c3.73 15.62 6.02 29.66 6.88 42.13.86 12.47.64 22.07-.65 28.8-1.14 6.88-3 12.69-5.59 17.41-2.58 4.88-4.8 8.1-6.66 9.68a17.63 17.63 0 0 1-5.16 3.22c-2.15 1-4.73 1.65-7.74 1.94-5.59.43-10.1-3.37-13.54-11.4-3.3-8.02-5.37-18.2-6.23-30.52-.86-12.33-1.5-25.72-1.94-40.2-.28-14.47-.14-27.94.43-40.41-7.73 21.93-19.56 32.6-35.46 32.03-6.45-.29-11.32-2.94-14.62-7.96-3.15-5.01-4.87-11.17-5.16-18.48-.14-7.45.15-14.83.86-22.14.72-7.31 1.5-14.12 2.37-20.42 1-6.31 1.29-10.18.86-11.61.43-.15 1-.22 1.71-.22.87-.14 2.37-.21 4.52-.21a29.2 29.2 0 0 1 6.23.21c2 .15 4.16.65 6.45 1.5 2.3.72 4.23 1.8 5.8 3.23 1.58 1.3 2.73 3.23 3.44 5.8.86 2.44 1.08 5.38.65 8.82-3.73 26.23-3.94 40.7-.65 43.42 2.01 1.58 5.3 0 9.9-4.73 8.02-8.17 12.03-21.85 12.03-41.05l-.43-8.6c.57-.15 1.29-.29 2.15-.43.86-.29 2.5-.5 4.94-.65 2.44-.28 4.8-.36 7.1-.21 2.29.14 4.8.79 7.52 1.93 2.72 1 5.01 2.5 6.88 4.52 2 2 3.65 4.94 4.94 8.8 1.43 3.73 2.08 8.25 1.94 13.55 0 2.58-.08 7.17-.22 13.76v15.48A591.88 591.88 0 0 0 385 121.56a560.6 560.6 0 0 0 14.4-17.41l4.3-5.8ZM366.73 214a87.75 87.75 0 0 0 4.08-28.37c0-10.03-.64-17.7-1.93-23a149 149 0 0 0-4.3-14.62c-.29 29.1.43 51.09 2.15 66Z"
+                      fill="#FDDFF5"
+                    ></path></svg
+                  ><picture
+                    ><source srcset="/static/img/skateboarder.webp" type="image/webp" />
+                    <img
+                      src="static/img/skateboarder.png"
+                      width="224"
+                      height="225"
+                      class="appeal__decor-img"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                </div>
+                <div class="appeal__action">
+                  <a
+                    data-hk="0-0-0-0-1-1-0-0-3-3-0-0"
+                    class="button appeal__button button_primary button_md"
+                    href="#"
+                    >Создать страницу<svg
+                      viewBox="0 0 12 12"
+                      class="appeal__button-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                        fill="currentColor"
+                      ></path></svg
+                    ><span class="appeal__tag">3 шага</span></a
+                  >
+                </div>
+              </div>
+              <div class="appeal__side">
+                <picture
+                  ><source srcset="/static/img/woman.webp" type="image/webp" />
+                  <img
+                    src="static/img/woman.png"
+                    width="1184"
+                    height="1288"
+                    class="appeal__img"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="extra">
+          <div class="container">
+            <h2 class="extra__title title">Что еще может кликбар?</h2>
+            <div class="extra__items">
+              <a href="#" class="extra__item extra__item_one"
+                ><p class="extra__item-text">
+                  Анализируй, <br />откуда поступают обращения и какой из каналов наиболее
+                  эффективен
+                </p>
+                <div class="extra__item-pointer">
+                  <svg viewBox="0 0 12 12" class="extra__item-icon" aria-hidden="true">
+                    <path
+                      d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+                <picture
+                  ><source srcset="/static/img/extra-one.webp" type="image/webp" />
+                  <img
+                    src="static/img/extra-one.png"
+                    width="1184"
+                    height="863"
+                    class="extra__item-img"
+                    alt=""
+                    loading="lazy"
+                    decoding="async" /></picture></a
+              ><a href="#" class="extra__item extra__item_two"
+                ><p class="extra__item-text">
+                  Готовые шаблоны для твоей страницы. Выбирай тот, который подойдет больше
+                </p>
+                <div class="extra__item-pointer">
+                  <svg viewBox="0 0 12 12" class="extra__item-icon" aria-hidden="true">
+                    <path
+                      d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+                <picture
+                  ><source srcset="/static/img/extra-two.webp" type="image/webp" />
+                  <img
+                    src="static/img/extra-two.png"
+                    width="1184"
+                    height="1216"
+                    class="extra__item-img"
+                    alt=""
+                    loading="lazy"
+                    decoding="async" /></picture
+              ></a>
+            </div>
+            <a
+              data-hk="0-0-0-0-1-1-0-0-4-4-0-0"
+              class="button extra__button button_primary button_lg"
+              href="#"
+              >Все возможности<svg
+                viewBox="0 0 17 16"
+                class="extra__button-icon"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7.88 15.15a1 1 0 0 1-.3-.7.9.9 0 0 1 .27-.7l4.9-4.9H1.58a.97.97 0 0 1-.72-.29.97.97 0 0 1-.28-.71.97.97 0 0 1 1-1h11.17l-4.9-4.9a.9.9 0 0 1-.26-.7 1 1 0 0 1 .29-.7.95.95 0 0 1 .7-.28c.28 0 .51.1.7.28l6.6 6.6c.1.08.17.19.2.31a1.23 1.23 0 0 1 0 .76.88.88 0 0 1-.2.33l-6.6 6.6a.95.95 0 0 1-.7.27.95.95 0 0 1-.7-.27Z"
+                ></path></svg
+            ></a>
+          </div>
+        </section>
+        <section class="clients">
+          <div class="container">
+            <div class="clients__head">
+              <h2 class="clients__title title">Кому подойдет кликбар?</h2>
+              <ul class="clients__avas">
+                <li class="clients__ava">
+                  <picture
+                    ><source srcset="/static/img/client-ava-1.webp" type="image/webp" />
+                    <img
+                      src="static/img/client-ava-1.png"
+                      width="144"
+                      height="144"
+                      class="clients__ava-img"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                </li>
+                <li class="clients__ava">
+                  <picture
+                    ><source srcset="/static/img/client-ava-2.webp" type="image/webp" />
+                    <img
+                      src="static/img/client-ava-2.png"
+                      width="144"
+                      height="144"
+                      class="clients__ava-img"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                </li>
+                <li class="clients__ava">
+                  <picture
+                    ><source srcset="/static/img/client-ava-3.webp" type="image/webp" />
+                    <img
+                      src="static/img/client-ava-3.png"
+                      width="144"
+                      height="144"
+                      class="clients__ava-img"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                </li>
+                <li class="clients__ava">
+                  <picture
+                    ><source srcset="/static/img/client-ava-4.webp" type="image/webp" />
+                    <img
+                      src="static/img/client-ava-4.png"
+                      width="144"
+                      height="144"
+                      class="clients__ava-img"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                  /></picture>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="clients__content">
+            <div class="clients__viewport">
+              <div class="clients__wrapper">
+                <div class="clients__item">
+                  <article class="client client_master">
+                    <div class="client__content">
+                      <h3 class="client__title">Фрилансерам <br />и мастерам</h3>
+                      <p class="client__text">
+                        Чтобы заниматься своим любимым делом и зарабатывать деньги, а не отвлекаться
+                        на маркетинг и сайт.
+                      </p>
+                    </div>
+                    <div class="client__side">
+                      <picture
+                        ><source srcset="/static/img/client-profile.webp" type="image/webp" />
+                        <img
+                          src="static/img/client-profile.png"
+                          width="428"
+                          height="790"
+                          class="client__img"
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                      /></picture>
+                    </div>
+                  </article>
+                </div>
+                <div class="clients__item">
+                  <article class="client client_owner">
+                    <div class="client__content">
+                      <h3 class="client__title">Владельцам <br />бизнеса <br />и маркетологам</h3>
+                      <p class="client__text">
+                        Привлекай клиентов не только по сарафану, но и через рекламу без больших
+                        вложений и подготовки.
+                      </p>
+                    </div>
+                    <div class="client__side">
+                      <picture
+                        ><source srcset="/static/img/client-profile.webp" type="image/webp" />
+                        <img
+                          src="static/img/client-profile.png"
+                          width="428"
+                          height="790"
+                          class="client__img"
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                      /></picture>
+                    </div>
+                  </article>
+                </div>
+                <div class="clients__item">
+                  <article class="client client_shop">
+                    <div class="client__content">
+                      <h3 class="client__title">Небольшим <br />интернет–магазинам</h3>
+                      <p class="client__text">
+                        Получи больше потенциальных покупателей при минимальных тратах на рекламу.
+                      </p>
+                    </div>
+                    <div class="client__side">
+                      <picture
+                        ><source srcset="/static/img/client-profile.webp" type="image/webp" />
+                        <img
+                          src="static/img/client-profile.png"
+                          width="428"
+                          height="790"
+                          class="client__img"
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                      /></picture>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <button
+              data-hk="0-0-0-0-1-1-0-0-5-7-0-0"
+              class="button clients__prev button_primary"
+              type="button"
+            >
+              <svg viewBox="0 0 16 16">
+                <path
+                  d="M8.35.55a1 1 0 0 1 .29.7.9.9 0 0 1-.26.7l-4.9 4.9h11.17c.28 0 .52.1.71.29.2.19.29.43.29.71 0 .28-.1.52-.29.71a.94.94 0 0 1-.71.29H3.48l4.9 4.9a.9.9 0 0 1 .26.7 1 1 0 0 1-.29.7.95.95 0 0 1-.7.27.95.95 0 0 1-.7-.27l-6.6-6.6a.68.68 0 0 1-.21-.31 1.23 1.23 0 0 1 0-.77.88.88 0 0 1 .21-.32l6.6-6.6a.95.95 0 0 1 .7-.28c.28 0 .52.1.7.28Z"
+                ></path>
+              </svg></button
+            ><button
+              data-hk="0-0-0-0-1-1-0-0-5-8-0-0"
+              class="button clients__next button_primary"
+              type="button"
+            >
+              <svg viewBox="0 0 17 16">
+                <path
+                  d="M7.88 15.15a1 1 0 0 1-.3-.7.9.9 0 0 1 .27-.7l4.9-4.9H1.58a.97.97 0 0 1-.72-.29.97.97 0 0 1-.28-.71.97.97 0 0 1 1-1h11.17l-4.9-4.9a.9.9 0 0 1-.26-.7 1 1 0 0 1 .29-.7.95.95 0 0 1 .7-.28c.28 0 .51.1.7.28l6.6 6.6c.1.08.17.19.2.31a1.23 1.23 0 0 1 0 .76.88.88 0 0 1-.2.33l-6.6 6.6a.95.95 0 0 1-.7.27.95.95 0 0 1-.7-.27Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+        <section class="promo">
+          <div class="container">
+            <div class="promo__content">
+              <h2 class="promo__title title">
+                Страницу кликбар проще продвигать
+                <picture
+                  ><source srcset="/static/img/emoji-thumb-up.webp" type="image/webp" />
+                  <img
+                    src="static/img/emoji-thumb-up.png"
+                    width="112"
+                    height="113"
+                    class="promo__emoji"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </h2>
+              <div class="promo__plate">
+                <div class="promo__plate-inner">
+                  <p class="promo__text">
+                    Узнай, как бюджетно и просто настроить рекламу на кликбар
+                  </p>
+                  <a
+                    data-hk="0-0-0-0-1-1-0-0-6-1-0-0"
+                    class="button promo__button button_tertiary button_md"
+                    href="#"
+                    ><svg viewBox="0 0 20 20" class="promo__button-icon">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M.25 10a9.75 9.75 0 1 1 19.5 0 9.75 9.75 0 0 1-19.5 0Zm14.02-.98c.78.43.78 1.53 0 1.96l-5.6 3.12a1.13 1.13 0 0 1-1.67-1V6.9c0-.86.92-1.4 1.67-.99l5.6 3.12Z"
+                      ></path></svg
+                    >Смотреть видео</a
+                  ><svg viewBox="0 0 656 326" class="promo__how">
+                    <path
+                      d="m218.51 202.35 7.63 2.41a97.16 97.16 0 0 1-4.01 10.42c-1.61 4.28-5.1 11.9-10.45 22.85a223.68 223.68 0 0 1-15.66 28.06 93.45 93.45 0 0 1-18.48 21.25c-7.23 5.88-14.2 8.15-20.89 6.81-7.76-1.6-13.92-9.35-18.47-23.25a195.7 195.7 0 0 1-8.84-44.5c-1.34-15.76-3.75-30.06-7.23-42.89-3.48-12.82-8.17-19.24-14.06-19.24-4.82 0-8.57 5.35-11.25 16.04-2.67 10.69-4.95 23.65-6.83 38.88a551.48 551.48 0 0 1-7.63 45.3c-3.21 14.96-8.97 27.66-17.27 38.08-8.3 10.42-19.01 15.5-32.13 15.23-8.57.27-15.53-4.67-20.89-14.83-5.09-10.42-8.43-24.05-10.04-40.89A717.7 717.7 0 0 1 0 205.56c0-21.11.94-42.36 2.81-63.74C4.7 120.44 6.16 100 7.23 80.5c1.34-19.77 2.41-36.48 3.21-50.1 1.07-13.63.8-23.25-.8-28.87a40.4 40.4 0 0 1 7.23-1.2c3.21-.53 8.57-.4 16.07.4C40.7 1.26 47.4 3 53.02 5.93c5.62 2.68 10.58 8.02 14.86 16.04 4.29 7.75 5.9 17.77 4.82 30.06-4.55 59.33-7.36 109.04-8.43 149.12 10.17-47.83 25.04-71.75 44.58-71.75 10.45 0 18.48 7.35 24.1 22.04 5.9 14.44 9.38 30.47 10.45 48.1a535.31 535.31 0 0 0 5.22 49.72c2.68 15.5 6.56 23.91 11.65 25.25 6.16 1.6 14.06-3.6 23.7-15.63a229.16 229.16 0 0 0 24.5-37.28l10.04-19.25Z"
+                    ></path>
+                    <path
+                      d="m403.09 180.3 4.82 8.42a83.77 83.77 0 0 1-5.63 4.01c-.26.27-.8.67-1.6 1.2a4.6 4.6 0 0 0-1.61.8l-3.62 2.41a9.3 9.3 0 0 1-2 1.2c-.8.54-1.48.94-2.01 1.2-.54.28-1.34.81-2.41 1.61s-1.88 1.34-2.41 1.6c-2.95 1.34-4.69 2.28-5.22 2.81-.54.54-1.48 1.2-2.82 2-1.33.54-2.27.94-2.8 1.2-.27.28-.81.68-1.61 1.21-.54.27-.94.4-1.2.4l-1.62.8c-.26 0-.53.14-.8.4-.27.27-.54.4-.8.4-1.07.27-2.14.8-3.22 1.6a9.19 9.19 0 0 0-3.2 1.61 536.2 536.2 0 0 1-14.07 6.01 223.5 223.5 0 0 1-14.86 5.22l-3.61 1.2c-1.34.27-2.28.4-2.82.4a94 94 0 0 1-3.61 14.43c-6.7 20.85-18.08 36.88-34.14 48.1-16.07 10.96-32.27 13.9-48.6 8.82-16.34-5.07-27.86-16.7-34.55-34.87-6.7-18.44-6.7-38.22 0-59.33 6.7-20.84 18.08-36.75 34.14-47.7 16.07-11.23 32.27-14.3 48.6-9.22 10.98 3.47 19.95 10.55 26.92 21.24 6.96 10.43 10.98 22.59 12.05 36.48h1.2a787.8 787.8 0 0 0 13.66-2.8c2.14-.27 6.56-1.47 13.25-3.61 1.61-.54 2.68-.94 3.22-1.2 1.6-.54 2.68-.8 3.21-.8l1.6-.8h.81c.27-.28.54-.4.8-.4.27-.28.67-.54 1.2-.81a6.6 6.6 0 0 1 1.62-.4l6.02-2.4a67.2 67.2 0 0 0 5.22-2.01 26.7 26.7 0 0 1 4.82-2 41.75 41.75 0 0 1 4.42-2c.27-.28.8-.54 1.6-.81a9.3 9.3 0 0 0 2.02-1.2l3.61-1.2 6.03-3.21Zm-101.23 8.42c-5.08-1.6-10.84 0-17.27 4.82a17.2 17.2 0 0 0 3.22 4 22.78 22.78 0 0 0 6.82 4.81 9.5 9.5 0 0 0 4.42 2c3.22.81 4.96 1.21 5.22 1.21 3.22.8 6.43 1.2 9.65 1.2-1.88-10.15-5.9-16.16-12.06-18.03Zm-29.72 93c6.7 2.14 13.8-.53 21.29-8.01 7.5-7.75 13.25-18.04 17.27-30.87 1.07-3.2 2.14-7.48 3.22-12.83-5.36.54-9.51.67-12.46.4h-2.8c-1.08-.26-2.15-.4-3.22-.4l-2.41-.8a70.08 70.08 0 0 1-8.44-2c-4.55-1.34-9.24-3.74-14.06-7.22a23.92 23.92 0 0 1-3.21-2.4l-4.02 10.02c-4.01 12.83-5.22 24.58-3.61 35.27 1.87 10.43 6.02 16.7 12.45 18.85Z"
+                    ></path>
+                    <path
+                      d="m647.97 184.72 8.03 2.4a38 38 0 0 0-.8 2.8 77.99 77.99 0 0 1-2.41 6.82 42.71 42.71 0 0 1-4.82 9.22 151 151 0 0 1-8.04 9.22 29 29 0 0 1-11.24 7.62 187.25 187.25 0 0 1-15.67 4c-5.89 1.08-12.59.54-20.08-1.6-1.88 12.03-4.15 22.05-6.83 30.07-3.48 10.69-7.37 19.5-11.65 26.46a94.4 94.4 0 0 1-15.26 20.04 61.4 61.4 0 0 1-12.46 10.82c-7.5 5.35-16.46 9.49-26.9 12.43-7.77 1.87-14.74 1.07-20.9-2.4-6.15-3.48-11.24-9.1-15.26-16.84a148.56 148.56 0 0 1-9.24-24.46 245.5 245.5 0 0 1-6.02-30.46c-14.73 36.34-38.7 56.52-71.9 60.53-11.78 1.6-21.02-1.87-27.72-10.42-6.7-8.82-10.84-20.58-12.45-35.28a510.55 510.55 0 0 1-2.81-45.7c0-15.5-.27-30.73-.8-45.7-.27-14.96-1.61-25.38-4.02-31.26l3.61-1.2c1.61-.54 4.69-1.07 9.24-1.6a82.62 82.62 0 0 1 13.66-1.21c4.28 0 8.97.8 14.06 2.4a32.92 32.92 0 0 1 13.65 6.82c4.02 3.2 7.37 8.02 10.05 14.43 2.94 6.41 4.68 14.16 5.22 23.25.27 7.75.67 18.57 1.2 32.47.8 31 2.68 48.37 5.63 52.11 3.21 4 9.1-.4 17.67-13.23 9.64-14.7 16.87-29.66 21.7-44.9-1.62-17.37-2.69-27.65-3.22-30.86 1.6-.8 3.61-1.6 6.02-2.4 2.68-1.07 7.37-2.14 14.06-3.21 6.7-1.07 12.72-.94 18.08.4 5.62 1.07 11.11 4.67 16.47 10.82 5.35 5.88 8.83 14.3 10.44 25.26 5.09 33.4 10.04 55.98 14.86 67.74 3.48-2.94 7.1-7.21 10.85-12.83 4.01-5.6 7.63-12.42 10.84-20.44 3.48-9.35 5.9-17.9 7.23-25.66v-1.6c.27-.8.54-1.34.8-1.6a295.3 295.3 0 0 1-13.65-6.82 60.12 60.12 0 0 1-12.86-8.81c-4.82-4.28-8.3-8.96-10.44-14.04a36.6 36.6 0 0 1-2.81-10.02c-.27-2.94 0-6.41.8-10.42a29.42 29.42 0 0 1 12.46-16.84c6.15-4.8 12.98-6.81 20.48-6a21.1 21.1 0 0 1 11.25 3.2c3.21 1.33 6.29 3.74 9.23 7.21a92.85 92.85 0 0 1 5.63 9.22c.8 2.14 1.74 5.35 2.81 9.62a38.1 38.1 0 0 1 1.2 9.22c.27 1.07.4 2.68.4 4.81v4.01c0 7.49-.4 14.83-1.2 22.05 1.07.27 2.55.53 4.42.8 2.14.27 5.9.4 11.25.4a49 49 0 0 0 14.86-2.8c4.55-1.6 9.1-4.81 13.66-9.62 4.55-4.81 7.76-10.96 9.64-18.44Zm-73.51 3.2v-3.2a44 44 0 0 0-.4-6.82c-1.07-4.8-2.28-8.28-3.62-10.42-2.14-2.94-4.55-4.54-7.23-4.81-3.21-.53-6.42.27-9.64 2.4a14.03 14.03 0 0 0-6.42 7.62c-.8 3.2-.67 6.41.4 9.62 1.07 2.94 3.21 6.28 6.43 10.02 4.28 3.74 7.63 6.42 10.04 8.02l8.83 5.21c0-.27.14-2.14.4-5.61.54-3.74.8-6.55.8-8.42.28-.53.41-1.74.41-3.6Z"
+                    ></path>
+                  </svg>
+                </div>
+                <picture
+                  ><source srcset="/static/img/man.webp" type="image/webp" />
+                  <img
+                    src="static/img/man.png"
+                    width="848"
+                    height="664"
+                    class="promo__img"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </div>
+              <div class="promo__benefits">
+                <div class="promo__benefit">Адекватные расходы на&nbsp;продвижение</div>
+                <div class="promo__benefit">Удобная форма заявки в&nbsp;1&nbsp;клик</div>
+                <div class="promo__benefit">Фокус на главном, не&nbsp;теряются акценты</div>
+                <div class="promo__benefit">Молниеносная загрузка страницы</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="results">
+          <div class="container">
+            <h2 class="results__title title">Результаты пользователей на деле</h2>
+            <div class="results__grid">
+              <a href="#" class="result"
+                ><div class="result__head">
+                  <div class="result__pic">
+                    <picture
+                      ><source srcset="/static/img/result-ava-1.webp" type="image/webp" />
+                      <img
+                        src="static/img/result-ava-1.png"
+                        width="112"
+                        height="112"
+                        class="result__ava"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    /></picture>
+                  </div>
+                  <h3 class="result__title">Получили конверсию 8.67%</h3>
+                </div>
+                <p class="result__text">
+                  С помощью страницы кликбар получили конверсию 8.67% и лидов всего за 1 000 ₽
+                </p>
+                <span class="result__meta">Led Light</span>
+                <div class="result__pointer">
+                  <svg viewBox="0 0 12 12" class="result__pointer-icon" aria-hidden="true">
+                    <path
+                      d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg></div></a
+              ><a href="#" class="result"
+                ><div class="result__head">
+                  <div class="result__pic">
+                    <picture
+                      ><source srcset="/static/img/result-ava-2.webp" type="image/webp" />
+                      <img
+                        src="static/img/result-ava-2.png"
+                        width="112"
+                        height="112"
+                        class="result__ava"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    /></picture>
+                  </div>
+                  <h3 class="result__title">+ 500 подписчиков по 67 ₽</h3>
+                </div>
+                <p class="result__text">
+                  Получили 500 подписчиков по 67 рублей в ТГ-канал через таргет в ВК
+                </p>
+                <span class="result__meta">Annikov</span>
+                <div class="result__pointer">
+                  <svg viewBox="0 0 12 12" class="result__pointer-icon" aria-hidden="true">
+                    <path
+                      d="M10.68 11.36a1 1 0 0 1-.7-.3.91.91 0 0 1-.3-.68V3.45l-7.9 7.9c-.21.2-.45.3-.72.3-.27 0-.5-.1-.7-.3a.97.97 0 0 1-.3-.7c0-.27.1-.5.3-.7l7.9-7.91H1.33a.9.9 0 0 1-.68-.3 1 1 0 0 1-.3-.7c0-.27.1-.5.3-.7.2-.2.44-.3.7-.3h9.33c.13 0 .25.01.37.07a1.23 1.23 0 0 1 .54.54c.05.11.08.24.08.38v9.34c0 .26-.1.49-.3.69-.2.2-.43.3-.69.3Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg></div
+              ></a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__inner">
+            <div class="footer__top">
+              <h3 class="footer__title">
+                <picture
+                  ><source srcset="/static/img/emoji-party.webp" type="image/webp" />
+                  <img
+                    src="static/img/emoji-party.png"
+                    width="112"
+                    height="113"
+                    class="footer__emoji"
+                    alt=""
+                    loading="lazy"
+                    decoding="async" /></picture
+                ><br />Создай <br />страницу кликбар
+              </h3>
+              <a
+                data-hk="0-0-0-0-2-1-0-0"
+                class="button footer__button button_primary button_md"
+                href="#"
+                ><svg viewBox="0 0 24 24" class="footer__button-icon" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.75 0A3.75 3.75 0 0 0 0 3.75v16.5A3.75 3.75 0 0 0 3.75 24h16.5A3.75 3.75 0 0 0 24 20.25V3.75A3.75 3.75 0 0 0 20.25 0H3.75Zm15.24 19.82c.5.1 1-.23 1.07-.74a12.81 12.81 0 0 0 0-3.35.9.9 0 0 0-1.07-.73l-4.87.92c-.51.1-.84.6-.81 1.1a6.63 6.63 0 0 1 0 .76c-.03.52.3 1.02.81 1.11l4.87.93Zm-1.96-9.25a.87.87 0 0 0 .23-1.29 13.62 13.62 0 0 0-2.48-2.36.9.9 0 0 0-1.27.22l-2.74 3.92c-.3.43-.18 1.02.22 1.37.21.17.4.36.6.56.34.38.9.5 1.33.22l4.1-2.64ZM8.86 5.34a.9.9 0 0 0-.75-1.07 14.54 14.54 0 0 0-3.5 0 .89.89 0 0 0-.76 1.07l.95 4.62c.1.5.6.81 1.12.78a7.48 7.48 0 0 1 .88 0c.51.03 1-.29 1.11-.78l.95-4.62Z"
+                  ></path></svg
+                >Начни сейчас</a
+              >
+              <p class="footer__text">
+                7-дневный бесплатный период. <br />Без ввода банковской карты.
+              </p>
+              <svg viewBox="0 0 213 192" class="footer__rectangles">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M82.3 166.97c.47-.6-.1-1.46.67-1.84.95-.46.96-1.5 1.47-2.22.55-.79 1-1.66 1.5-2.48 1.62-2.67 4.31-4.54 5.54-7.51.1-.24.4-.38.61-.57 1.86-1.73 2.93-4.18 5.05-5.68 1.36-2.7 4.04-4.32 5.66-6.84.6-.96 1.68-1.58 2.32-2.65.63-1.05 1.9-1.59 2.53-2.84.64-1.26 2.24-1.72 3-3.18.68-1.28 2.16-2.15 3.15-3.4 1.18-1.48 2.9-2.47 4.06-4.12.92-1.31 2.5-2.06 3.41-3.56.66-1.08 1.9-1.88 3.03-2.56 1.18-.72 1.34-2.2 2.5-2.9.63-.38 1.17-.95 1.76-1.43.66-.55 1.27-1.16 1.99-1.62.62-.4.92-1.51 1.25-1.47 1.41.16.84-1.24 1.52-1.68 1.35-.87 2.39-2.3 3.8-2.98 1.52-.72 1.4-2.93 3.25-3.14.86-1.28 2.12-2.13 3.27-3.1.8-.68 1.62-1.34 2.41-2.02.8-.68 1.58-1.4 2.63-1.7.05-1.2 1.6-1.22 1.85-2.3-.43-.24-1.21.09-1.16-.85.05-1.03-.54-1.49-1.55-1.5-.36-.01-.76.03-.98-.37-.53-.5 1.39-1.5-.37-1.76.03.77-.52 1.29-.72 1.94-.16-.1-.3-.2-.47-.27-2-.94-3.3-2-4.64-3.81-1.86-.19-1.86-.19-3.13.48-.64-.27-.85-1.2-1.72-1.1l.03-.3 1-.81c-1.5.46-1.55-.66-2.32-.93l-1.13.73c-.5-.18-.95-.46-1.47-.62-.91-.28-1.75-.82-2.6-1.3-.33-.18.37-.93-.49-.96-.53-.02-.92-.46-1.49-.57-1.3-.25-2.43-1.06-3.64-1.52-1.1-.42-1.5-1.56-2.6-1.87-2.75-.77-4.91-2.6-7.37-3.91l.65-1.08c-.95-.5-1.8.37-2.7.08a7.95 7.95 0 0 0-3.4-2.13c-.11-.04-.14-.32-.2-.48.17-.74.9-.3 1.31-.65-.1-.37-.26-.67-.72-.67l-1.62 1.2-1.9-2.3c-.79-.24-1.55.14-2.05-.64-.18-.19.36-.64-.16-.83-.26.12-.52.36-.73.32-.47-.09-6.48-3.99-6.7-4.25-.03-.05-.04-.13-.06-.2l.55-.92c-.8-.32-1 .87-1.73.59.1-.67.85-1.18.47-1.97-.44.07-.93-.3-1.42.18l-.28.9c-1.04-.37-1.02-1.58-1.67-2.15a6.53 6.53 0 0 0-2.6-1.48c-.6.1-.73.76-1.32.67-.23-.38.16-.93-.7-1.4-.02 0-.4-.02-.77.05-.38.08-.11.9-.38.72-.78-.57-1.23.02-1.87.14-.82.16-1.46.44-1.89 1-.45.6-1.41.23-1.74 1.28-.23.76-1.3 1.33-2.1 1.84-2.34 1.46-3.84 3.77-5.73 5.67-1 1.01-1.92 2.2-3.06 3.1-1.28 1.03-1.18 1.08-2 2.33-.33.49-.05 1.38-.95 1.54-1.23.2-1.39 1.71-2.46 2.13-1.19 3.1-3.97 5.04-5.65 7.75-.76 1.23-2.12 1.85-2.66 3.06-.92 2-2.72 3.33-3.73 5.19-.7 1.28-2.12 1.88-2.7 3.04-1.3 2.6-3.8 4.27-4.94 6.93-1.42.79-1.94 2.4-3.14 3.44-1.17 1.03-1.83 2.63-2.95 3.75-.57.56-.39 1.4-1.15 1.83-.63.35-1.44.9-1.59 1.5-.21.9-.85 1.23-1.4 1.64-.65.47-.44 1.38-1.19 1.8-1.58.85-1.97 2.9-3.63 3.72-.3 1.43-1.85 1.82-2.47 2.88-.73 1.26-1.86 2-2.79 3-1.08 1.16-2.16 2.39-1.86 4.2.77-.15 1.1.4 1.36.87 1.26 2.13 3.44 3.36 5.11 5.08.72.73 1.84 1.23 2.37 2.17.63 1.15 1.95 1.32 2.72 2.27 1.07 1.34 2.52 2.27 3.94 3.22 1.13.74 1.61 2.25 3.08 2.65.27.08-.25.68.2.89l1.02-.39c0 .34-.06.83 0 .84 1.46.39 2.4 1.5 3.55 2.34.42.31 1 .23.97 1.02-.02.68.8.6 1.15.78a30.29 30.29 0 0 1 6.74 4.72c.66.65 1.37.45 2.06.63 0 .1-.04.2-.02.28.02.22-.22.52.28.57.9.1 1.34 1.17 2.44 1.06.96-.1 1.03 1.61 2.22 1.38 2.45 2.1 5.46 3.22 8.32 4.57 3.35 1.58 6.68 3.3 9.55 3.93 2.17 0 1.72-2.15 3.3-2.11Zm9.52 1.13c-.67 1.43-.7 3.12-2.69 3.2-.38.02-.14.43-.25.64-.94 1.89-2.67 3-4.17 4.37-.75.68-1.67.59-2.52.8-.63.18-.75-.24-.6-.77-.65.08-1-.76-1.62-.56-.47.25-.42.65-.45 1.02-.55.3-.65-.48-1.14-.45-.81.06-.9-.88-1.44-1.2-1.24-.72-2.23-2.21-4.04-1.34a.86.86 0 0 1-1.04-.32c-.54-.55.39-.7.37-1.14.03-.2-.12-.34-.34-.22-1.74.91-1.74.92-3.4-.73l-.93.34c-.85-.3-.19-1.08-.6-1.48-3.61-1.1-4.88-1.08-7.84-4.63l-.14.8c-.44-.16-1.44.41-1.12-.83-.67-.22-1.36-.38-1.99-.68-1.43-.69-2.7-1.54-2.67-3.35-.89-.2-1.68.65-2.42-.09-.38-.3-.08-.7-.22-1.23-.63-.25-1.26-.89-2.24-.52-.6.23-.77-.4-1.05-.71-.32-.35.16-.94-.37-1.29-1.6-.36-3.41-.51-3.91-2.41l-2.3-.21c-.8-.99-1.03-2.13-2.25-2.39-.88-.18-1.02-1.82-2.32-1.76-.74-1.48-2.5-1.85-3.4-3.18a12.1 12.1 0 0 0-4.7-4.06c-.16-.08-.32-.2-.41-.34-1.49-2.3-4.02-3.56-5.62-5.79-1.11-1.55-2.22-3.17-4.04-4.14-.78-.42-1.78-1.45-1.73-2.13.08-1.22-2-.93-1.23-2.25-.59-.73-1.42-1.4-1.67-2.24-.15-.53-.72-1.2-.3-1.82.63-.92.06-1.88.24-2.81.5-.12.99-.1 1.44-.52 1.1-1.03 2.8-1.74 3.36-2.99.59-1.32 2.3-1.66 2.37-3.25 0-.25.52-.53.84-.72 2.04-1.21 2.94-3.6 4.94-4.85 2.04-3.17 5.15-5.5 7.03-8.8 2.37-1.64 3.55-4.36 5.63-6.3.81-.76 1.83-1.64 2.3-2.62.56-1.17 1.97-1.64 2.2-2.69.29-1.34 2.17-1.36 1.98-2.86 1.35-.85 2.27-2.14 3.13-3.41 1.4-2.08 3.77-3.37 4.67-5.88.22-.62 1-1.12 1.64-1.5.71-.43.55-1.27 1.15-1.8 2.04-1.82 3.36-4.3 5.53-6 .3-1.76 2.32-2.06 2.95-3.52.64-1.48 2.1-2.1 3.23-3.04.75-.62.77-1.64 1.6-2.17a9.72 9.72 0 0 0 1.98-1.63c.46-.5 1.42-.37 1.52-.76.18-.64.59-.92.98-1.3-.66-2.44.17-4.37 1.94-6.07 1.59-1.53 3.5-2.6 5.6-2.33 2.92.4 5.95.48 8.72 1.78 3.83 1.79 7.54 3.77 11.16 5.97 2.92 1.78 5.92 3.45 8.85 5.22 5.42 3.3 10.81 6.62 16.22 9.92 3.76 2.29 7.54 4.54 11.3 6.83 1.2.74 2.33 1.6 3.53 2.34 2.1 1.3 4.25 2.5 6.32 3.82 2.82 1.82 5.6 3.7 8.35 5.62.76.54 1.5.91 2.42 1.1 1.37.27 1.35.34 1.41 2.12l-.85-.04c.15.98.6 1.07 1.23.49.66.01.73.62 1.08.88.13.46-.31.62-.46.9.06.77.81 1.04 1.03 1.69-.47.55-.54 1.2-.13 1.9l-5.28 4.4-1.61-.11c-.13 1.91-.69 3.5-2.8 4 .14.8-1.08.46-1.1 1.36 0 .43-.88.97-1.46 1.24-.77.36-.35 1.47-1.2 1.7-.6-.15-.02-.63-.3-.85-1.52.1-.25 1.06-.46 1.56l-.8-.04-.13.77-1.47-.13c-.64 1.26-1.15 2.67-2.45 3.4-1.22.67-1.42 2.09-2.48 2.9-.99.76-2.35 1.26-2.6 2.8-.04.27-.56.46-.84.73-.64.62-1.58.74-2.1 1.66a5.74 5.74 0 0 1-2.16 1.83c-1.03.6-1.08 1.86-2.03 2.55-.84.61-2.14 1-2.14 2.43 0 .06-.13.13-.2.17-2.36 1.43-3.64 3.97-5.8 5.6-.85.64-1.79 1.2-2.2 2.42-.27.83-1.67.88-2.25 1.87-.3.52-.54 1.14-.95 1.58-.36.4-.74 1.02-1.34.92-1.06-.18-.31 1.22-1.12 1.17-.25 1.25-1.72 1.41-2.2 2.53-.46 1.09-1.53 1.8-2.2 2.71-1.72 2.33-4.13 4.06-5.59 6.58-1.5.32-1.82 1.95-2.97 2.75-1.14.8-2.25 2-2.74 3.26-.35.92-1.34.59-1.39 1.15-.05.8-1 .82-1.02 1.58-.04.87-.98 1.05-1.45 1.6-.3.34-.76.5-.83 1.07-.12 1.12-1.15.94-1.97 1.21Z"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M96.09 96.87c.75-.1.96-1.1 1.77-.82 1 .34 1.74-.38 2.61-.53.95-.17 1.88-.48 2.82-.7 3.03-.74 6.26-.16 9.22-1.4.24-.1.56.03.84.04 2.54.09 5.02-.89 7.59-.44 2.87-.96 5.9-.2 8.83-.85 1.11-.24 2.3.08 3.52-.23 1.19-.29 2.46.22 3.8-.21 1.34-.44 2.8.36 4.37-.13 1.38-.43 3.04 0 4.62-.17 1.89-.22 3.81.3 5.79-.05 1.58-.28 3.23.3 4.93-.1 1.23-.3 2.67.01 3.95.32 1.34.33 2.5-.6 3.8-.28.74.18 1.52.16 2.28.23.85.08 1.72.08 2.55.26.72.16 1.72-.4 1.92-.15.89 1.12 1.47-.28 2.27-.11 1.57.34 3.3.06 4.79.58 1.6.56 3.06-1.08 4.52.07 1.51-.29 3 0 4.5.12l3.13.29c1.05.08 2.1.12 3.06.66.9-.83 2 .26 2.94-.32-.13-.48-.91-.8-.22-1.43.77-.7.67-1.44-.03-2.16-.25-.26-.56-.52-.43-.95-.03-.73 2.04-.08.98-1.5-.53.56-1.28.54-1.88.86-.05-.18-.08-.36-.14-.52a11.32 11.32 0 0 1-.6-5.98c-1.18-1.45-1.18-1.45-2.54-1.88-.26-.64.25-1.45-.44-2l.23-.18 1.28.12c-1.4-.73-.62-1.55-.98-2.28l-1.31-.29c-.23-.48-.35-1-.6-1.48-.45-.84-.67-1.81-.93-2.74-.1-.37.92-.41.34-1.04-.37-.38-.33-.97-.65-1.46-.75-1.09-.97-2.46-1.5-3.64-.49-1.09.03-2.17-.53-3.17-1.4-2.48-1.63-5.3-2.44-7.97l1.23-.3c-.33-1.03-1.54-1.02-1.97-1.87a7.96 7.96 0 0 0-.9-3.9c-.05-.1.13-.32.2-.48.64-.4.85.43 1.4.47.18-.33.27-.66-.04-.98l-2-.3.27-2.97c-.38-.72-1.18-1-.98-1.9 0-.26.7-.2.47-.7-.27-.1-.63-.12-.75-.3-.26-.39-1.76-7.4-1.73-7.73.01-.06.07-.13.1-.2l1.05-.25c-.35-.79-1.33-.09-1.65-.81.55-.4 1.44-.23 1.73-1.06-.37-.27-.44-.87-1.14-.88l-.82.44c-.49-1 .38-1.84.33-2.7a6.54 6.54 0 0 0-.79-2.89c-.5-.35-1.06.02-1.4-.45.1-.43.76-.55.47-1.49 0 0-.26-.3-.57-.5-.32-.23-.72.55-.77.23-.15-.95-.88-.85-1.43-1.22-.68-.47-1.34-.72-2.03-.63-.76.1-1.17-.83-2.14-.32-.7.37-1.87.01-2.79-.2-2.68-.61-5.38-.04-8.06-.03-1.43 0-2.9.19-4.36.03-1.63-.18-1.6-.07-3.06.23-.58.12-1.01.94-1.75.42-1.03-.73-2.2.23-3.26-.24-3.03 1.36-6.37.76-9.47 1.5-1.4.32-2.8-.2-4.04.27-2.07.77-4.28.43-6.31 1.03-1.4.41-2.83-.17-4.06.24-2.75.92-5.7.34-8.4 1.41-1.56-.45-3.06.33-4.64.22-1.56-.11-3.16.56-4.75.56-.79 0-1.26.72-2.1.48-.7-.2-1.65-.39-2.18-.06-.79.48-1.47.27-2.16.16-.79-.12-1.28.68-2.1.43-1.73-.51-3.46.67-5.21.07-1.22.8-2.6-.02-3.78.3-1.4.36-2.73.1-4.1.14-1.57.06-3.2.16-4.29 1.66.66.43.5 1.05.36 1.57-.62 2.4.06 4.8.02 7.2-.01 1.03.44 2.18.14 3.22-.36 1.26.45 2.3.31 3.52-.18 1.7.18 3.4.52 5.07.27 1.32-.45 2.73.3 4.05.14.25-.66.3-.48.77l1 .45c-.25.23-.64.54-.6.6.76 1.3.64 2.75.85 4.16.08.51.55.87-.03 1.4-.5.47.15.99.26 1.37a30.29 30.29 0 0 1 1.42 8.1c.02.93.65 1.29 1.01 1.9-.07.06-.15.11-.21.19-.14.17-.51.2-.2.6.57.7.12 1.77.97 2.47.75.61-.4 1.87.6 2.55.25 3.22 1.58 6.14 2.65 9.1 1.26 3.5 2.4 7.07 3.98 9.55 1.54 1.53 2.73-.3 3.83.84Zm5.93 7.54c-1.49.53-2.7 1.7-4.17.36-.28-.26-.4.2-.62.27-2 .67-4.02.23-6.04.14-1.01-.05-1.6-.76-2.35-1.2-.57-.34-.36-.71.12-1-.51-.38-.16-1.23-.75-1.53-.5-.15-.75.17-1.04.4-.59-.17-.12-.79-.49-1.11-.61-.54-.01-1.27-.17-1.87-.36-1.39 0-3.14-1.9-3.8a.86.86 0 0 1-.51-.97c0-.77.77-.22 1.06-.54.16-.12.16-.32-.08-.4-1.87-.59-1.88-.58-1.89-2.92-.32-.14-.63-.3-.9-.41-.39-.82.63-.9.63-1.48-1.78-3.33-2.7-4.22-2.28-8.82l-.66.48c-.2-.44-1.3-.74-.2-1.39-.32-.62-.7-1.23-.93-1.89-.52-1.5-.82-3 .49-4.25-.5-.77-1.65-.73-1.66-1.78-.05-.48.45-.55.71-1.02-.26-.63-.26-1.52-1.21-1.95-.58-.26-.26-.82-.24-1.25.02-.47.78-.55.65-1.17-.88-1.4-2.05-2.78-1.06-4.48l-1.48-1.77c.13-1.27.78-2.22.1-3.27-.5-.76.57-2.01-.4-2.9.53-1.56-.45-3.07-.15-4.64.4-2.1.23-4.17-.45-6.2a1.06 1.06 0 0 1-.05-.53c.57-2.68-.33-5.36.12-8.06.3-1.89.67-3.82.07-5.8-.26-.84-.24-2.28.28-2.73.92-.8-.76-2.07.72-2.45.1-.94-.01-2 .4-2.76.27-.49.35-1.37 1.08-1.5 1.1-.2 1.37-1.3 2.16-1.82.43.26.76.63 1.38.65 1.52.05 3.22.75 4.49.26 1.36-.52 2.8.45 3.97-.62.2-.18.75-.01 1.11.08 2.3.59 4.62-.47 6.92.06 3.69-.8 7.53-.24 11.2-1.25 2.84.52 5.59-.57 8.44-.47 1.1.04 2.45.13 3.47-.23 1.22-.42 2.56.24 3.46-.34 1.15-.75 2.5.57 3.42-.63 1.56.36 3.12.1 4.63-.2 2.46-.47 5.05.3 7.46-.85.6-.28 1.5-.08 2.21.1.81.2 1.3-.51 2.1-.46 2.72.16 5.41-.66 8.15-.34 1.45-1.03 3.1.2 4.57-.4 1.5-.59 2.97.02 4.43.14.97.09 1.71-.62 2.67-.4.83.2 1.7.27 2.55.24.68-.02 1.26.75 1.62.54.57-.32 1.06-.23 1.6-.22 1.26-2.2 3.22-2.97 5.68-2.92 2.2.04 4.31.63 5.6 2.31 1.78 2.35 3.87 4.55 4.9 7.42 1.45 3.97 2.67 8 3.67 12.11.8 3.33 1.76 6.63 2.57 9.96 1.5 6.15 2.97 12.32 4.46 18.48 1.04 4.27 2.12 8.54 3.15 12.81.33 1.38.52 2.78.85 4.16.56 2.4 1.24 4.77 1.76 7.17.71 3.28 1.36 6.57 1.94 9.88.15.92.41 1.7.93 2.48.77 1.16.72 1.2-.5 2.5l-.57-.63c-.6.8-.34 1.18.52 1.22.46.48.08.95.15 1.38-.24.42-.67.22-.97.32-.5.58-.16 1.3-.47 1.92-.72.06-1.22.46-1.43 1.26l-6.85-.64-1.06-1.21c-1.44 1.26-2.96 1.99-4.81.84-.47.67-1.09-.43-1.73.2-.31.3-1.31.06-1.92-.16-.8-.29-1.29.8-2.05.35-.32-.53.43-.46.4-.82-1.15-1-.93.58-1.44.78l-.53-.58-.65.45-.94-1.14c-1.34.45-2.7 1.08-4.13.67-1.34-.39-2.49.48-3.81.3-1.23-.16-2.55-.77-3.8.14-.24.17-.74-.06-1.12-.07-.9-.02-1.65-.6-2.67-.32-.86.24-1.91.01-2.82-.23-1.15-.3-2.08.55-3.24.37-1.03-.16-2.22-.8-3.22.2-.04.05-.19 0-.28-.02-2.67-.66-5.37.23-8.06-.14-1.05-.15-2.1-.42-3.25.16-.79.4-1.81-.56-2.92-.27-.59.15-1.19.43-1.79.45-.53.02-1.25.2-1.6-.3-.62-.88-1.08.64-1.62.03-1.06.7-2.21-.22-3.33.24-1.1.44-2.37.18-3.49.35-2.86.44-5.78-.04-8.6.71-1.3-.84-2.66.08-4.04-.16-1.37-.24-3-.18-4.24.37-.9.4-1.37-.54-1.8-.17-.6.52-1.28-.13-1.84.39-.64.6-1.44.06-2.16.11-.45.03-.89-.19-1.34.17-.88.7-1.48-.15-2.25-.53Z"
+                ></path>
+              </svg>
+              <div class="footer__k">
+                <svg viewBox="0 0 67 64" class="footer__k-icon" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M64.05 36.36c1.17.22 2.32-.52 2.47-1.68a29.12 29.12 0 0 0 0-7.69c-.15-1.16-1.3-1.9-2.47-1.68l-11.26 2.11a2.4 2.4 0 0 0-1.89 2.55 14.92 14.92 0 0 1 0 1.73 2.4 2.4 0 0 0 1.89 2.55l11.26 2.11Zm-4.54-21.2a2 2 0 0 0 .54-2.95 31.42 31.42 0 0 0-5.74-5.43 2.1 2.1 0 0 0-2.95.52l-6.34 8.99c-.7.99-.4 2.34.52 3.12.48.41.93.84 1.36 1.3.8.86 2.11 1.13 3.1.5l9.51-6.05Zm-18.9-12A2.03 2.03 0 0 0 38.85.73a33.97 33.97 0 0 0-8.11 0A2.03 2.03 0 0 0 29 3.17l2.2 10.58c.24 1.14 1.38 1.87 2.57 1.8a17.5 17.5 0 0 1 2.05 0c1.2.07 2.33-.66 2.57-1.8l2.2-10.58ZM13.96 49.75V63.9H.48V26.54h13.49v13.08h3.01l8.33-13.08h15.07L28.01 44.9l13.16 19H26.18l-9.36-14.17h-2.85Z"
+                  ></path>
+                </svg>
+              </div>
+              <picture
+                ><source srcset="/static/img/cat-decor.webp" type="image/webp" />
+                <img
+                  src="static/img/cat-decor.png"
+                  width="256"
+                  height="256"
+                  class="footer__decor"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+              /></picture>
+            </div>
+            <div class="footer__content">
+              <div class="footer__cols">
+                <div class="footer__col">
+                  <h4 class="footer__legend">Продукт</h4>
+                  <ul class="footer__list">
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Создать Кликбар</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Тарифы</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Как продвигать</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer__col">
+                  <h4 class="footer__legend">Сервисы</h4>
+                  <ul class="footer__list">
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Реклама TG каналов</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Подарки за подписку на TG</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Сократить ссылку</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Сделать ссылку WhatsApp</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer__col">
+                  <h4 class="footer__legend">Почему</h4>
+                  <ul class="footer__list">
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Кликбар vs Обычный сайт</a>
+                    </li>
+                    <li class="footer__list-item">
+                      <a href="#" class="footer__list-link">Кликбар vs Вконтакте</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer__col">
+                  <div class="social">
+                    <a
+                      data-hk="0-0-0-0-2-5-0-0-0"
+                      class="button social__link button_primary"
+                      href="#"
+                      target="_blank"
+                      ><svg viewBox="0 0 28 19" class="social__icon h-[0.4em]">
+                        <path
+                          d="M26.77 3.46a3.1 3.1 0 0 0-.85-1.41 3.4 3.4 0 0 0-1.48-.83C22.35.67 13.99.67 13.99.67 10.51.63 7.02.81 3.56 1.2a3.36 3.36 0 0 0-2.35 2.27 32.32 32.32 0 0 0-.54 6.1c-.02 2.05.17 4.09.54 6.1.15.54.45 1.02.86 1.41.41.4.93.68 1.49.83 2.11.55 10.43.55 10.43.55 3.5.04 6.98-.14 10.45-.52a3.39 3.39 0 0 0 1.48-.83c.41-.38.7-.87.85-1.41.39-2.01.57-4.06.56-6.1.03-2.06-.16-4.12-.56-6.13Zm-15.44 9.9v-7.6l6.96 3.8-6.96 3.8Z"
+                        ></path></svg></a
+                    ><a
+                      data-hk="0-0-0-0-2-5-1-0-0"
+                      class="button social__link button_primary"
+                      href="#"
+                      target="_blank"
+                      ><svg viewBox="0 0 26 22" class="social__icon right-[0.04em] h-[0.44em]">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M.67 10.26c2.6-1.46 5.5-2.67 8.22-3.88 4.67-2 9.35-3.96 14.09-5.78.92-.31 2.58-.62 2.74.76-.1 1.96-.46 3.9-.7 5.85-.64 4.28-1.38 8.55-2.1 12.81-.24 1.42-2 2.16-3.13 1.25-2.7-1.85-5.42-3.68-8.09-5.57-.87-.9-.06-2.2.72-2.84 2.22-2.22 4.58-4.1 6.7-6.44.56-1.4-1.12-.22-1.67.14-3.05 2.13-6.02 4.38-9.23 6.25-1.64.92-3.56.13-5.2-.38C1.55 11.82-.6 11.2.67 10.26Z"
+                        ></path></svg></a
+                    ><a
+                      data-hk="0-0-0-0-2-5-2-0-0"
+                      class="button social__link button_primary"
+                      href="#"
+                      target="_blank"
+                      ><svg
+                        viewBox="0 0 32 20"
+                        class="social__icon right-[0.02em] top-[0.01em] h-[0.38em]"
+                      >
+                        <path
+                          d="M30.87 2c.22-.73 0-1.26-1.03-1.26h-3.4c-.87 0-1.27.46-1.49.97 0 0-1.73 4.23-4.18 6.97-.8.8-1.16 1.05-1.6 1.05-.21 0-.54-.26-.54-.98V2c0-.87-.24-1.26-.96-1.26h-5.36c-.54 0-.87.4-.87.78 0 .83 1.23 1.02 1.36 3.33v5.02c0 1.1-.2 1.3-.63 1.3-1.16 0-3.97-4.24-5.64-9.1C6.2 1.12 5.87.74 5 .74H1.6c-1 0-1.18.46-1.18.97 0 .9 1.15 5.39 5.38 11.31 2.82 4.04 6.79 6.24 10.4 6.24 2.17 0 2.44-.49 2.44-1.33 0-3.86-.2-4.23.89-4.23.5 0 1.37.26 3.4 2.2 2.3 2.32 2.69 3.36 3.99 3.36h3.4c.98 0 1.47-.49 1.18-1.45-.64-2.02-5.02-6.17-5.22-6.45-.5-.65-.36-.94 0-1.52 0 0 4.16-5.86 4.6-7.84Z"
+                        ></path></svg
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="footer__meta">
+                <div class="footer__policy">
+                  © 2021-2022 ИП Стрекалов А.Д.<a href="https://clck.bar/rules" target="_blank"
+                    >Условия пользования</a
+                  >
+                </div>
+                <div class="footer__dev">
+                  <a href="https://dev.clck.bar" target="_blank">Разработка</a
+                  ><a href="https://dev.clck.bar" target="_blank">Дизайн</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer__btm">
+              <picture
+                ><source srcset="/static/img/footer-bg.webp" type="image/webp" />
+                <img
+                  src="static/img/footer-bg.png"
+                  width="2432"
+                  height="784"
+                  class="footer__btm-img"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+              /></picture>
+              <div class="footer__btm-badge">
+                <svg viewBox="0 0 334 74" class="footer__btm-logo" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M188.02 32.15c-.14 1.06-1.19 1.74-2.27 1.54l-10.34-1.93a2.2 2.2 0 0 1-1.73-2.33 12.92 12.92 0 0 0 0-1.58 2.2 2.2 0 0 1 1.73-2.33l10.34-1.93c1.08-.2 2.13.48 2.27 1.54a26.43 26.43 0 0 1 0 7.02Zm-5.94-20.53c.7.86.45 2.1-.5 2.7l-8.73 5.52c-.9.58-2.12.33-2.85-.45-.39-.42-.8-.81-1.25-1.18-.85-.72-1.11-1.95-.47-2.86l5.82-8.21a1.94 1.94 0 0 1 2.7-.48 28.79 28.79 0 0 1 5.28 4.96Zm-19.46-10.5a1.86 1.86 0 0 1 1.6 2.25l-2.03 9.66c-.22 1.05-1.26 1.72-2.36 1.65a16.2 16.2 0 0 0-1.88 0c-1.1.07-2.14-.6-2.36-1.65l-2.02-9.66a1.86 1.86 0 0 1 1.6-2.24 31.38 31.38 0 0 1 7.45 0ZM12.76 58.86V45.9h2.62l8.6 12.94h13.77L25.65 41.5l11.38-16.8H23.18l-7.65 11.95h-2.77V24.71H.38v34.14h12.38Zm45.5-24.9h6.2v24.9h12.38V24.7H46.97c-.66 13.66-1.39 24.61-6.63 24.61a5.4 5.4 0 0 1-1.97-.43v9.6c2.33.79 4.45 1.14 6.27 1.14 9.9 0 12.75-11.45 13.62-25.67Zm49.3 8.76L95.12 58.85H84.26V24.7h12.38v16.15L109.1 24.7h10.85v34.14h-12.38V42.7Zm32.2 16.14V45.9h2.62l8.6 12.94h13.76l-12.1-17.35 11.37-16.79h-13.84l-7.65 11.95h-2.77V24.71h-12.38v34.14h12.38Zm106.16-16.69c0-10.94-6.3-16.78-14.65-16.78-5.28 0-8.57 2.33-10.62 4.89 0-2.85 1.83-6.94 5.42-8.69 2.7-1.33 5.42-1.65 8-1.96 3.23-.38 6.25-.73 8.77-3V5.67c-2.26 2.18-5.57 2.7-9.5 3.32-4.34.68-9.44 1.49-14.75 4.78-6.3 3.94-10.76 10.73-10.76 23.65 0 16.06 8.86 21.53 19.04 21.53 10.55 0 19.04-5.47 19.04-16.79Zm-25.27 0c0-2.48.73-7.3 6.22-7.3 5.5 0 6.23 4.82 6.23 7.3 0 2.49-.73 7.3-6.23 7.3s-6.22-4.81-6.22-7.3Zm64.38 5.7v-9.78c0-12.49-7.18-16.35-18.39-16.35-5.2 0-10.76 1.38-13.7 2.33V34.5c3.45-1.39 7.7-2.7 12.31-2.7 4.98 0 7.33 1.9 7.33 4.38v1.24c-2.35-.51-4.98-.8-7.62-.8-6.81 0-15.23 2.7-15.23 11.53 0 6.79 5.49 10.8 12.23 10.8 4.98 0 8.86-1.6 12.23-4.23 1.6 2.48 4.47 3.87 8.35 3.87a18 18 0 0 0 6.3-1.1v-7.66c-.44.14-.95.22-1.4.22-1.24 0-2.41-.51-2.41-2.2Zm-22.49-.73c0-2.78 2.64-3.8 5.57-3.8 1.68 0 3.37.3 4.47.66v4.74a9.23 9.23 0 0 1-5.79 1.83c-2.64 0-4.25-1.6-4.25-3.43Zm42.42-24.3v4.74c1.76-2.92 5.64-5.84 11.94-5.84 11.8 0 17 9.56 17 18.6 0 9.06-5.2 18.62-17 18.62-4.9 0-8.35-1.75-10.47-3.94v18.9h-12.45V22.83h10.98Zm8.57 25.9c5.28 0 7.55-4.3 7.55-8.4 0-4.08-2.27-8.38-7.55-8.38-3.44 0-6 2.11-7.1 4.37v8.03a7.92 7.92 0 0 0 7.1 4.38Z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
