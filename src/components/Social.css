@@ -1,0 +1,51 @@
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  row-gap: 16px;
+
+  @screen max-md {
+    column-gap: 24px;
+  }
+
+  &__link {
+    @apply transition;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    font-size: 48px;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    /* background-color: theme(colors.body.DEFAULT); */
+    position: relative;
+    isolation: isolate;
+    will-change: transform;
+    padding: 0;
+    /* color: #ffffff; */
+
+    /* @media (hover: hover) {
+      &:hover {
+        color: theme(colors.lime.dark);
+      }
+    } */
+
+    &::before {
+      content: "";
+      width: 48px;
+      height: 48px;
+      border-radius: inherit;
+      /* background-color: red; */
+      position: absolute;
+      z-index: -1;
+    }
+
+    @screen max-md {
+      font-size: 36px;
+    }
+  }
+  &__icon {
+    fill: currentColor;
+    position: relative;
+  }
+}
