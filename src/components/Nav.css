@@ -13,12 +13,15 @@
     align-items: center;
     padding: 27px 24px;
 
-    @apply transition-[clip-path,visibility] duration-300;
-    clip-path: inset(0 0 100%);
+    /* @apply transition-[clip-path,visibility] duration-300;
+    clip-path: inset(0 0 100%); */
+    @apply transition-[transform,visibility] duration-200 ease-out;
+    transform: translateX(100%);
     visibility: hidden;
 
     &_open {
-      clip-path: inset(0);
+      /* clip-path: inset(0); */
+      transform: none;
       visibility: visible;
     }
   }
