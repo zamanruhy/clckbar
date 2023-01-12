@@ -732,8 +732,6 @@ video {
   @media not all and (min-width: 768px) {.button {
     font-size: 16px;
     line-height: 24px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
   }
 
@@ -752,8 +750,12 @@ video {
 
   @media (hover: hover) {
       .button_primary:hover {
-        background-color: rgb(5 5 9 / 80%);
+        background-color: #3a3a69;
       }
+    }
+
+  .button_primary:active {
+      background-color: #2c2c4f;
     }
 
   .button_secondary {
@@ -763,8 +765,12 @@ video {
 
   @media (hover: hover) {
       .button_secondary:hover {
-        background-color: #9fe500;
+        background-color: #a8ea01;
       }
+    }
+
+  .button_secondary:active {
+      background-color: #92cb01;
     }
 
   .button_tertiary {
@@ -774,9 +780,12 @@ video {
 
   @media (hover: hover) {
       .button_tertiary:hover {
-        background-color: #050509;
-        color: #ffffff;
+        background-color: #f0f4ff;
       }
+    }
+
+  .button_tertiary:active {
+      background-color: #e0e9ff;
     }
 
   .button_md {
@@ -787,7 +796,9 @@ video {
   @media not all and (min-width: 768px) {
 
   .button_md {
-      min-height: 44px
+      min-height: 44px;
+      padding-left: 16px;
+      padding-right: 16px
   }
     }
 
@@ -799,7 +810,9 @@ video {
   @media not all and (min-width: 768px) {
 
   .button_lg {
-      min-height: 44px
+      min-height: 44px;
+      padding-left: 16px;
+      padding-right: 16px
   }
     }
 .footer {
@@ -1309,7 +1322,7 @@ video {
 
   /* @media (hover: hover) {
       &:hover {
-        color: theme(colors.lime.dark);
+        
       }
     } */
 
