@@ -108,10 +108,20 @@ export default function Clients() {
             ))}
           </div>
         </div>
-        <Button class="clients__prev" variant="primary" type="button">
+        <Button
+          class="clients__prev"
+          variant="primary"
+          type="button"
+          aria-label="Предыдущий слайд"
+        >
           <LeftIcon />
         </Button>
-        <Button class="clients__next" variant="primary" type="button">
+        <Button
+          class="clients__next"
+          variant="primary"
+          type="button"
+          aria-label="Следующий слайд"
+        >
           <RightIcon />
         </Button>
       </div>

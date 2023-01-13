@@ -3,6 +3,7 @@
   position: relative;
   z-index: 1000;
   background-color: #fff;
+  transform: translateZ(0);
 
   @screen max-lg {
     position: sticky;

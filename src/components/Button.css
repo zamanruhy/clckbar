@@ -11,8 +11,6 @@
 
   @screen max-md {
     @apply text-16;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   /* @media (hover: hover) { */
@@ -27,8 +25,11 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: theme(colors.body.DEFAULT / 80%);
+        background-color: theme(colors.body.lighter);
       }
+    }
+    &:active {
+      background-color: theme(colors.body.light);
     }
   }
   &_secondary {
@@ -40,6 +41,9 @@
         background-color: theme(colors.lime.dark);
       }
     }
+    &:active {
+      background-color: theme(colors.lime.darker);
+    }
   }
   &_tertiary {
     background-color: #ffffff;
@@ -47,9 +51,11 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: theme(colors.body.DEFAULT);
-        color: #ffffff;
+        background-color: #f0f4ff;
       }
+    }
+    &:active {
+      background-color: #e0e9ff;
     }
   }
 
@@ -59,6 +65,8 @@
 
     @screen max-md {
       min-height: 44px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
   &_lg {
@@ -67,6 +75,8 @@
 
     @screen max-md {
       min-height: 44px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 }

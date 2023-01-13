@@ -35,12 +35,17 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-      body: { DEFAULT: '#050509' },
+      body: {
+        DEFAULT: '#050509',
+        light: '#2c2c4f',
+        lighter: '#3a3a69'
+      },
       pink: { DEFAULT: '#ff76d9' },
       lime: {
-        light: '#d4ff51',
+        // light: '#d4ff51',
         DEFAULT: '#b7fe02',
-        dark: '#9fe500'
+        dark: '#a8ea01',
+        darker: '#92cb01'
       },
       aquamarine: { DEFAULT: '#50fcf5' },
       violet: { DEFAULT: '#582ef5' }

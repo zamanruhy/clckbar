@@ -93,7 +93,7 @@ export default function Image({ src, sizes, ...rest }) {
                 ? arr
                     .map((o) => `${normalizeScr(o.src)} ${o.width}w`)
                     .join(', ')
-                : arr[0].src
+                : normalizeScr(arr[0].src)
             }
             type={`image/${format}`}
           />

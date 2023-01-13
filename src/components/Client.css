@@ -61,6 +61,7 @@
     flex-shrink: 0;
     aspect-ratio: 0.5418;
     width: 214px;
+    max-width: 100%;
     position: relative;
     margin-left: 40px;
 

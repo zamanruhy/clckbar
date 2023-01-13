@@ -1,10 +1,8 @@
 .intro {
   padding-top: 69px;
-  /* padding-bottom: 119px; */
   overflow: hidden;
   overflow: clip;
   border-bottom-style: solid;
-  /* border-bottom: 12px solid; */
 
   @screen md {
     border-bottom-width: 12px;
@@ -143,10 +141,7 @@
     }
   }
   &__action {
-    /* position: relative; */
     margin-top: 121px;
-    /* margin-bottom: 119px; */
-    /* width: fit-content; */
     margin-bottom: 60px;
 
     @screen max-lg {
@@ -191,7 +186,6 @@
 
   &__side {
     width: 511px;
-    /* padding-right: 48px; */
     flex-shrink: 0;
     margin-top: 5px;
     align-self: flex-end;
@@ -199,7 +193,6 @@
 
     @screen max-xl {
       width: 450px;
-      /* margin-right: -40px; */
     }
     @screen max-lg {
       margin-top: 0;

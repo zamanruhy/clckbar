@@ -14,8 +14,8 @@ export function Layout(props) {
 export function Meta() {
   return (
     <>
-      <MetaTheme />
-      <MetaSocial />
+      {/* <MetaTheme />
+      <MetaSocial /> */}
     </>
   )
 }

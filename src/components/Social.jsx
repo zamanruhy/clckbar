@@ -14,8 +14,9 @@ export default function Social() {
         href="#"
         target="_blank"
         variant="primary"
+        aria-label="Youtube"
       >
-        <YoutubeIcon className="social__icon h-[0.4em]" />
+        <YoutubeIcon className="social__icon h-[0.4em]" aria-hidden="true" />
       </Button>
 
       <Button
@@ -24,8 +25,12 @@ export default function Social() {
         href="#"
         target="_blank"
         variant="primary"
+        aria-label="Telegram"
       >
-        <TelegramIcon className="social__icon right-[0.04em] h-[0.44em]" />
+        <TelegramIcon
+          className="social__icon right-[0.04em] h-[0.44em]"
+          aria-hidden="true"
+        />
       </Button>
       <Button
         class="social__link"
@@ -33,8 +38,12 @@ export default function Social() {
         href="#"
         target="_blank"
         variant="primary"
+        aria-label="VK"
       >
-        <VkIcon className="social__icon right-[0.02em] top-[0.01em] h-[0.38em]" />
+        <VkIcon
+          className="social__icon right-[0.02em] top-[0.01em] h-[0.38em]"
+          aria-hidden="true"
+        />
       </Button>
     </div>
   )

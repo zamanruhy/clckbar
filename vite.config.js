@@ -85,7 +85,7 @@ export default defineConfig({
     // target: 'es2015',
     // manifest: true,
     assetsInlineLimit: 0,
-    minify: false,
+    minify: true,
     polyfillModulePreload: false,
     cssCodeSplit: false,
     rollupOptions: {
