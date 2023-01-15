@@ -14,7 +14,7 @@ module.exports = {
   content: ['./index.html', 'src/**/*.{js,jsx,ts,tsx,html}'],
   darkMode: 'class',
   theme: {
-    'container-padding': '24px',
+    'container-padding': '15px',
     screens: {
       ...screens,
       ...Object.keys(screens)
@@ -68,7 +68,7 @@ module.exports = {
       56: ['56px', { lineHeight: '64px' }]
     },
     fontFamily: {
-      muller: ['Muller', 'Adjusted Verdana Fallback', 'sans-serif']
+      brand: ['Muller', 'Adjusted Verdana', 'sans-serif']
     },
     extend: {
       minHeight: defaultTheme.height,

@@ -14,7 +14,7 @@
     "postcss",
     "svg"
   ],
-  "sideEffects": false,
+  "// sideEffects": false,
   "scripts": {
     "dev": "vite",
     "dev_": "node server",
@@ -25,7 +25,8 @@
     "preview": "npm run prerender && vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css,html}\"",
-    "ghpages": "deploy.sh"
+    "ghpages": "deploy.sh",
+    "fonts": "node optimize-fonts"
   },
   "dependencies": {
     "embla-carousel": "^7.0.2",
@@ -42,6 +43,7 @@
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "glyphhanger": "^5.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
