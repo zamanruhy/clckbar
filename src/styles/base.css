@@ -1,30 +1,6 @@
 @tailwind base;
 
 @layer base {
-  /* @font-face {
-    font-family: "Muller";
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-    src: url(/static/fonts/MullerHairline.woff2) format("woff2"),
-      url(/static/fonts/MullerHairline.woff) format("woff");
-  }
-  @font-face {
-    font-family: "Muller";
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-    src: url(/static/fonts/MullerUltraLight.woff2) format("woff2"),
-      url(/static/fonts/MullerUltraLight.woff) format("woff");
-  }
-  @font-face {
-    font-family: "Muller";
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-    src: url(/static/fonts/MullerLight.woff2) format("woff2"),
-      url(/static/fonts/MullerLight.woff) format("woff");
-  } */
   @font-face {
     font-family: "Muller";
     font-weight: 400;
@@ -58,21 +34,64 @@
       url(/static/fonts/MullerExtraBold.woff) format("woff");
   }
 
-  /* @font-face {
-    font-family: "Muller-DEMO";
+  @font-face {
+    font-family: "MullerSubset";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerRegular-subset.woff2) format("woff2"),
+      url(/static/fonts/MullerRegular-subset.woff) format("woff");
+  }
+  @font-face {
+    font-family: "MullerSubset";
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerMedium-subset.woff2) format("woff2"),
+      url(/static/fonts/MullerMedium-subset.woff) format("woff");
+  }
+  @font-face {
+    font-family: "MullerSubset";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url(/static/fonts/MullerBold-subset.woff2) format("woff2"),
+      url(/static/fonts/MullerBold-subset.woff) format("woff");
+  }
+  @font-face {
+    font-family: "MullerSubset";
     font-weight: 800;
     font-style: normal;
     font-display: swap;
-    src: url(/static/fonts/Muller-ExtraBold-DEMO.woff2) format("woff2");
-  } */
+    src: url(/static/fonts/MullerExtraBold-subset.woff2) format("woff2"),
+      url(/static/fonts/MullerExtraBold-subset.woff) format("woff");
+  }
+
+  @font-face {
+    font-family: "Adjusted Verdana Fallback";
+    src: local(Verdana);
+    font-weight: 400;
+    size-adjust: 92%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 11%;
+  }
 
   /* @font-face {
-    font-family: "Muller";
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-    src: url(/static/fonts/MullerBlack.woff2) format("woff2"),
-      url(/static/fonts/MullerBlack.woff) format("woff");
+    font-family: "Adjusted Arial Fallback";
+    src: local(Arial);
+    size-adjust: 103%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Adjusted Tahoma Fallback";
+    src: local(Tahoma);
+    size-adjust: 103%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 0%;
   } */
 
   :focus-visible {
@@ -102,6 +121,7 @@
     width: 100%;
     background-color: #ffffff;
     font-family: theme(fontFamily.muller);
+    /* font-family: MullerRegular; */
     font-size: 16px;
     line-height: 1.5;
     color: theme(colors.body.DEFAULT);

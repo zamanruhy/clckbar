@@ -13,11 +13,9 @@
     @apply text-16;
   }
 
-  /* @media (hover: hover) { */
   &:active {
     transform: scale(0.98);
   }
-  /* } */
 
   &_primary {
     background-color: theme(colors.body.DEFAULT);
