@@ -30,13 +30,13 @@ function script() {
   if (!import.meta.env.SSR) {
     render(() => {
       return (
-        <center>
+        <>
           {mobile() && (
             <Drawer open={navOpen()} onRequestClose={() => setNavOpen(false)}>
               {navEl}
             </Drawer>
           )}
-        </center>
+        </>
       )
     }, el)
   }

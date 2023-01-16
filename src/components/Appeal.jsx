@@ -1,8 +1,8 @@
 import womanImg from '../images/woman.png?format=png;webp'
 import skateImg from '../images/skateboarder.png?format=png;webp'
 import emojiWomanImg from '../images/emoji-woman.png?format=png;webp'
-import EasyIcon from '../icons/easy.svg?component'
 import UpRightIcon from '../icons/up-right.svg?component'
+import easyImg from '../images/easy.svg?metadata'
 import Image from './Image'
 import Button from './Button'
 import './Appeal.css'
@@ -29,7 +29,13 @@ export default function Appeal() {
               чтобы начать привлекать клиентов и получать заявки.
             </p>
             <div className="appeal__decor">
-              <EasyIcon class="appeal__decor-svg" aria-hidden="true" />
+              <Image
+                class="appeal__decor-svg"
+                src={easyImg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
               <Image
                 class="appeal__decor-img"
                 src={skateImg}

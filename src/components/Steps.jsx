@@ -1,7 +1,7 @@
 import Step from './Step'
-import StepDecorOneIcon from '../icons/step-decor-one.svg?component'
-import StepDecorTwoIcon from '../icons/step-decor-two.svg?component'
-import StepDecorThreeIcon from '../icons/step-decor-three.svg?component'
+import stepDecorOneImg from '../images/step-decor-one.svg?metadata'
+import stepDecorTwoImg from '../images/step-decor-two.svg?metadata'
+import stepDecorThreeImg from '../images/step-decor-three.svg?metadata'
 
 import './Steps.css'
 
@@ -9,17 +9,17 @@ const items = [
   {
     title: `Загрузи видео <br>и фото в сторис`,
     text: `Просто сними видео или фото в формате рассказа о своих услугах или товарах.`,
-    Decor: StepDecorOneIcon
+    decor: stepDecorOneImg
   },
   {
     title: `Добавь нужные <br>способы связи`,
     text: `Кликбар соберет все ссылки <br class="max-sm:hidden">на одну страницу за пару кликов. `,
-    Decor: StepDecorTwoIcon
+    decor: stepDecorTwoImg
   },
   {
     title: `Или добавь <br>форму для заявок`,
     text: `Заявки от клиентов будут приходить <br class="max-sm:hidden">тебе на почту или в телеграм.`,
-    Decor: StepDecorThreeIcon
+    decor: stepDecorThreeImg
   }
 ]
 

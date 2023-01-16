@@ -85,6 +85,7 @@
   }
   &__decor-svg {
     height: 251px;
+    width: auto;
   }
   &__decor-img {
     width: 27.5%;

@@ -97,11 +97,12 @@
   &__how {
     position: absolute;
     z-index: -1;
-    fill: #ffffff;
     opacity: 0.08;
     height: 326px;
     top: -87px;
     left: -22px;
+    width: auto;
+    max-width: none;
 
     @screen max-lg {
       height: 240px;

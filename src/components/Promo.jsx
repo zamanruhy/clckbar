@@ -1,7 +1,7 @@
 import emojiImg from '../images/emoji-thumb-up.png?format=png;webp'
 import manImg from '../images/man.png?format=png;webp'
 import PlayIcon from '../icons/play.svg?component'
-import HowIcon from '../icons/how.svg?component'
+import howImg from '../images/how.svg?metadata'
 import Button from './Button'
 import Image from './Image'
 import './Promo.css'
@@ -36,7 +36,13 @@ export default function Promo() {
                 <PlayIcon class="promo__button-icon" />
                 Смотреть видео
               </Button>
-              <HowIcon class="promo__how" />
+              <Image
+                class="promo__how"
+                src={howImg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <Image
               class="promo__img"

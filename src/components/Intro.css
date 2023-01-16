@@ -117,6 +117,7 @@
   }
   &__hook {
     height: 0.411em;
+    width: auto;
     fill: theme(colors.pink.DEFAULT);
     position: absolute;
     top: 100%;

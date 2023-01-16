@@ -36,6 +36,7 @@
   }
   &__decor {
     height: 162px;
+    width: auto;
     z-index: -1;
     position: absolute;
     top: 4px;

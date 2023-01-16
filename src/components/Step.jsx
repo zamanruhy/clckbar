@@ -1,19 +1,18 @@
 import profileImg from '../images/profile.png?format=png;webp'
-import BgIcon from '../icons/intro-bg.svg?component'
-// import StepDecorOneIcon from '../icons/step-decor-one.svg?component'
+import bgImg from '../images/step-bg.svg?metadata'
 import Image from './Image'
 
 import './Step.css'
 
-const textColors = ['text-lime', 'text-pink', 'text-violet']
-
 export default function Step(props) {
   return (
     <article class="step">
-      <props.Decor
+      <Image
         class="step__decor"
-        classList={{ [textColors[props.index]]: true }}
-        aria-hidden="true"
+        src={props.decor}
+        alt=""
+        loading="lazy"
+        decoding="async"
       />
       <div className="step__main">
         <div className="step__num">{props.index + 1}</div>
@@ -28,7 +27,13 @@ export default function Step(props) {
           loading="lazy"
           decoding="async"
         />
-        <BgIcon class="step__bg" aria-hidden="true" />
+        <Image
+          class="step__bg"
+          src={bgImg}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </article>
   )

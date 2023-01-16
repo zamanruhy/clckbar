@@ -3,8 +3,8 @@ import catDecorImg from '../images/cat-decor.png?format=png;webp'
 import bgImg from '../images/footer-bg.jpg?format=png;webp'
 
 import RaysIcon from '../icons/rays.svg?component'
-import KIcon from '../icons/k.svg?component'
-import Rectanglescon from '../icons/rectangles.svg?component'
+import kImg from '../images/k.svg?metadata'
+import rectanglesImg from '../images/rectangles.svg?metadata'
 import LogoIcon from '../icons/logo-mini.svg?component'
 
 import Button from './Button'
@@ -45,9 +45,21 @@ export default function Footer() {
               7-дневный бесплатный период. <br />
               Без ввода банковской карты.
             </p>
-            <Rectanglescon className="footer__rectangles" />
+            <Image
+              className="footer__rectangles"
+              src={rectanglesImg}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
             <div className="footer__k">
-              <KIcon class="footer__k-icon" aria-hidden="true" />
+              <Image
+                class="footer__k-icon"
+                src={kImg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <Image
               class="footer__decor"

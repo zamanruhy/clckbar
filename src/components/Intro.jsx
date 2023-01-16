@@ -2,9 +2,9 @@
 // import catImg from '../images/cat.png?format=png;webp'
 import handImg from '../images/hand.png?format=png;webp'
 import Image from './Image'
-import HookIcon from '../icons/hook.svg?component'
 import UpCircleIcon from '../icons/up-circle.svg?component'
 import UpRightIcon from '../icons/up-right.svg?component'
+import hookImg from '../images/hook.svg?datauri&metadata'
 import Button from './Button'
 
 import './Intro.css'
@@ -44,7 +44,7 @@ export default function Intro() {
               <div>
                 кликбар <span class="text-pink">уже сегодня</span>
               </div>
-              <HookIcon className="intro__hook" aria-hidden="true" />
+              <Image className="intro__hook" src={hookImg} alt="" />
             </h1>
             <p className="intro__text">
               Создай страницу кликбар, настрой рекламу по нашему гайду и собирай

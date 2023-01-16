@@ -66,7 +66,7 @@
   }
   &__rectangles {
     height: 192px;
-    fill: theme(colors.body.DEFAULT);
+    width: auto;
     position: absolute;
     z-index: -1;
     bottom: 0;
@@ -81,7 +81,8 @@
     }
     @screen max-md {
       height: 99px;
-      fill: #caa3c0;
+      filter: invert(68%) sepia(11%) saturate(653%) hue-rotate(263deg)
+        brightness(103%) contrast(83%);
       bottom: 78px;
       right: -88px;
       transform: none;
@@ -117,7 +118,7 @@
   }
   &__k-icon {
     height: 0.656em;
-    fill: theme(colors.body.DEFAULT);
+    width: auto;
   }
   &__decor {
     width: 128px;

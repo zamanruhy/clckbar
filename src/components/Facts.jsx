@@ -2,7 +2,7 @@ import lightningImg from '../images/lightning.png?format=png;webp'
 import bagImg from '../images/bag.png?format=png;webp'
 import rocketImg from '../images/rocket.png?format=png;webp'
 import Image from './Image'
-import WowIcon from '../icons/wow.svg?component'
+import wowImg from '../images/wow.svg?metadata'
 
 import './Facts.css'
 
@@ -37,7 +37,13 @@ export default function Facts() {
             Не нужен большой сайт, чтобы рассказать <br class="max-sm:hidden" />
             о себе и своих услугах. Посадочная страница готова за 10 минут.
           </p>
-          <WowIcon class="facts__decor" aria-hidden="true" />
+          <Image
+            class="facts__decor"
+            src={wowImg}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
           <div className="facts__grid">
             {items.map(({ num, unit, text, src }) => (
               <article class="facts__item">
