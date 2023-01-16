@@ -91,7 +91,8 @@
                 <h1 class="intro__title">
                   <div class="">
                     <picture
-                      ><source srcset="static/img/emoji.webp" type="image/webp" />
+                      ><source srcset="static/img/emoji.avif" type="image/avif" />
+                      <source srcset="static/img/emoji.webp" type="image/webp" />
                       <img
                         src="static/img/emoji.png"
                         width="112"
@@ -113,19 +114,16 @@
                     </svg>
                   </div>
                   <div>
-                    с живой<video
-                      class="intro__decor"
-                      width="144"
-                      height="144"
-                      src="static/video/cat.mp4"
-                      autoplay
-                      preload
-                      muted
-                      loop
-                      playsinline
-                      disablepictureinpicture
-                      aria-hidden="true"
-                    ></video
+                    с живой<picture
+                      ><source srcset="static/img/cat.avif" type="image/avif" />
+                      <source srcset="static/img/cat.webp" type="image/webp" />
+                      <img
+                        class="intro__decor"
+                        src="static/img/cat.gif"
+                        width="144"
+                        height="144"
+                        alt=""
+                        fetchpriority="high" /></picture
                     >страницей
                   </div>
                   <div>кликбар <span class="text-pink">уже сегодня</span></div>
