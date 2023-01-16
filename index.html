@@ -871,23 +871,20 @@
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  some="true"
-                  onload="catBlackVideo.play()"
                 />
               </div>
-              <video
-                id="catBlackVideo"
-                class="footer__decor"
-                width="256"
-                height="256"
-                src="static/video/cat-black.mp4"
-                preload="none"
-                muted
-                loop
-                playsinline
-                disablepictureinpicture
-                aria-hidden="true"
-              ></video>
+              <picture
+                ><source srcset="static/img/cat-black.avif" type="image/avif" />
+                <source srcset="static/img/cat-black.webp" type="image/webp" />
+                <img
+                  class="footer__decor"
+                  src="static/img/cat-black.gif"
+                  width="256"
+                  height="256"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+              /></picture>
             </div>
             <div class="footer__content">
               <div class="footer__cols">
