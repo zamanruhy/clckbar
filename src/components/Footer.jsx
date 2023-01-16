@@ -1,5 +1,5 @@
 import emojiImg from '../images/emoji-party.png?format=png;webp'
-import catDecorImg from '../images/cat-decor.png?format=png;webp'
+// import catDecorImg from '../images/cat-decor.png?format=png;webp'
 import bgImg from '../images/footer-bg.jpg?format=png;webp'
 
 import RaysIcon from '../icons/rays.svg?component'
@@ -9,9 +9,9 @@ import LogoIcon from '../icons/logo-mini.svg?component'
 
 import Button from './Button'
 import Image from './Image'
+import Social from './Social'
 
 import './Footer.css'
-import Social from './Social'
 
 export default function Footer() {
   return (
@@ -59,15 +59,35 @@ export default function Footer() {
                 alt=""
                 loading="lazy"
                 decoding="async"
+                // onload="catBlackVideo.play()"
               />
             </div>
-            <Image
-              class="footer__decor"
-              src={catDecorImg}
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="static/img/cat-black.avif" type="image/avif" />
+              <source srcset="static/img/cat-black.webp" type="image/webp" />
+              <img
+                className="footer__decor"
+                src="static/img/cat-black.gif"
+                width="256"
+                height="256"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            {/* <video
+              id="catBlackVideo"
+              className="footer__decor"
+              width="256"
+              height="256"
+              src="static/video/cat-black.mp4"
+              preload="none"
+              muted
+              loop
+              playsinline
+              disablepictureinpicture
+              aria-hidden="true"
+            /> */}
           </div>
 
           <div className="footer__content">

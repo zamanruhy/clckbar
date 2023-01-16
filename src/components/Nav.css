@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding: 27px 24px;
   }
 
@@ -67,5 +68,23 @@
         right: auto;
       }
     }
+  }
+  &__button {
+    width: 248px;
+    flex-shrink: 0;
+    margin-top: 40px;
+
+    @screen lg {
+      display: none;
+    }
+  }
+  &__button-badge {
+    @apply text-14 cap-aligner;
+    font-weight: 400;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 8px;
+    margin-left: 12px;
+    background-color: #ffffff;
   }
 }

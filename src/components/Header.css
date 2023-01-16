@@ -6,8 +6,8 @@
   transform: translateZ(0);
 
   @screen max-lg {
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     box-shadow: inset 0 -1px #d8e1ef;
   }
 

@@ -54,7 +54,7 @@
     --header-height: 88px;
 
     @screen max-lg {
-      --header-height: 78px;
+      --header-height: 70px;
     }
     @screen max-md {
       --header-height: 48px;

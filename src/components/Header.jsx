@@ -27,6 +27,12 @@ function script() {
     }
   })
 
+  createEffect(() => {
+    if (navOpen()) {
+      el.scrollIntoView()
+    }
+  })
+
   if (!import.meta.env.SSR) {
     render(() => {
       return (

@@ -61,6 +61,11 @@
     }
   }
 
+  &_sm {
+    @apply text-16;
+    height: 44px;
+    padding: 0 16px;
+  }
   &_md {
     height: 52px;
     padding: 0 24px;

@@ -127,6 +127,7 @@
     z-index: -1;
     top: 47%;
     right: 119.5%;
+    aspect-ratio: 1;
 
     @screen max-xl {
       width: 110px;

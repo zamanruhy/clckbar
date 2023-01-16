@@ -73,6 +73,7 @@
     line-height: 72px;
     font-weight: 800;
     position: relative;
+    white-space: nowrap;
 
     @screen max-xl {
       font-size: 40px;
@@ -93,6 +94,9 @@
   }
   &__decor {
     @apply my-[0.07em] mx-[0.3em] inline w-[1.285em];
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1;
   }
   &__pointer {
     @apply inline fill-current;
@@ -118,7 +122,7 @@
   &__hook {
     height: 0.411em;
     width: auto;
-    fill: theme(colors.pink.DEFAULT);
+    /* fill: theme(colors.pink.DEFAULT); */
     position: absolute;
     top: 100%;
     left: 0;
@@ -180,6 +184,7 @@
 
     @screen max-md {
       @apply text-13;
+      height: 20px;
       padding: 0 8px;
       left: 32%;
       margin-bottom: -1px;
@@ -187,12 +192,14 @@
     }
   }
 
-  &__side {
+  &__phone {
     width: 511px;
     flex-shrink: 0;
     margin-top: 5px;
     align-self: flex-end;
     margin-left: 30px;
+    position: relative;
+    isolation: isolate;
 
     @screen max-xl {
       width: 450px;
@@ -210,7 +217,34 @@
       margin-right: -22px;
     }
   }
-  &__hand {
+  &__phone-top {
+    background-color: #ffffff;
+    position: absolute;
+    top: 2%;
+    left: 16%;
+    right: 25%;
+    height: 5%;
+    z-index: -1;
+  }
+  &__phone-img {
     width: 100%;
+  }
+  &__phone-content {
+    background-color: #ffffff;
+    position: absolute;
+    top: 7%;
+    left: 16.7%;
+    right: 25.8%;
+    bottom: 28.6%;
+    z-index: -1;
+  }
+  &__phone-media {
+    position: absolute;
+    top: -0.5%;
+    left: -0.5%;
+    width: 101%;
+    height: 101%;
+    object-fit: cover;
+    max-width: none;
   }
 }

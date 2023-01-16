@@ -43,7 +43,7 @@ function formatSizes(sizes) {
     .join(', ')
 }
 
-export default function Image({ src, sizes, ...rest }) {
+export default function Image({ src, sizes, onload, ...rest }) {
   if (!Array.isArray(src)) {
     const obj =
       typeof src === 'string'
@@ -53,7 +53,7 @@ export default function Image({ src, sizes, ...rest }) {
             width: src.width,
             height: Math.round(src.height)
           }
-    return <img {...obj} {...rest} />
+    return <img {...obj} {...rest} attr:onload={onload} />
   }
 
   const formatEntries = Object.entries(
@@ -79,6 +79,7 @@ export default function Image({ src, sizes, ...rest }) {
           height: Math.round(arr[arr.length - 1].height)
         }}
         {...rest}
+        attr:onload={onload}
       />
     )
   }
@@ -111,6 +112,7 @@ export default function Image({ src, sizes, ...rest }) {
               width: arr[arr.length - 1].width,
               height: Math.round(arr[arr.length - 1].height)
             }}
+            attr:onload={onload}
             {...rest}
           />
         )

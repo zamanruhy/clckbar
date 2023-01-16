@@ -1,4 +1,5 @@
 import CaretDownIcon from '../icons/caret-down.svg?component'
+import Button from './Button'
 import './Nav.css'
 
 export default function Nav(props) {
@@ -31,6 +32,10 @@ export default function Nav(props) {
           </a>
         </li>
       </ul>
+      <Button class="nav__button" as="a" href="#" variant="secondary" size="sm">
+        Создать страницу
+        <span className="nav__button-badge">Free</span>
+      </Button>
     </nav>
   )
 }

@@ -8,7 +8,7 @@ import legacy from '@vitejs/plugin-legacy'
 import { imagetools } from 'vite-imagetools'
 
 export default defineConfig({
-  // base: './',
+  base: './',
   plugins: [
     imagetools({
       // include: '**/*.{heic,heif,avif,jpeg,jpg,png,tiff,webp,gif,svg}?*',
