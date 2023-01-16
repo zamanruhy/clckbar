@@ -54,16 +54,8 @@
     }
   }
   &__button-icon {
-    height: 24px;
+    @apply mr-[16px] h-[24px] max-md:mr-[12px] max-md:h-[20px];
     fill: currentColor;
-    margin-right: 16px;
-    position: relative;
-    top: -1px;
-
-    @screen max-md {
-      height: 20px;
-      margin-right: 12px;
-    }
   }
   &__text {
     @apply text-22;

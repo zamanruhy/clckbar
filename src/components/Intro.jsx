@@ -60,7 +60,7 @@ export default function Intro() {
               >
                 Создать кликбар
                 <UpRightIcon class="intro__button-icon" aria-hidden="true" />
-                <span className="intro__tag">7 дней доступа</span>
+                <span className="intro__badge">7 дней доступа</span>
               </Button>
             </div>
           </div>

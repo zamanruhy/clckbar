@@ -1,11 +1,11 @@
 .button {
-  @apply text-18 font-medium transition;
+  @apply text-18 font-medium transition cap-aligner;
   display: inline-flex;
   position: relative;
   text-align: center;
   vertical-align: middle;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   cursor: pointer;
   border-radius: 9999px;
 
@@ -15,6 +15,10 @@
 
   &:active {
     transform: scale(0.98);
+  }
+
+  > * {
+    align-self: center;
   }
 
   &_primary {
@@ -58,21 +62,21 @@
   }
 
   &_md {
-    min-height: 52px;
-    padding: 9px 24px 7px;
+    height: 52px;
+    padding: 0 24px;
 
     @screen max-md {
-      min-height: 44px;
+      height: 44px;
       padding-left: 16px;
       padding-right: 16px;
     }
   }
   &_lg {
-    min-height: 64px;
-    padding: 9px 24px 7px;
+    height: 64px;
+    padding: 0 24px;
 
     @screen max-md {
-      min-height: 44px;
+      height: 44px;
       padding-left: 16px;
       padding-right: 16px;
     }

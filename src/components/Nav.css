@@ -67,13 +67,5 @@
         right: auto;
       }
     }
-    &:focus {
-      outline: none;
-    }
-    &:focus-visible::after {
-      width: 100%;
-      left: 0;
-      right: auto;
-    }
   }
 }

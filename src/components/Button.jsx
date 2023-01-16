@@ -11,6 +11,8 @@ export default function Button(props) {
     'variant',
     'size',
     'children'
+    // 'prepend',
+    // 'append'
   ])
 
   return (
@@ -25,6 +27,11 @@ export default function Button(props) {
       {...rest}
     >
       {props.children}
+      {/* {props.prepend}
+      {props.children && (
+        <span className="button__text contents">{props.children}</span>
+      )}
+      {props.append} */}
     </Dynamic>
   )
 }

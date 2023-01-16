@@ -5,8 +5,10 @@ import Hamburger from './Hamburger'
 import Logo from './Logo'
 import Nav from './Nav'
 import Drawer from './Drawer'
-import './Header.css'
 import useMediaQuery from '@/hooks/use-media-query'
+
+import './Header.css'
+import Button from './Button'
 
 function script() {
   const el = document.querySelector('.header')
@@ -52,22 +54,17 @@ export default function Header() {
       <div class="container">
         <div className="header__inner">
           <Logo className="header__logo" />
+
           <Nav className="header__nav max-lg:hidden" />
-          <a href="#" className="header__auth">
-            <span className="header__auth-text">Войти</span>
+
+          <Button as="a" href="#" variant="primary" class="header__auth">
+            Войти
             <span className="header__auth-badge">Free</span>
-          </a>
+          </Button>
+
           <Hamburger />
         </div>
       </div>
-
-      {/* <div>
-        {mobile() && (
-          <Drawer open={navOpen()} onRequestClose={() => setNavOpen(false)}>
-            {navEl()}
-          </Drawer>
-        )}
-      </div> */}
     </header>
   )
 }

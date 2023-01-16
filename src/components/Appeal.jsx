@@ -48,7 +48,7 @@ export default function Appeal() {
               >
                 Создать страницу
                 <UpRightIcon class="appeal__button-icon" aria-hidden="true" />
-                <span className="appeal__tag">3 шага</span>
+                <span className="appeal__badge">3 шага</span>
               </Button>
             </div>
           </div>

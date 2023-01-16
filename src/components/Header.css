@@ -27,17 +27,9 @@
     padding-bottom: 10px;
   }
   &__auth {
-    @apply transition;
-    line-height: 1;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    background-color: theme(colors.body.DEFAULT);
+    @apply text-18 transition;
     height: 52px;
     padding: 0 24px;
-    border-radius: 52px;
-    color: #ffffff;
-    font-weight: 500;
     margin-left: 48px;
     will-change: transform;
 
@@ -45,43 +37,26 @@
       margin-left: 40px;
     }
     @screen max-lg {
-      height: 48px;
+      @apply text-17;
+      height: 44px;
       padding: 0 20px;
-      font-size: 17px;
     }
     @screen max-md {
+      @apply text-15;
       height: 32px;
       padding: 0 16px;
-      font-size: 15px;
       margin-left: 20px;
     }
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: theme(colors.body.DEFAULT / 75%);
-      }
-
-      &:active {
-        transform: scale(0.98);
-      }
-    }
-  }
-  &__auth-text {
-    display: block;
-    position: relative;
-    top: 1px;
   }
   &__auth-badge {
-    font-size: 14px;
+    @apply text-14 cap-aligner;
     font-weight: 700;
     color: theme(colors.body.DEFAULT);
     height: 24px;
-    padding: 1px 8px 0;
+    padding: 0 8px;
     border-radius: 8px;
     background-color: #ffffff;
     margin-left: 16px;
-    display: flex;
-    align-items: center;
 
     @screen max-lg {
       height: 22px;

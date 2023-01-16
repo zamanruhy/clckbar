@@ -91,17 +91,8 @@
     }
   }
   &__button-icon {
+    @apply mr-[16px] h-[24px] max-md:mr-[12px] max-md:h-[20px];
     fill: currentColor;
-    height: 20px;
-    margin-right: 18px;
-    margin-left: 2px;
-    position: relative;
-    top: -1px;
-
-    @screen max-md {
-      height: 18px;
-      margin-right: 14px;
-    }
   }
   &__how {
     position: absolute;

@@ -1,4 +1,4 @@
-import CaretIcon from '../icons/caret.svg?component'
+import CaretDownIcon from '../icons/caret-down.svg?component'
 import './Nav.css'
 
 export default function Nav(props) {
@@ -20,9 +20,9 @@ export default function Nav(props) {
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link mr-[7px]">
+          <a href="#" className="nav__link mr-[6px]">
             Инструменты
-            <CaretIcon className="relative -top-px ml-[12px] h-[7px] fill-current" />
+            <CaretDownIcon className="relative -top-px mr-[-6px] ml-[6px] h-[24px] fill-current" />
           </a>
         </li>
         <li className="nav__item">

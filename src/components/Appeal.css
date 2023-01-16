@@ -105,16 +105,17 @@
     }
   }
   &__button-icon {
-    @apply ml-[23px] mb-[2px] mr-[5px] h-[12px] max-md:ml-[18px] max-md:h-[10px];
+    @apply ml-[16px] h-[24px] max-md:ml-[12px] max-md:h-[20px];
   }
-  &__tag {
-    @apply text-15;
+  &__badge {
+    @apply text-15 x-aligner;
     background-color: theme(colors.lime.DEFAULT);
     color: theme(colors.body.DEFAULT);
     border-radius: 10px;
     transform: rotate(-10deg);
     font-weight: 700;
-    padding: 6px 12px 4px;
+    padding: 0 12px;
+    height: 32px;
     position: absolute;
     left: 32%;
     bottom: 100%;
@@ -124,7 +125,7 @@
 
     @screen max-md {
       @apply text-14;
-      padding: 3px 8px 1px;
+      padding: 0 8px;
       left: 11%;
       margin-bottom: -8px;
       border-radius: 8px;

@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 const screens = {
   sm: '576px',
@@ -76,5 +77,26 @@ module.exports = {
     }
   },
   corePlugins: { container: false },
-  plugins: []
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.cap-aligner': {
+          '&::before': {
+            content: '""',
+            height: 'calc(50% + 0.3em)',
+            display: 'inline-block'
+            // width: '2px',
+            // background: 'red',
+          }
+        },
+        '.x-aligner': {
+          '&::before': {
+            content: '""',
+            height: 'calc(50% + 0.25em)',
+            display: 'inline-block'
+          }
+        }
+      })
+    })
+  ]
 }

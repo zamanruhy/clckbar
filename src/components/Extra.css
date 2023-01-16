@@ -110,7 +110,7 @@
     }
   }
   &__item-icon {
-    height: 12px;
+    height: 24px;
     color: #ffffff;
   }
   @media (hover: hover) {
@@ -138,13 +138,7 @@
     }
   }
   &__button-icon {
-    height: 16px;
-    fill: #ffffff;
-    margin-left: 20px;
-
-    @screen max-md {
-      height: 14px;
-      margin-left: 15px;
-    }
+    @apply ml-[16px] h-[24px] max-md:ml-[12px] max-md:h-[20px];
+    fill: currentColor;
   }
 }
