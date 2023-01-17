@@ -14,34 +14,64 @@ import Button from './Button'
 import './Intro.css'
 import { onMount } from 'solid-js'
 
-const phrases = [
-  ['Получайте', 'больше клиентов'],
-  ['Выигрывайте', 'призы'],
-  ['Будьте', 'более креативными']
+const sentences = [
+  ['Получай', 'больше клиентов'],
+  ['Начни', 'своё дело'],
+  ['Привлекай', 'новых подписчиков'],
+  ['Бюджетно', 'тестируй идеи']
 ]
 
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+// function wait(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms))
+// }
 
 function script() {
   const el = document.querySelector('.intro')
   if (!el) return
 
-  let sentIndex = 1
-  let i = 0
+  let sentsIndex = 0
+  // let prevSentsIndex = 0
+  let length = sentences[sentsIndex].join('').length
+  let dir = -1
+  let edgeInterval = 700
 
-  const phraseEls = Array.from(el.querySelectorAll('.intro__phrase'))
+  const phraseEls = [...el.querySelectorAll('.intro__phrase')]
 
-  wait(5000)
-
-  async function update() {
-    i += 1
-    phraseEls[0].textContent = phrases[sentIndex][0].slice(0, i)
-    await wait(100)
-    update()
+  function update() {
+    // if (prevSentsIndex !== sentsIndex) {
+    //   phraseEls[0].textContent = ''
+    //   phraseEls[1].textContent = ''
+    //   prevSentsIndex = sentsIndex
+    // }
+    length += dir
+    let interval = dir > 0 ? 200 : 50
+    const phrases = sentences[sentsIndex]
+    const sentence = phrases.join('')
+    if (length <= phrases[0].length) {
+      phraseEls[0].textContent = phrases[0].slice(0, length)
+      phraseEls[1].textContent = ''
+    } else {
+      phraseEls[1].textContent = phrases[1].slice(0, length - phrases[0].length)
+    }
+    sentence.slice(0, length)
+    if (length === sentence.length) {
+      // length = 0
+      dir = -1
+      interval = edgeInterval
+    } else if (length === 0) {
+      sentsIndex = (sentsIndex + 1) % sentences.length
+      dir = 1
+      interval = edgeInterval
+    }
+    setTimeout(update, interval)
   }
-  update()
+
+  setTimeout(update, 5000)
+
+  const phoneImgEl = el.querySelector('.intro__phone-img')
+  phoneImgEl.addEventListener('load', (e) => {
+    el.querySelector('.intro__phone-content').classList.remove('opacity-0')
+  })
 }
 
 if (import.meta.env.PROD && !import.meta.env.SSR) {
@@ -63,7 +93,7 @@ export default function Intro() {
                   alt=""
                   fetchpriority="high"
                 />{' '}
-                <span className="intro__phrase">Получайте</span>
+                <span className="intro__phrase">Получай</span>
               </div>
               <div className="text-pink">
                 <span className="intro__phrase">больше клиентов</span>{' '}
@@ -123,7 +153,7 @@ export default function Intro() {
             </div>
           </div>
           <div className="intro__phone">
-            <div className="intro__phone-top" />
+            {/* <div className="intro__phone-top" /> */}
             <Image
               className="intro__phone-img"
               src={phoneImg}
@@ -131,7 +161,7 @@ export default function Intro() {
               fetchpriority="high"
               draggable="false"
             />
-            <div className="intro__phone-content">
+            <div className="intro__phone-content opacity-0">
               <Image
                 className="intro__phone-media"
                 src={previewImg}

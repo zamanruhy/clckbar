@@ -98,8 +98,10 @@
     border-radius: 50%;
     aspect-ratio: 1;
   }
+  &__phrase {
+  }
   &__pointer {
-    @apply inline fill-current;
+    @apply inline origin-bottom fill-current transition duration-75;
     height: 36px;
     vertical-align: -1.68px;
 
@@ -117,7 +119,9 @@
       vertical-align: middle;
     }
   }
-  &__phrase {
+  &__phrase:empty ~ &__pointer {
+    @apply animate-[pulse_1.4s_cubic-bezier(0.4,0,0.6,1)_infinite];
+    /* transform: scale(0.9); */
   }
   &__hook {
     height: 0.411em;
@@ -200,6 +204,7 @@
     margin-left: 30px;
     position: relative;
     isolation: isolate;
+    user-select: none;
 
     @screen max-xl {
       width: 450px;
@@ -217,7 +222,7 @@
       margin-right: -22px;
     }
   }
-  &__phone-top {
+  /* &__phone-top {
     background-color: #ffffff;
     position: absolute;
     top: 2%;
@@ -225,25 +230,27 @@
     right: 25%;
     height: 5%;
     z-index: -1;
-  }
+  } */
   &__phone-img {
     width: 100%;
   }
   &__phone-content {
     background-color: #ffffff;
     position: absolute;
-    top: 7%;
+    top: 2%;
     left: 16.7%;
     right: 25.8%;
     bottom: 28.6%;
     z-index: -1;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
   }
   &__phone-media {
     position: absolute;
-    top: -0.5%;
+    top: 4.5%;
     left: -0.5%;
     width: 101%;
-    height: 101%;
+    height: 96%;
     object-fit: cover;
     max-width: none;
   }
