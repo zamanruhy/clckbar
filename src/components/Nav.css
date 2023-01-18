@@ -30,6 +30,7 @@
   &__item {
     position: relative;
   }
+
   &__link {
     @apply text-18;
     display: flex;
@@ -70,31 +71,82 @@
       }
     }
   }
+  &__item_has-menu &__link {
+    @screen lg {
+      @apply mr-[6px];
+    }
+  }
+  &__caret {
+    @apply mr-[-6px] ml-[6px] h-[24px] fill-current transition;
+    transform: translateY(-1px);
+  }
+  &__item_open &__caret {
+    transform: translateY(0) rotate(180deg);
+  }
 
   &__menu {
     box-shadow: 0 5px 15px theme(colors.body.DEFAULT / 10%);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    border-radius: 10px;
-    margin-top: 8px;
-    padding: 8px 0;
     max-width: 270px;
     width: max-content;
+
+    @screen lg {
+      @apply transition-[transform,opacity,visibility];
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 10;
+      margin-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+    }
+    @screen max-lg {
+      @apply transition-[margin-top,grid-template-rows,visibility];
+      text-align: center;
+      display: grid;
+      grid-template-rows: minmax(0, 0fr);
+      margin-top: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+  }
+  &__item_open &__menu {
+    @screen lg {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    @screen max-lg {
+      grid-template-rows: minmax(0, 1fr);
+      margin-top: 8px;
+      visibility: visible;
+    }
+  }
+  &__menu-list {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 8px 0;
   }
   &__menu-item {
   }
   &__menu-link {
-    @apply text-16 transition;
+    @apply text-16;
     display: block;
     padding: 10px 20px;
+    outline-offset: -3px;
 
     @media (hover: hover) {
       &:hover {
-        background-color: theme(colors.lime.DEFAULT / 10%);
+        text-decoration: underline;
+        text-decoration-color: theme(colors.lime.DEFAULT);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
       }
     }
+
+    /* @screen max-lg {
+      outline-offset: -3px;
+    } */
   }
 
   &__button {

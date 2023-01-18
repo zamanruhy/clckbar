@@ -34,7 +34,7 @@ function script() {
 
   function update() {
     length += dir
-    let interval = dir > 0 ? 70 : 40
+    let interval = dir > 0 ? 70 : 30
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
     if (length <= phrases[0].length) {
