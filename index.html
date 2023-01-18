@@ -6,6 +6,7 @@
     <meta name="description" content="Кликбар" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.ico" />
+    <meta name="theme-color" content="#050509" />
     <link
       rel="preload"
       href="static/fonts/MullerRegular.woff2"
@@ -61,16 +62,34 @@
               <ul class="nav__list">
                 <li class="nav__item"><a href="#" class="nav__link">Все возможности</a></li>
                 <li class="nav__item"><a href="#" class="nav__link">Тарифы</a></li>
-                <li class="nav__item">
-                  <a href="#" class="nav__link mr-[6px]"
-                    >Инструменты<svg
-                      viewBox="0 0 24 24"
-                      class="relative -top-px mr-[-6px] ml-[6px] h-[24px] fill-current"
-                    >
+                <li class="nav__item nav__item_has-menu">
+                  <a href="#" class="nav__link"
+                    >Инструменты<svg viewBox="0 0 24 24" class="nav__caret" aria-hidden="true">
                       <path
                         d="m16.88 11.13-4.6 4.6c-.1.1-.21.17-.33.2a1.1 1.1 0 0 1-.37.07 1.1 1.1 0 0 1-.38-.06.87.87 0 0 1-.32-.21l-4.6-4.6a.95.95 0 0 1-.28-.7.95.95 0 0 1 .97-.98c.29 0 .52.1.7.27l3.9 3.9 3.9-3.9a.95.95 0 0 1 .7-.27.95.95 0 0 1 .97.98.93.93 0 0 1-.26.7Z"
                       ></path></svg
                   ></a>
+                  <div class="nav__menu">
+                    <ul class="nav__menu-list">
+                      <li class="nav__menu-item">
+                        <a href="#" class="nav__menu-link"
+                          >Реклама Telegram-каналов в Яндекс Директ</a
+                        >
+                      </li>
+                      <li class="nav__menu-item">
+                        <a href="#" class="nav__menu-link">Подарок за подписку на Telegram-канал</a>
+                      </li>
+                      <li class="nav__menu-item">
+                        <a href="#" class="nav__menu-link">Сократить ссылку</a>
+                      </li>
+                      <li class="nav__menu-item">
+                        <a href="#" class="nav__menu-link">Сделать ссылку на WhatsApp</a>
+                      </li>
+                      <li class="nav__menu-item">
+                        <a href="#" class="nav__menu-link">Сделать ссылку на Instagram</a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li class="nav__item"><a href="#" class="nav__link">Блог</a></li>
               </ul>
@@ -92,7 +111,7 @@
             <div class="intro__inner">
               <div class="intro__main">
                 <h1 class="intro__title">
-                  <div class="">
+                  <div class="intro__title-line">
                     <picture
                       ><source srcset="static/img/emoji.avif" type="image/avif" />
                       <source srcset="static/img/emoji.webp" type="image/webp" />
@@ -106,7 +125,7 @@
                     /></picture>
                     <span class="intro__phrase">Получай</span>
                   </div>
-                  <div class="text-pink">
+                  <div class="intro__title-line text-pink">
                     <span class="intro__phrase">больше клиентов</span>
                     <svg viewBox="0 0 36 36" class="intro__pointer" aria-hidden="true">
                       <path
@@ -116,7 +135,7 @@
                       ></path>
                     </svg>
                   </div>
-                  <div>
+                  <div class="intro__title-line">
                     с живой<picture
                       ><source srcset="static/img/cat.avif" type="image/avif" />
                       <source srcset="static/img/cat.webp" type="image/webp" />
@@ -129,7 +148,9 @@
                         fetchpriority="high" /></picture
                     >страницей
                   </div>
-                  <div>кликбар <span class="text-pink">уже сегодня</span></div>
+                  <div class="intro__title-line">
+                    кликбар <span class="text-pink">уже сегодня</span>
+                  </div>
                   <img
                     src="data:image/svg+xml,%3csvg width='168' height='23' fill='%23ff76d9' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M165.93 6.43a39.59 39.59 0 0 1-5.63 3.23c-10.13 4.87-20.89 7.72-31.9 9.67a204.62 204.62 0 0 1-32.55 3.02c-4.43.07-8.85-.14-13.28-.35l-3.37-.16c-5.71-.25-11.41-.59-17.08-1.3a391.14 391.14 0 0 1-15.09-2.3 324.1 324.1 0 0 1-16.76-3.1l-5.98-2.86c3.24.7 6.48 1.34 9.73 1.99 2.44.48 4.88.97 7.32 1.48 3.16.65 6.35 1.08 9.55 1.5 2 .28 3.99.55 5.97.87 6.78 1.1 13.62 1.63 20.45 2.13 4.09.3 8.2.46 12.31.11.29-.02.54-.08.62-.4h.04c.5.46 1.1.4 1.68.36l.55-.03c5.94.03 11.86-.23 17.78-.61 2.2-.15 4.4-.38 6.6-.61 1.5-.16 3-.32 4.51-.45a88 88 0 0 0 11.6-2.04c.3-.07.62-.09.95-.11.86-.06 1.77-.12 2.31-1.03h.05l.05-.03c1.33.46 2.43-.08 3.54-.62l.82-.4c-.07.02-.14.02-.22.03-1.41.18-2.83.36-4.14 1l-.06-.03-.04.05h-.33c-.27 0-.53 0-.8.06a199.33 199.33 0 0 1-33.85 4.08c-2.5.1-5 .18-7.5.26l-3.5.12a1.54 1.54 0 0 1-.04-.04v.04c-2.61-.33-5.23-.42-7.85-.51-1.44-.05-2.87-.1-4.3-.2l-.9-.05a184.1 184.1 0 0 1-16.51-1.52c-1.57-.24-3.16-.4-4.74-.56-1.99-.2-3.98-.4-5.95-.77l-6.42-1.14c-6.15-1.08-12.3-2.16-18.4-3.6l-4.5-1.05L.13.76a247.2 247.2 0 0 0 15.78 3.97c1.09.22 2.18.46 3.27.7 3.5.75 7.01 1.5 10.56 1.9 1.1.13 2.17.39 3.24.65 1.43.35 2.86.7 4.36.71.19 0 .37.03.55.07.45.08.9.16 1.37-.25.25-.2 1.29-.54 1.29.64 0 .19.27.2.52.22l.22.01c.95.13 1.9.3 2.85.46 2.07.36 4.14.71 6.21.7a40.3 40.3 0 0 1 4.97.37c1.23.14 2.46.28 3.7.34.95.04 1.87.3 2.8.56 1.08.3 2.17.6 3.32.58.28 0 .56 0 .84.02.6.03 1.2.07 1.8-.11l.5.07.49.08c2.21.5 4.44.77 6.7.46 2.33.53 4.67.67 7.04.37l.58.07c2.3.3 4.58.6 6.92-.03a6.8 6.8 0 0 1 2.12-.11 13 13 0 0 0 1.24.02l5.06-.26c2.13-.11 4.26-.23 6.4-.32l.47-.05c.56-.06 1.14-.13 1.64.32 1.96.34 3.88.1 5.8-.35 1.3-.35 2.65-.36 4-.38.61 0 1.23 0 1.84-.04h.1c2.47-.16 4.87-.31 7.26-1.2 1.19-.43 2.46-.52 3.75-.6a21.1 21.1 0 0 0 2.6-.3l2.57-.49c3.8-.7 7.62-1.41 11.15-2.84a56.53 56.53 0 0 1 6.3-2c2.75-.76 5.48-1.5 8.05-2.79.4-.2.77-.43 1.15-.66.73-.45 1.46-.9 2.33-1.1 1.35-.32 3.4.45 4.07 1.99l.03.06-2 4.2Zm-10.85 3.52-.2.04c.61-.7 1.42-.88 2.24-1.07l.6-.15c-.7.78-1.67.98-2.64 1.18Z'/%3e%3c/svg%3e"
                     width="168"
