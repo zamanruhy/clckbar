@@ -1,3 +1,5 @@
+import { onMount } from 'solid-js'
+import { imageLoaded, windowLoaded } from '@/utils'
 import emojiImg from '../images/emoji.png?format=png;webp;avif'
 // import catImg from '../images/cat.png?format=png;webp'
 import previewImg from '../images/preview.png?format=png;webp;avif'
@@ -12,7 +14,6 @@ import Image from './Image'
 import Button from './Button'
 
 import './Intro.css'
-import { onMount } from 'solid-js'
 
 const sentences = [
   ['Получай', 'больше клиентов'],
@@ -21,30 +22,19 @@ const sentences = [
   ['Бюджетно', 'тестируй идеи']
 ]
 
-// function wait(ms) {
-//   return new Promise((resolve) => setTimeout(resolve, ms))
-// }
-
 function script() {
   const el = document.querySelector('.intro')
   if (!el) return
 
   let sentsIndex = 0
-  // let prevSentsIndex = 0
   let length = sentences[sentsIndex].join('').length
   let dir = -1
-  let edgeInterval = 700
 
   const phraseEls = [...el.querySelectorAll('.intro__phrase')]
 
   function update() {
-    // if (prevSentsIndex !== sentsIndex) {
-    //   phraseEls[0].textContent = ''
-    //   phraseEls[1].textContent = ''
-    //   prevSentsIndex = sentsIndex
-    // }
     length += dir
-    let interval = dir > 0 ? 200 : 50
+    let interval = dir > 0 ? 70 : 40
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
     if (length <= phrases[0].length) {
@@ -55,22 +45,21 @@ function script() {
     }
     sentence.slice(0, length)
     if (length === sentence.length) {
-      // length = 0
       dir = -1
-      interval = edgeInterval
+      interval = 1000
     } else if (length === 0) {
       sentsIndex = (sentsIndex + 1) % sentences.length
       dir = 1
-      interval = edgeInterval
+      interval = 300
     }
     setTimeout(update, interval)
   }
 
-  setTimeout(update, 5000)
+  windowLoaded().then(() => setTimeout(update, 2000))
 
   const phoneImgEl = el.querySelector('.intro__phone-img')
-  phoneImgEl.addEventListener('load', (e) => {
-    el.querySelector('.intro__phone-content').classList.remove('opacity-0')
+  imageLoaded(phoneImgEl).then(() => {
+    el.querySelector('.intro__phone-content').classList.remove('invisible')
   })
 }
 
@@ -86,20 +75,20 @@ export default function Intro() {
         <div className="intro__inner">
           <div className="intro__main">
             <h1 className="intro__title">
-              <div className="">
+              <div className="intro__title-line">
                 <Image
                   className="intro__emoji"
                   src={emojiImg}
                   alt=""
                   fetchpriority="high"
                 />{' '}
-                <span className="intro__phrase">Получай</span>
+                <span className="intro__phrase">{sentences[0][0]}</span>
               </div>
-              <div className="text-pink">
-                <span className="intro__phrase">больше клиентов</span>{' '}
+              <div className="intro__title-line text-pink">
+                <span className="intro__phrase">{sentences[0][1]}</span>{' '}
                 <UpCircleIcon className="intro__pointer" aria-hidden="true" />
               </div>
-              <div>
+              <div className="intro__title-line">
                 с живой
                 <picture>
                   <source srcset="static/img/cat.avif" type="image/avif" />
@@ -129,7 +118,7 @@ export default function Intro() {
                 /> */}
                 страницей
               </div>
-              <div>
+              <div className="intro__title-line">
                 кликбар <span class="text-pink">уже сегодня</span>
               </div>
               <Image className="intro__hook" src={hookImg} alt="" />
@@ -161,7 +150,7 @@ export default function Intro() {
               fetchpriority="high"
               draggable="false"
             />
-            <div className="intro__phone-content opacity-0">
+            <div className="intro__phone-content invisible">
               <Image
                 className="intro__phone-media"
                 src={previewImg}

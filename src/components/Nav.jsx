@@ -25,6 +25,33 @@ export default function Nav(props) {
             Инструменты
             <CaretDownIcon className="relative -top-px mr-[-6px] ml-[6px] h-[24px] fill-current" />
           </a>
+          {/* <ul className="nav__menu">
+            <li className="nav__menu-item">
+              <a href="#" className="nav__menu-link">
+                Реклама Telegram-каналов в Яндекс Директ
+              </a>
+            </li>
+            <li className="nav__menu-item">
+              <a href="#" className="nav__menu-link">
+                Подарок за подписку на Telegram-канал
+              </a>
+            </li>
+            <li className="nav__menu-item">
+              <a href="#" className="nav__menu-link">
+                Сократить ссылку
+              </a>
+            </li>
+            <li className="nav__menu-item">
+              <a href="#" className="nav__menu-link">
+                Сделать ссылку на WhatsApp
+              </a>
+            </li>
+            <li className="nav__menu-item">
+              <a href="#" className="nav__menu-link">
+                Сделать ссылку на Instagram
+              </a>
+            </li>
+          </ul> */}
         </li>
         <li className="nav__item">
           <a href="#" className="nav__link">

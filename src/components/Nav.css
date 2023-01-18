@@ -28,6 +28,7 @@
     }
   }
   &__item {
+    position: relative;
   }
   &__link {
     @apply text-18;
@@ -69,6 +70,33 @@
       }
     }
   }
+
+  &__menu {
+    box-shadow: 0 5px 15px theme(colors.body.DEFAULT / 10%);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 8px 0;
+    max-width: 270px;
+    width: max-content;
+  }
+  &__menu-item {
+  }
+  &__menu-link {
+    @apply text-16 transition;
+    display: block;
+    padding: 10px 20px;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: theme(colors.lime.DEFAULT / 10%);
+      }
+    }
+  }
+
   &__button {
     width: 248px;
     flex-shrink: 0;
