@@ -183,14 +183,14 @@
               <div class="intro__phone">
                 <picture
                   ><source
-                    srcset="static/img/phone.avif 600w, static/img/phone2.avif 1022w"
+                    srcset="static/img/phone.avif 700w, static/img/phone2.avif 1022w"
                     type="image/avif" />
                   <source
-                    srcset="static/img/phone.webp 600w, static/img/phone2.webp 1022w"
+                    srcset="static/img/phone.webp 700w, static/img/phone2.webp 1022w"
                     type="image/webp" />
                   <img
                     src="static/img/phone2.png"
-                    srcset="static/img/phone.png 600w, static/img/phone2.png 1022w"
+                    srcset="static/img/phone.png 700w, static/img/phone2.png 1022w"
                     sizes="(min-width: 1216px) 608px, (min-width: 768px) 50vw, 100vw"
                     width="1022"
                     height="1526"
@@ -213,6 +213,14 @@
                   /></picture>
                 </div>
               </div>
+              <svg class="intro__bg">
+                <defs>
+                  <filter id="intro-bg-blur" width="200%" height="200%" x="-50%" y="-50%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="122"></feGaussianBlur>
+                  </filter>
+                </defs>
+                <circle cx="50%" cy="50%" r="50%" filter="url(#intro-bg-blur)"></circle>
+              </svg>
             </div>
           </div>
         </section>
@@ -432,6 +440,14 @@
                   </div>
                 </article>
               </div>
+              <svg class="steps__bg">
+                <defs>
+                  <filter id="steps-bg-blur" width="200%" height="200%" x="-50%" y="-50%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="122"></feGaussianBlur>
+                  </filter>
+                </defs>
+                <circle cx="50%" cy="50%" r="50%" filter="url(#steps-bg-blur)"></circle>
+              </svg>
             </div>
           </div>
         </section>
@@ -499,14 +515,14 @@
               <div class="appeal__side">
                 <picture
                   ><source
-                    srcset="static/img/woman.avif 600w, static/img/woman2.avif 1184w"
+                    srcset="static/img/woman.avif 700w, static/img/woman2.avif 1184w"
                     type="image/avif" />
                   <source
-                    srcset="static/img/woman.webp 600w, static/img/woman2.webp 1184w"
+                    srcset="static/img/woman.webp 700w, static/img/woman2.webp 1184w"
                     type="image/webp" />
                   <img
                     src="static/img/woman2.png"
-                    srcset="static/img/woman.png 600w, static/img/woman2.png 1184w"
+                    srcset="static/img/woman.png 700w, static/img/woman2.png 1184w"
                     width="1184"
                     height="1288"
                     class="appeal__img"
