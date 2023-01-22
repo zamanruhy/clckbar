@@ -1,4 +1,4 @@
-import clientProfileImg from '../images/client-profile.png?format=png;webp'
+import clientProfileImg from '../images/client-profile.png?format=png;webp;avif'
 import Image from './Image'
 
 import './Client.css'

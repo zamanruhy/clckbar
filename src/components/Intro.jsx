@@ -1,9 +1,9 @@
-import { onMount } from 'solid-js'
+import { createEffect, createMemo, createSignal, onMount } from 'solid-js'
 import { imageLoaded, windowLoaded } from '@/utils'
 import emojiImg from '../images/emoji.png?format=png;webp;avif'
 // import catImg from '../images/cat.png?format=png;webp'
 import previewImg from '../images/preview.png?format=png;webp;avif'
-import phoneImg from '../images/phone.png?format=png;webp;avif'
+import phoneImg from '../images/phone.png?format=png;webp;avif&width=700;1022'
 import UpCircleIcon from '../icons/up-circle.svg?component'
 import UpRightIcon from '../icons/up-right.svg?component'
 import hookImg from '../images/hook.svg?datauri&metadata'
@@ -29,21 +29,31 @@ function script() {
   let sentsIndex = 0
   let length = sentences[sentsIndex].join('').length
   let dir = -1
+  let resolve = null
+  let suspended = null
 
   const phraseEls = [...el.querySelectorAll('.intro__phrase')]
+  const linesEl = el.querySelector('.intro__title-lines')
+  const [intersected, setIntersected] = createSignal(true)
+  const [docVisible, setDocVisible] = createSignal(true)
+  const playing = createMemo(() => docVisible() && intersected())
 
-  function update() {
+  // let lastTime = Date.now()
+
+  async function update() {
+    if (suspended) await suspended
+
     length += dir
     let interval = dir > 0 ? 70 : 30
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
-    if (length <= phrases[0].length) {
-      phraseEls[0].textContent = phrases[0].slice(0, length)
-      phraseEls[1].textContent = ''
-    } else {
-      phraseEls[1].textContent = phrases[1].slice(0, length - phrases[0].length)
-    }
-    sentence.slice(0, length)
+
+    phraseEls[0].textContent = phrases[0].slice(0, length)
+    phraseEls[1].textContent = phrases[1].slice(
+      0,
+      Math.max(length - phrases[0].length, 0)
+    )
+
     if (length === sentence.length) {
       dir = -1
       interval = 1000
@@ -52,10 +62,42 @@ function script() {
       dir = 1
       interval = 300
     }
+    // console.log(Date.now() - lastTime)
+    // lastTime = Date.now()
     setTimeout(update, interval)
   }
 
   windowLoaded().then(() => setTimeout(update, 2000))
+
+  function play() {
+    if (suspended) {
+      resolve()
+      suspended = null
+    }
+  }
+  function pause() {
+    if (!suspended) {
+      suspended = new Promise((res) => (resolve = res))
+    }
+  }
+
+  createEffect(() => {
+    if (playing()) {
+      // console.log('play')
+      play()
+    } else {
+      // console.log('pause')
+      pause()
+    }
+  })
+
+  new IntersectionObserver(([entry]) => {
+    setIntersected(entry.isIntersecting)
+  }).observe(linesEl)
+
+  document.addEventListener('visibilitychange', () => {
+    setDocVisible(document.visibilityState === 'visible')
+  })
 
   const phoneImgEl = el.querySelector('.intro__phone-img')
   imageLoaded(phoneImgEl).then(() => {
@@ -75,18 +117,20 @@ export default function Intro() {
         <div className="intro__inner">
           <div className="intro__main">
             <h1 className="intro__title">
-              <div className="intro__title-line">
-                <Image
-                  className="intro__emoji"
-                  src={emojiImg}
-                  alt=""
-                  fetchpriority="high"
-                />{' '}
-                <span className="intro__phrase">{sentences[0][0]}</span>
-              </div>
-              <div className="intro__title-line text-pink">
-                <span className="intro__phrase">{sentences[0][1]}</span>{' '}
-                <UpCircleIcon className="intro__pointer" aria-hidden="true" />
+              <div className="intro__title-lines">
+                <div className="intro__title-line">
+                  <Image
+                    className="intro__emoji"
+                    src={emojiImg}
+                    alt=""
+                    fetchpriority="high"
+                  />{' '}
+                  <span className="intro__phrase">{sentences[0][0]}</span>
+                </div>
+                <div className="intro__title-line text-pink">
+                  <span className="intro__phrase">{sentences[0][1]}</span>{' '}
+                  <UpCircleIcon className="intro__pointer" aria-hidden="true" />
+                </div>
               </div>
               <div className="intro__title-line">
                 с живой
@@ -147,6 +191,7 @@ export default function Intro() {
               className="intro__phone-img"
               src={phoneImg}
               alt=""
+              sizes="100vw md:50vw"
               fetchpriority="high"
               draggable="false"
             />
@@ -159,6 +204,28 @@ export default function Intro() {
               />
             </div>
           </div>
+          <svg class="intro__bg">
+            <defs>
+              <filter
+                id="intro-bg-blur"
+                width="200%"
+                height="200%"
+                x="-50%"
+                y="-50%"
+              >
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="122"
+                ></feGaussianBlur>
+              </filter>
+            </defs>
+            <circle
+              cx="50%"
+              cy="50%"
+              r="50%"
+              filter="url(#intro-bg-blur)"
+            ></circle>
+          </svg>
         </div>
       </div>
     </section>

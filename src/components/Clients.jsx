@@ -1,9 +1,9 @@
 import { onMount } from 'solid-js'
 import Client from './Client'
-import clientAva1 from '../images/client-ava-1.png?format=png;webp'
-import clientAva2 from '../images/client-ava-2.png?format=png;webp'
-import clientAva3 from '../images/client-ava-3.png?format=png;webp'
-import clientAva4 from '../images/client-ava-4.png?format=png;webp'
+import clientAva1 from '../images/client-ava-1.png?format=png;webp;avif'
+import clientAva2 from '../images/client-ava-2.png?format=png;webp;avif'
+import clientAva3 from '../images/client-ava-3.png?format=png;webp;avif'
+import clientAva4 from '../images/client-ava-4.png?format=png;webp;avif'
 import LeftIcon from '../icons/left.svg?component'
 import RightIcon from '../icons/right.svg?component'
 import Image from './Image'
@@ -53,7 +53,6 @@ function script() {
     align: 'center',
     slidesToScroll: 1,
     speed: 15,
-    // skipSnaps: true,
     breakpoints: {
       '(min-width: 768px)': { startIndex: 1, containScroll: '' }
     }
@@ -68,8 +67,8 @@ function script() {
   embla.on('init', update)
   embla.on('reInit', update)
 
-  prevEl.addEventListener('click', (e) => embla.scrollPrev())
-  nextEl.addEventListener('click', (e) => embla.scrollNext())
+  prevEl.addEventListener('click', () => embla.scrollPrev())
+  nextEl.addEventListener('click', () => embla.scrollNext())
 }
 
 if (import.meta.env.PROD && !import.meta.env.SSR) {

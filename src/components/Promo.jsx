@@ -1,5 +1,5 @@
-import emojiImg from '../images/emoji-thumb-up.png?format=png;webp'
-import manImg from '../images/man.png?format=png;webp'
+import emojiImg from '../images/emoji-thumb-up.png?format=png;webp;avif'
+import manImg from '../images/man.png?format=png;webp;avif'
 import PlayIcon from '../icons/play.svg?component'
 import howImg from '../images/how.svg?metadata'
 import Button from './Button'

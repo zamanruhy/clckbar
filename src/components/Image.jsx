@@ -1,10 +1,10 @@
-const maxWidth = 1280
+const maxWidth = 1216
 const screens = {
-  sm: 640,
+  sm: 576,
   md: 768,
-  lg: 1024,
-  xl: 1280,
-  '2xl': 1536
+  lg: 992,
+  xl: 1200,
+  '2xl': 1400
 }
 
 function getIndex(a) {

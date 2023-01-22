@@ -33,7 +33,7 @@
       align-items: center;
     }
 
-    &::after {
+    /* &::after {
       content: "";
       border-radius: 50%;
       background-color: theme(colors.lime.DEFAULT);
@@ -41,6 +41,7 @@
       filter: blur(122px);
       position: absolute;
       z-index: -1;
+      visibility: hidden;
 
       @screen md {
         width: 1208px;
@@ -55,6 +56,27 @@
         left: 50%;
         transform: translateX(-50%);
       }
+    } */
+  }
+  &__bg {
+    fill: theme(colors.lime.DEFAULT);
+    opacity: 0.16;
+    position: absolute;
+    z-index: -1;
+    overflow: visible;
+
+    @screen md {
+      width: 1208px;
+      height: 1208px;
+      top: 92px;
+      right: -450px;
+    }
+    @screen max-md {
+      width: 564px;
+      height: 564px;
+      bottom: -116px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
   &__main {

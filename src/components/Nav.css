@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 27px 24px;
+    padding: 25px 24px 27px;
   }
 
   &__list {
@@ -24,7 +24,7 @@
     }
     @screen max-lg {
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
     }
   }
   &__item {
@@ -41,7 +41,7 @@
     isolation: isolate;
 
     @screen max-lg {
-      padding: 8px 0 6px;
+      padding: 10px 0 8px;
     }
 
     &::after {
@@ -87,6 +87,7 @@
   &__menu {
     box-shadow: 0 5px 15px theme(colors.body.DEFAULT / 10%);
     max-width: 270px;
+    border-radius: 10px;
     width: max-content;
 
     @screen lg {
@@ -101,7 +102,7 @@
       transform: translateY(10px);
     }
     @screen max-lg {
-      @apply transition-[margin-top,grid-template-rows,visibility];
+      @apply transition-[margin-top,grid-template-rows,visibility] duration-200;
       text-align: center;
       display: grid;
       grid-template-rows: minmax(0, 0fr);
@@ -124,7 +125,7 @@
   }
   &__menu-list {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: inherit;
     padding: 8px 0;
   }
   &__menu-item {

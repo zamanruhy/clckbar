@@ -8,7 +8,7 @@
   &__inner {
     position: relative;
 
-    &::before {
+    /* &::before {
       content: "";
       width: 1000px;
       height: 1000px;
@@ -24,6 +24,21 @@
       @screen max-lg {
         display: none;
       }
+    } */
+  }
+  &__bg {
+    width: 1000px;
+    height: 1000px;
+    fill: theme(colors.pink.DEFAULT);
+    position: absolute;
+    z-index: -1;
+    left: -312px;
+    top: -248px;
+    opacity: 0.16;
+    overflow: visible;
+
+    @screen max-lg {
+      display: none;
     }
   }
   &__title {

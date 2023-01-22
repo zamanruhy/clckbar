@@ -1,6 +1,6 @@
-import lightningImg from '../images/lightning.png?format=png;webp'
-import bagImg from '../images/bag.png?format=png;webp'
-import rocketImg from '../images/rocket.png?format=png;webp'
+import lightningImg from '../images/lightning.png?format=png;webp;avif'
+import bagImg from '../images/bag.png?format=png;webp;avif'
+import rocketImg from '../images/rocket.png?format=png;webp;avif'
 import Image from './Image'
 import wowImg from '../images/wow.svg?metadata'
 

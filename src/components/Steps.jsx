@@ -34,6 +34,28 @@ export default function Steps() {
               <Step index={i} {...item} />
             ))}
           </div>
+          <svg class="steps__bg">
+            <defs>
+              <filter
+                id="steps-bg-blur"
+                width="200%"
+                height="200%"
+                x="-50%"
+                y="-50%"
+              >
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="122"
+                ></feGaussianBlur>
+              </filter>
+            </defs>
+            <circle
+              cx="50%"
+              cy="50%"
+              r="50%"
+              filter="url(#steps-bg-blur)"
+            ></circle>
+          </svg>
         </div>
       </div>
     </section>

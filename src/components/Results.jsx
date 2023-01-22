@@ -1,5 +1,5 @@
-import resultAva1 from '../images/result-ava-1.png?format=png;webp'
-import resultAva2 from '../images/result-ava-2.png?format=png;webp'
+import resultAva1 from '../images/result-ava-1.png?format=png;webp;avif'
+import resultAva2 from '../images/result-ava-2.png?format=png;webp;avif'
 import Result from './Result'
 
 import './Results.css'
