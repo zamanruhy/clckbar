@@ -1,0 +1,28 @@
+.drawer {
+  @apply fixed top-[var(--header-height)] bottom-0 right-0 z-[2000] w-full outline-none will-change-transform;
+
+  &_in {
+    animation: slide-in 200ms theme(transitionTimingFunction.out);
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+  }
+  &_out {
+    animation: slide-out 150ms theme(transitionTimingFunction.in);
+
+    @keyframes slide-out {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+  }
+}

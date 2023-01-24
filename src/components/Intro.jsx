@@ -29,20 +29,16 @@ function script() {
   let sentsIndex = 0
   let length = sentences[sentsIndex].join('').length
   let dir = -1
-  let resolve = null
-  let suspended = null
+  let timer
 
   const phraseEls = [...el.querySelectorAll('.intro__phrase')]
   const linesEl = el.querySelector('.intro__title-lines')
+  const [inited, setInited] = createSignal(false)
   const [intersected, setIntersected] = createSignal(true)
   const [docVisible, setDocVisible] = createSignal(true)
-  const playing = createMemo(() => docVisible() && intersected())
+  const playing = createMemo(() => inited() && intersected() && docVisible())
 
-  // let lastTime = Date.now()
-
-  async function update() {
-    if (suspended) await suspended
-
+  function update() {
     length += dir
     let interval = dir > 0 ? 70 : 30
     const phrases = sentences[sentsIndex]
@@ -62,34 +58,16 @@ function script() {
       dir = 1
       interval = 300
     }
-    // console.log(Date.now() - lastTime)
-    // lastTime = Date.now()
-    setTimeout(update, interval)
-  }
 
-  windowLoaded().then(() => setTimeout(update, 2000))
-
-  function play() {
-    if (suspended) {
-      resolve()
-      suspended = null
-    }
-  }
-  function pause() {
-    if (!suspended) {
-      suspended = new Promise((res) => (resolve = res))
-    }
+    timer = setTimeout(update, interval)
   }
 
   createEffect(() => {
-    if (playing()) {
-      // console.log('play')
-      play()
-    } else {
-      // console.log('pause')
-      pause()
-    }
+    if (playing()) update()
+    else clearTimeout(timer)
   })
+
+  windowLoaded(() => setTimeout(setInited, 2000, true))
 
   new IntersectionObserver(([entry]) => {
     setIntersected(entry.isIntersecting)
@@ -135,7 +113,6 @@ export default function Intro() {
               <div className="intro__title-line">
                 с живой
                 <picture>
-                  <source srcset="static/img/cat.avif" type="image/avif" />
                   <source srcset="static/img/cat.webp" type="image/webp" />
                   <img
                     className="intro__decor"

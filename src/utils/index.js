@@ -1,21 +1,25 @@
-export function windowLoaded() {
-  return new Promise((resolve) => {
+export function windowLoaded(resolve, reject) {
+  function fn(res, rej) {
     if (document.readyState === 'complete') {
-      resolve()
+      res()
     } else {
-      window.onload = resolve
+      window.onload = res
+      window.onerror = rej
     }
-  })
+  }
+  return typeof resolve === 'function' ? fn(resolve, reject) : new Promise(fn)
 }
 
-export function imageLoaded(imgEl) {
-  return new Promise((resolve) => {
+export function imageLoaded(imgEl, resolve, reject) {
+  function fn(res, rej) {
     if (imgEl.complete) {
-      resolve()
+      res()
     } else {
-      imgEl.onload = resolve
+      imgEl.onload = res
+      imgEl.onerror = rej
     }
-  })
+  }
+  return typeof resolve === 'function' ? fn(resolve, reject) : new Promise(fn)
 }
 
 export function camelize(str) {

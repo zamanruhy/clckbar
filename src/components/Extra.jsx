@@ -1,7 +1,7 @@
 import UpRightIcon from '../icons/up-right.svg?component'
 import RightIcon from '../icons/right.svg?component'
-import extraOneImg from '../images/extra-one.png?format=png;webp;avif&width=600;1184'
-import extraTwoImg from '../images/extra-two.png?format=png;webp;avif&width=600;1184'
+import extraOneImg from '../images/extra-one.png?format=png;webp;avif&width=1184'
+import extraTwoImg from '../images/extra-two.png?format=png;webp;avif&width=1184'
 import Button from './Button'
 import Image from './Image'
 import './Extra.css'
@@ -24,7 +24,7 @@ export default function Extra() {
               class="extra__item-img"
               src={extraOneImg}
               alt=""
-              sizes="100vw sm:50vw"
+              // sizes="100vw sm:50vw"
               loading="lazy"
               decoding="async"
             />

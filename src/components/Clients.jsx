@@ -113,7 +113,7 @@ export default function Clients() {
           type="button"
           aria-label="Предыдущий слайд"
         >
-          <LeftIcon />
+          <LeftIcon aria-hidden="true" />
         </Button>
         <Button
           class="clients__next"
@@ -121,7 +121,7 @@ export default function Clients() {
           type="button"
           aria-label="Следующий слайд"
         >
-          <RightIcon />
+          <RightIcon aria-hidden="true" />
         </Button>
       </div>
     </section>

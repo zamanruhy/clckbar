@@ -63,7 +63,6 @@ export default function Footer() {
               />
             </div>
             <picture>
-              <source srcset="static/img/cat-black.avif" type="image/avif" />
               <source srcset="static/img/cat-black.webp" type="image/webp" />
               <img
                 className="footer__decor"

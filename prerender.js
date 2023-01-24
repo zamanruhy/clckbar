@@ -43,7 +43,8 @@ const routesToPrerender = fs
     const filePath = `dist${url === '/' ? '/index' : url}.html`
     fs.writeFileSync(
       toAbsolute(filePath),
-      format(html, { printWidth: 100, parser: 'html' })
+      html
+      // format(html, { printWidth: 100, parser: 'html' })
     )
     console.log('pre-rendered:', filePath)
   }

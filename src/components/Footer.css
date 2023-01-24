@@ -95,7 +95,7 @@
     background-color: #ffffff;
     transform: rotate(-15deg);
     position: absolute;
-    right: -40.3%;
+    right: -40%;
     top: 45px;
     display: flex;
     align-items: center;
@@ -125,8 +125,8 @@
     border-radius: 50%;
     position: absolute;
     z-index: -1;
-    top: 47%;
-    right: 119.5%;
+    top: 47.1%;
+    right: 119%;
     aspect-ratio: 1;
 
     @screen max-xl {

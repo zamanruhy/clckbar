@@ -111,6 +111,12 @@
       text-align: center;
     }
   }
+  &__title-lines {
+    transform: translateZ(0);
+    contain: inline-size style layout paint;
+  }
+  &__title-line {
+  }
   &__emoji {
     @apply inline w-[1em] align-[-0.06em];
   }

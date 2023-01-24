@@ -10,3 +10,5 @@ coverage
 # misc
 .idea
 .vscode
+raw
+tmp

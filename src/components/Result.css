@@ -104,7 +104,7 @@
   }
   @media (hover: hover) {
     &:hover &__pointer {
-      opacity: 0;
+      /* opacity: 0; */
     }
   }
 }

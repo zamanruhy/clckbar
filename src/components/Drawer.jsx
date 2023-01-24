@@ -4,11 +4,15 @@ import {
   onMount,
   onCleanup,
   createSignal,
-  createMemo
+  createMemo,
+  Show
 } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { Transition } from 'solid-transition-group'
+import { Motion, Presence } from '@motionone/solid'
 import useModal from '@/hooks/use-modal'
+
+import './Drawer.css'
 
 export default function Drawer(props) {
   props = mergeProps(
@@ -40,10 +44,8 @@ export default function Drawer(props) {
 
   function onBeforeEnter() {
     props.onOpen?.()
-    queueMicrotask(() => {
-      returnFocusEl = returnFocusEl || document.activeElement
-      registerModal(drawer)
-    })
+    returnFocusEl = returnFocusEl || document.activeElement
+    registerModal(drawer)
   }
   function onAfterEnter() {
     props.onOpened?.()
@@ -57,6 +59,12 @@ export default function Drawer(props) {
     returnFocusEl.focus?.()
     returnFocusEl = null
     unregisterModal(drawer)
+  }
+  function onMotionStart() {
+    open() ? onBeforeEnter() : onBeforeLeave()
+  }
+  function onMotionComplete() {
+    open() ? onAfterEnter() : onAfterLeave()
   }
   function onEscape(e) {
     if (props.closeOnEscape && e.key === 'Escape') {
@@ -77,13 +85,51 @@ export default function Drawer(props) {
 
   return (
     <Portal mount={document.body}>
-      <Transition
-        enterActiveClass="transition duration-200 ease-out"
-        enterClass="translate-x-full"
-        enterToClass="translate-x-0"
-        exitActiveClass="transition duration-150 ease-in"
-        exitClass="translate-x-0"
-        exitToClass="translate-x-full"
+      <Presence exitBeforeEnter>
+        <Show when={open()}>
+          <Motion.div
+            initial={{ x: '100%' }}
+            animate={{
+              x: 0,
+              transition: {
+                duration: 0.2,
+                easing: 'cubic-bezier(0, 0, 0.2, 1)'
+              }
+            }}
+            exit={{
+              x: '100%',
+              transition: {
+                duration: 0.15,
+                easing: 'cubic-bezier(0.4, 0, 1, 1)'
+              }
+            }}
+            // transition={{ duration: 0.3 }}
+            onMotionStart={onMotionStart}
+            onMotionComplete={onMotionComplete}
+            class="drawer"
+            classList={{ [props.class]: Boolean(props.class) }}
+            role="dialog"
+            aria-modal="true"
+            {...rest}
+            tabindex="-1"
+            ref={el}
+            onKeydown={(e) => {
+              onEscape(e)
+              trapFocus(e)
+            }}
+          >
+            {props.children}
+          </Motion.div>
+        </Show>
+      </Presence>
+      {/* <Transition
+        enterActiveClass="drawer_in"
+        enterClass="will-change-transform"
+        // enterClass="translate-x-full"
+        // enterToClass="translate-x-0"
+        exitActiveClass="drawer_out"
+        // exitClass="translate-x-0"
+        // exitToClass="translate-x-full"
         onBeforeEnter={onBeforeEnter}
         onAfterEnter={onAfterEnter}
         onBeforeExit={onBeforeLeave}
@@ -91,7 +137,7 @@ export default function Drawer(props) {
       >
         {open() && (
           <div
-            class="fixed top-[var(--header-height)] bottom-0 right-0 w-full outline-none"
+            class="drawer"
             classList={{ [props.class]: Boolean(props.class) }}
             role="dialog"
             aria-modal="true"
@@ -106,7 +152,7 @@ export default function Drawer(props) {
             {props.children}
           </div>
         )}
-      </Transition>
+      </Transition> */}
     </Portal>
   )
 }

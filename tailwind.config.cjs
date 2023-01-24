@@ -69,7 +69,7 @@ module.exports = {
       56: ['56px', { lineHeight: '64px' }]
     },
     fontFamily: {
-      brand: ['Muller', 'Adjusted Verdana', 'sans-serif']
+      brand: ['Muller', 'Adjusted Verdana', ...defaultTheme.fontFamily.sans]
     },
     extend: {
       minHeight: defaultTheme.height,
@@ -78,7 +78,7 @@ module.exports = {
   },
   corePlugins: { container: false },
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(({ addUtilities }) => {
       addUtilities({
         '.cap-aligner': {
           '&::before': {

@@ -8,6 +8,7 @@
   align-items: baseline;
   cursor: pointer;
   border-radius: 9999px;
+  /* will-change: transform, color, background-color; */
 
   @screen max-md {
     @apply text-16;

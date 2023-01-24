@@ -1,80 +1,53 @@
 const modals = new Set()
-let offsetElements = null
-let scrollbarWidth = null
+// let top = 0
 
 export default function useModal() {
   return { registerModal, unregisterModal, trapFocus }
 }
 
-export function registerModal(modal) {
-  if (modals.has(modal)) {
-    return
-  }
+function registerModal(modal) {
+  if (modals.has(modal)) return
   modals.add(modal)
   if (modals.size === 1) {
-    setScrollbar()
-    document.body.style.overflow = 'hidden'
+    enter()
   }
 }
 
-export function unregisterModal(modal) {
-  if (!modals.has(modal)) {
-    return
-  }
+function unregisterModal(modal) {
+  if (!modals.has(modal)) return
   modals.delete(modal)
   if (modals.size === 0) {
-    resetScrollbar()
-    document.body.style.overflow = ''
+    exit()
   }
 }
 
-function checkBodyOverflow() {
-  return window.innerWidth > document.documentElement.clientWidth
-}
-
-function setScrollbar() {
-  if (!checkBodyOverflow()) {
-    return
-  }
-  offsetElements = [
-    document.body,
-    ...Array.from(document.querySelectorAll('[data-fixed]'))
-  ]
-  offsetElements.forEach((el) => {
-    const offset = el.getAttribute('data-fixed') || 'padding'
-    const actual = el.style[`${offset}Right`]
-    const computed = getComputedStyle(el)[`${offset}Right`]
-    el.setAttribute(`data-${offset}-right`, actual)
-    el.style[`${offset}Right`] = `${
-      parseFloat(computed) + getScrollbarWidth()
-    }px`
+function enter() {
+  document.documentElement.style.setProperty(
+    '--scrollbar-visible-width',
+    `${window.innerWidth - document.documentElement.clientWidth}px`
+  )
+  // top = window.scrollY
+  Object.assign(document.body.style, {
+    paddingRight: 'var(--scrollbar-visible-width)',
+    overflow: 'hidden'
+    // position: 'fixed',
+    // width: '100%',
+    // top: `${top * -1}px`
   })
 }
 
-function resetScrollbar() {
-  if (offsetElements === null) return
-  offsetElements.forEach((el) => {
-    const offset = el.getAttribute('data-fixed') || 'padding'
-    el.style[`${offset}Right`] = el.getAttribute(`data-${offset}-right`)
-    el.removeAttribute(`data-${offset}-right`)
+function exit() {
+  document.documentElement.style.removeProperty('--scrollbar-visible-width')
+  Object.assign(document.body.style, {
+    paddingRight: '',
+    overflow: ''
+    // position: '',
+    // width: '',
+    // top: ''
   })
-  offsetElements = null
-}
-
-export function getScrollbarWidth() {
-  if (scrollbarWidth === null) {
-    const div = document.createElement('div')
-    div.style.cssText = `
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      overflow: scroll;
-      top: -9999px`
-    document.body.appendChild(div)
-    scrollbarWidth = div.getBoundingClientRect().width - div.clientWidth
-    document.body.removeChild(div)
-  }
-  return scrollbarWidth
+  // document.documentElement.style.scrollBehavior = 'auto'
+  // window.scrollTo(0, top)
+  // document.documentElement.style.scrollBehavior = ''
 }
 
 function getFocusable(node) {
@@ -101,7 +74,7 @@ function getFocusable(node) {
   )
 }
 
-export function trapFocus(e) {
+function trapFocus(e) {
   if (e.key !== 'Tab') return
 
   const focusable = getFocusable(e.currentTarget)

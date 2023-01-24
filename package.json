@@ -29,9 +29,11 @@
     "fonts": "node optimize-fonts"
   },
   "dependencies": {
+    "@motionone/solid": "^10.15.5",
     "embla-carousel": "^7.0.2",
     "imask": "^6.4.2",
-    "solid-js": "^1.5.3",
+    "motion": "^10.15.5",
+    "solid-js": "^1.6.9",
     "solid-transition-group": "^0.0.12"
   },
   "devDependencies": {
