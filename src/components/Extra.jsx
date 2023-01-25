@@ -13,38 +13,43 @@ export default function Extra() {
         <h2 className="extra__title title">Что еще может кликбар?</h2>
         <div className="extra__items">
           <a href="#" className="extra__item extra__item_one">
-            <p className="extra__item-text">
-              Анализируй, <br />
-              откуда поступают обращения и какой из каналов наиболее эффективен
-            </p>
-            <div className="extra__item-pointer">
-              <UpRightIcon class="extra__item-icon" aria-hidden="true" />
+            <div className="extra__item-inner">
+              <p className="extra__item-text">
+                Анализируй, <br />
+                откуда поступают обращения и какой из каналов наиболее
+                эффективен
+              </p>
+              <div className="extra__item-pointer">
+                <UpRightIcon class="extra__item-icon" aria-hidden="true" />
+              </div>
+              <Image
+                class="extra__item-img"
+                src={extraOneImg}
+                alt=""
+                // sizes="100vw sm:50vw"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <Image
-              class="extra__item-img"
-              src={extraOneImg}
-              alt=""
-              // sizes="100vw sm:50vw"
-              loading="lazy"
-              decoding="async"
-            />
           </a>
 
           <a href="#" className="extra__item extra__item_two">
-            <p className="extra__item-text">
-              Готовые шаблоны для твоей страницы. Выбирай тот, который подойдет
-              больше
-            </p>
-            <div className="extra__item-pointer">
-              <UpRightIcon class="extra__item-icon" aria-hidden="true" />
+            <div className="extra__item-inner">
+              <p className="extra__item-text">
+                Готовые шаблоны для твоей страницы. Выбирай тот, который
+                подойдет больше
+              </p>
+              <div className="extra__item-pointer">
+                <UpRightIcon class="extra__item-icon" aria-hidden="true" />
+              </div>
+              <Image
+                class="extra__item-img"
+                src={extraTwoImg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <Image
-              class="extra__item-img"
-              src={extraTwoImg}
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
           </a>
         </div>
         <Button

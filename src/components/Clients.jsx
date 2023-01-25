@@ -98,15 +98,6 @@ export default function Clients() {
         </div>
       </div>
       <div className="clients__content">
-        <div className="clients__viewport">
-          <div className="clients__wrapper">
-            {items.map((item) => (
-              <div className="clients__item">
-                <Client {...item} />
-              </div>
-            ))}
-          </div>
-        </div>
         <Button
           class="clients__prev"
           variant="primary"
@@ -123,6 +114,15 @@ export default function Clients() {
         >
           <RightIcon aria-hidden="true" />
         </Button>
+        <div className="clients__viewport">
+          <div className="clients__wrapper">
+            {items.map((item) => (
+              <div className="clients__item">
+                <Client {...item} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

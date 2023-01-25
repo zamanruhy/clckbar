@@ -8,7 +8,8 @@
   align-items: baseline;
   cursor: pointer;
   border-radius: 9999px;
-  /* will-change: transform, color, background-color; */
+  will-change: transform, color, background-color;
+  /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
 
   @screen max-md {
     @apply text-16;

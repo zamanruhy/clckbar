@@ -17,18 +17,25 @@
 
   &__list {
     display: flex;
-    gap: 48px;
 
-    @screen max-xl {
-      gap: 40px;
-    }
     @screen max-lg {
       flex-direction: column;
-      gap: 14px;
     }
   }
   &__item {
     position: relative;
+
+    & + & {
+      margin-left: 48px;
+
+      @screen max-xl {
+        margin-left: 40px;
+      }
+      @screen max-lg {
+        margin-left: 0;
+        margin-top: 14px;
+      }
+    }
   }
 
   &__link {
@@ -51,9 +58,9 @@
         display: block;
         position: absolute;
         width: 0;
-        bottom: 6px;
+        bottom: 4px;
         height: 7px;
-        background-color: theme(colors.pink.DEFAULT);
+        background-color: theme(colors.lime.DEFAULT);
         z-index: -1;
         border-radius: 10px;
         right: 0;

@@ -18,7 +18,7 @@ export default function useMediaQuery(query) {
   const [state, setState] = createSignal(media.matches)
 
   createEffect(() => {
-    const callback = () => {
+    function callback() {
       setState(media.matches)
     }
     media.addEventListener('change', callback, false)

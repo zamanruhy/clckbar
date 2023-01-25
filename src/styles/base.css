@@ -44,6 +44,33 @@
     line-gap-override: 11%;
   }
 
+  /* @font-face {
+    font-family: "Adjusted Verdana Fallback";
+    src: local(Verdana);
+    size-adjust: 94%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 7%;
+  }
+
+  @font-face {
+    font-family: "Adjusted Arial";
+    src: local(Arial);
+    size-adjust: 103%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
+
+  @font-face {
+    font-family: "Adjusted Trebuchet MS";
+    src: local(Trebuchet MS);
+    size-adjust: 103%;
+    ascent-override: 78%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  } */
+
   :focus-visible {
     outline: 3px solid theme(colors.pink.DEFAULT);
     outline-offset: 3px;

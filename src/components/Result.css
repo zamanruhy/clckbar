@@ -90,6 +90,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     @screen max-md {
       width: 44px;

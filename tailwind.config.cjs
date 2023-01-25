@@ -69,7 +69,8 @@ module.exports = {
       56: ['56px', { lineHeight: '64px' }]
     },
     fontFamily: {
-      brand: ['Muller', 'Adjusted Verdana', ...defaultTheme.fontFamily.sans]
+      // brand: ['Muller', 'Adjusted Verdana', ...defaultTheme.fontFamily.sans]
+      brand: ['Muller', ...defaultTheme.fontFamily.sans]
     },
     extend: {
       minHeight: defaultTheme.height,

@@ -1,20 +1,23 @@
 .step {
-  background-color: theme(colors.body.DEFAULT);
-  border-radius: 40px;
-  display: flex;
-  overflow: hidden;
-  overflow: clip;
-  isolation: isolate;
   position: relative;
 
-  @screen max-lg {
-    flex-direction: column;
-    align-items: center;
-  }
-  @screen max-md {
-    border-radius: 24px;
-  }
+  &__inner {
+    background-color: theme(colors.body.DEFAULT);
+    border-radius: 40px;
+    display: flex;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    position: relative;
 
+    @screen max-lg {
+      flex-direction: column;
+      align-items: center;
+    }
+    @screen max-md {
+      border-radius: 24px;
+    }
+  }
   &__decor {
     height: 172px;
     width: auto;
@@ -139,5 +142,32 @@
       width: 219%;
       left: -86.1%;
     }
+  }
+  &__spot {
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    z-index: -1;
+
+    @screen max-lg {
+      display: none;
+    }
+  }
+  &_one &__spot {
+    left: -312px;
+    top: -360px;
+  }
+  &_two &__spot {
+    right: -332px;
+    bottom: -308px;
+  }
+  &__spot-img {
+    max-width: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 148.8%;
+    height: 148.8%;
   }
 }

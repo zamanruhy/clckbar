@@ -28,8 +28,6 @@
     @apply transition;
     display: block;
     border-radius: 40px;
-    aspect-ratio: 1;
-    padding: 41px;
     position: relative;
     outline-width: 4px;
     isolation: isolate;
@@ -37,15 +35,17 @@
     width: 100%;
     min-height: 400px;
 
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
     &:active {
       transform: scale(0.99);
     }
 
-    @screen max-lg {
-      padding: 30px;
-    }
     @screen max-md {
-      padding: 24px;
       border-radius: 23px;
       max-height: 430px;
       min-height: 340px;
@@ -71,6 +71,21 @@
         z-index: -1;
         pointer-events: none;
       }
+    }
+  }
+  &__item-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 41px;
+
+    @screen max-lg {
+      padding: 30px;
+    }
+    @screen max-md {
+      padding: 24px;
     }
   }
   &__item-text {
@@ -100,6 +115,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     /* will-change: transform; */
 
     @screen max-md {

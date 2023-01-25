@@ -24,6 +24,7 @@ function script() {
       navEl.replaceWith(commentNode)
     } else {
       commentNode.replaceWith(navEl)
+      setNavOpen(false)
     }
   })
 

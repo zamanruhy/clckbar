@@ -4,6 +4,7 @@ import emojiImg from '../images/emoji.png?format=png;webp;avif'
 // import catImg from '../images/cat.png?format=png;webp'
 import previewImg from '../images/preview.png?format=png;webp;avif'
 import phoneImg from '../images/phone.png?format=png;webp;avif&width=700;1022'
+import spotImg from '../images/blurry-spot-one.svg?metadata'
 import UpCircleIcon from '../icons/up-circle.svg?component'
 import UpRightIcon from '../icons/up-right.svg?component'
 import hookImg from '../images/hook.svg?datauri&metadata'
@@ -40,7 +41,7 @@ function script() {
 
   function update() {
     length += dir
-    let interval = dir > 0 ? 70 : 30
+    let interval = dir > 0 ? 60 : 30
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
 
@@ -174,14 +175,17 @@ export default function Intro() {
             />
             <div className="intro__phone-content invisible">
               <Image
-                className="intro__phone-media"
+                className="intro__phone-media visible"
                 src={previewImg}
                 alt=""
                 fetchpriority="high"
               />
             </div>
           </div>
-          <svg class="intro__bg">
+          <div className="intro__spot">
+            <Image class="intro__spot-img" src={spotImg} alt="" />
+          </div>
+          {/* <svg class="intro__bg">
             <defs>
               <filter
                 id="intro-bg-blur"
@@ -202,7 +206,7 @@ export default function Intro() {
               r="50%"
               filter="url(#intro-bg-blur)"
             ></circle>
-          </svg>
+          </svg> */}
         </div>
       </div>
     </section>

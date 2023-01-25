@@ -6,7 +6,7 @@
   }
 
   &__inner {
-    position: relative;
+    /* position: relative; */
 
     /* &::before {
       content: "";
@@ -26,7 +26,7 @@
       }
     } */
   }
-  &__bg {
+  /* &__bg {
     width: 1000px;
     height: 1000px;
     fill: theme(colors.pink.DEFAULT);
@@ -40,7 +40,7 @@
     @screen max-lg {
       display: none;
     }
-  }
+  } */
   &__title {
     margin-bottom: 46px;
 

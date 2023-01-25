@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px 32px;
+    /* gap: 16px 32px; */
     margin-bottom: 64px;
     justify-content: space-between;
 
@@ -18,13 +18,18 @@
     }
   }
   &__title {
+    margin-right: 32px;
+
+    @screen max-lg {
+      margin-right: 0;
+    }
   }
   &__avas {
     display: flex;
     position: relative;
     top: -2px;
 
-    @screen max-md {
+    @screen max-lg {
       display: none;
     }
   }
@@ -71,7 +76,9 @@
     bottom: 0;
     margin: auto;
     border-radius: 50%;
-    transform: translateZ(0);
+    /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
+    z-index: 10;
+    /* transform: translateZ(0); */
 
     &:disabled {
       opacity: 0;
