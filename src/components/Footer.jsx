@@ -1,6 +1,6 @@
 import emojiImg from '../images/emoji-partying-face.png?format=png;webp;avif&quality=80'
 // import catDecorImg from '../images/cat-decor.png?format=png;webp'
-import bgImg from '../images/footer-bg.jpg?format=png;webp;avif'
+import bgImg from '../images/footer-bg.svg?metadata'
 
 import RaysIcon from '../icons/rays.svg?component'
 import kImg from '../images/k.svg?metadata'

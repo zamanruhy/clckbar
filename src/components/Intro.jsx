@@ -17,6 +17,7 @@ import Image from './Image'
 import Button from './Button'
 
 import './Intro.css'
+import { navOpen } from '@/store'
 
 const sentences = [
   ['Получай', 'больше клиентов·'],
@@ -49,7 +50,11 @@ function script() {
   const [inited, setInited] = createSignal(false)
   const [intersected, setIntersected] = createSignal(true)
   const [docVisible, setDocVisible] = createSignal(true)
-  const playing = createMemo(() => inited() && intersected() && docVisible())
+  const [firstPrase, setFirstPrase] = createSignal(sentences[0][0])
+  const [secondPrase, setSecondPrase] = createSignal(sentences[0][1])
+  const playing = createMemo(
+    () => inited() && intersected() && docVisible() && !navOpen()
+  )
 
   function update() {
     length += dir
@@ -57,10 +62,8 @@ function script() {
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
 
-    phraseEls[0].innerHTML = phrases[0].slice(0, length)
-    phraseEls[1].innerHTML = format(
-      phrases[1].slice(0, Math.max(length - phrases[0].length, 0))
-    )
+    setFirstPrase(phrases[0].slice(0, length))
+    setSecondPrase(phrases[1].slice(0, Math.max(length - phrases[0].length, 0)))
 
     if (length === sentence.length) {
       dir = -1
@@ -75,11 +78,19 @@ function script() {
   }
 
   createEffect(() => {
+    phraseEls[0].innerHTML = firstPrase()
+  })
+
+  createEffect(() => {
+    phraseEls[1].innerHTML = format(secondPrase())
+  })
+
+  createEffect(() => {
     if (playing()) update()
     else clearTimeout(timer)
   })
 
-  el.addEventListener('click', () => setInited(!inited()))
+  // el.addEventListener('click', () => setInited(!inited()))
 
   windowLoaded(() => setTimeout(setInited, 2000, true))
 

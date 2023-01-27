@@ -52,18 +52,20 @@ export default function Nav(props) {
       <ul className="nav__list">
         <li className="nav__item">
           <a href="#" className="nav__link">
-            Все возможности
+            <span className="nav__text">Все возможности</span>
           </a>
         </li>
         <li className="nav__item">
           <a href="#" className="nav__link">
-            Тарифы
+            <span className="nav__text">Тарифы</span>
           </a>
         </li>
         <li className="nav__item nav__item_has-menu">
           <a href="#" className="nav__link">
-            Инструменты
-            <CaretDownIcon className="nav__caret" aria-hidden="true" />
+            <span className="nav__text">
+              Инструменты
+              <CaretDownIcon className="nav__caret" aria-hidden="true" />
+            </span>
           </a>
           <div className="nav__menu">
             <ul className="nav__menu-list">
@@ -97,7 +99,7 @@ export default function Nav(props) {
         </li>
         <li className="nav__item">
           <a href="#" className="nav__link">
-            Блог
+            <span className="nav__text">Блог</span>
           </a>
         </li>
       </ul>

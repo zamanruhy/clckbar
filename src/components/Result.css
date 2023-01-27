@@ -79,7 +79,7 @@
   }
 
   &__pointer {
-    @apply transition;
+    @apply transition circle-fix;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -90,7 +90,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     @screen max-md {
       width: 44px;
@@ -103,9 +102,9 @@
     height: 24px;
     color: #ffffff;
   }
-  @media (hover: hover) {
+  /* @media (hover: hover) {
     &:hover &__pointer {
-      /* opacity: 0; */
+      opacity: 0;
     }
-  }
+  } */
 }

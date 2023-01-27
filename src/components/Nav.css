@@ -43,6 +43,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 3px 0 1px;
     position: relative;
     isolation: isolate;
@@ -50,33 +55,32 @@
     @screen max-lg {
       padding: 10px 0 8px;
     }
+  }
+  @media (hover: hover) {
+    &__link &__text::after {
+      @apply transition-all duration-200 ease-out;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      bottom: 4px;
+      height: 7px;
+      background-color: theme(colors.lime.DEFAULT);
+      z-index: -1;
+      border-radius: 10px;
+      right: 0;
+      will-change: width;
 
-    @media (hover: hover) {
-      &::after {
-        @apply transition-all duration-200 ease-out;
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        bottom: 4px;
-        height: 7px;
-        background-color: theme(colors.lime.DEFAULT);
-        z-index: -1;
-        border-radius: 10px;
-        right: 0;
-        will-change: width;
-
-        @screen max-lg {
-          bottom: 11px;
-        }
+      @screen max-lg {
+        bottom: 11px;
       }
+    }
 
-      &:hover::after {
-        @apply delay-[50ms];
-        width: 100%;
-        left: 0;
-        right: auto;
-      }
+    &__link:hover &__text::after {
+      @apply delay-[50ms];
+      width: 100%;
+      left: 0;
+      right: auto;
     }
   }
   &__item_has-menu &__link {

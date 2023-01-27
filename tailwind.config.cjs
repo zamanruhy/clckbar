@@ -79,7 +79,7 @@ module.exports = {
   },
   corePlugins: { container: false },
   plugins: [
-    plugin(({ addUtilities }) => {
+    plugin(({ addUtilities, theme }) => {
       addUtilities({
         '.cap-aligner': {
           '&::before': {
@@ -95,6 +95,18 @@ module.exports = {
             content: '""',
             height: 'calc(50% + 0.25em)',
             display: 'inline-block'
+          }
+        },
+        '.circle-fix': {
+          'box-shadow': `0 0 0.5px 1px ${theme('colors.body.DEFAULT')}`,
+          // '-webkit-mask-image': '-webkit-radial-gradient(white, black)'
+          '@media (hover: hover)': {
+            '&:hover': {
+              'box-shadow': `0 0 0.5px 1px ${theme('colors.body.lighter')}`
+            }
+          },
+          '&:active': {
+            'box-shadow': `0 0 0.5px 1px ${theme('colors.body.light')}`
           }
         }
       })
