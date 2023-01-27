@@ -28,6 +28,7 @@
     @apply text-56;
     font-weight: 800;
     margin-bottom: 46px;
+    max-width: 19ch;
 
     @screen max-lg {
       @apply text-40;
@@ -36,6 +37,10 @@
       @apply text-32;
       font-weight: 700;
       margin-bottom: 32px;
+      max-width: 17ch;
+    }
+    @screen max-sm {
+      max-width: 14ch;
     }
   }
   &__emoji {
@@ -71,7 +76,8 @@
     z-index: -1;
     bottom: 0;
     transform: translateY(39%);
-    right: -184px;
+    // right: -184px;
+    right: -55px;
 
     @screen max-xl {
       height: 172px;
@@ -95,8 +101,10 @@
     background-color: #ffffff;
     transform: rotate(-15deg);
     position: absolute;
-    right: -40%;
-    top: 45px;
+    // right: -40%;
+    // top: 45px;
+    left: 105.3%;
+    top: 98px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +121,12 @@
     @screen max-md {
       font-size: 59px;
       top: 0.6%;
-      left: -19.7%;
+      // left: -19.7%;
+      left: auto;
+      right: 105.3%;
+    }
+    @screen max-sm {
+      right: 100%;
     }
   }
   &__k-icon {
@@ -126,7 +139,8 @@
     position: absolute;
     z-index: -1;
     top: 47.1%;
-    right: 119%;
+    // right: 119%;
+    right: 95.5%;
     transform: translateZ(0);
 
     @screen max-xl {

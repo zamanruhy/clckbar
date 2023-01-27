@@ -14,9 +14,9 @@ export default function Home() {
       <Facts />
       <Steps />
       <Appeal />
+      <Promo />
       <Extra />
       <Clients />
-      <Promo />
       <Results />
     </>
   )

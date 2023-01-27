@@ -28,8 +28,9 @@ export default function Footer() {
                 decoding="async"
               />
               <br />
-              Создай <br />
-              страницу кликбар
+              {/* Создай <br />
+              страницу кликбар */}
+              Создай кликбар и&nbsp;получай клиентов уже&nbsp;сегодня
             </h3>
             <Button
               class="footer__button"

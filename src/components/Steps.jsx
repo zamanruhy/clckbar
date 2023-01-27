@@ -10,7 +10,8 @@ import './Steps.css'
 const items = [
   {
     mod: 'one',
-    title: `Загрузи видео <br>и фото в сторис`,
+    title_: `Загрузи видео <br>и фото в сторис`,
+    title: `Загрузи видео и фото <br>в сторис кликбара`,
     text: `Просто сними видео или фото в формате рассказа о своих услугах или товарах.`,
     decor: stepDecorOneImg,
     spot: spotTwoImg
@@ -35,7 +36,9 @@ export default function Steps() {
     <section class="steps">
       <div className="container">
         <div className="steps__inner">
-          <h2 className="title steps__title">Как это работает?</h2>
+          <h2 className="title steps__title">
+            Создать кликбар – проще простого
+          </h2>
           <div className="steps__stack">
             {items.map((item, i) => (
               <Step index={i} {...item} />

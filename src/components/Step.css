@@ -3,6 +3,7 @@
 
   &__inner {
     background-color: theme(colors.body.DEFAULT);
+    /* background-color: #161a23; */
     border-radius: 40px;
     display: flex;
     overflow: hidden;

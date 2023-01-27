@@ -81,7 +81,7 @@ export default function Clients() {
     <section class="clients">
       <div className="container">
         <div className="clients__head">
-          <h2 className="clients__title title">Кому подойдет кликбар?</h2>
+          <h2 className="clients__title title">Кто пользуется кликбаром</h2>
           <ul className="clients__avas">
             {avas.map((src) => (
               <li class="clients__ava">

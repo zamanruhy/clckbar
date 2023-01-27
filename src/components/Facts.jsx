@@ -10,20 +10,20 @@ const items = [
   {
     num: 10,
     unit: 'мин',
-    text: `чтобы собрать <br>страницу в кликбар`,
+    text: `чтобы собрать <br>кликбар`,
     src: lightningImg
+  },
+  {
+    num: 1,
+    unit: 'час',
+    text: `чтобы все запустить <br>вместе с рекламой`,
+    src: rocketImg
   },
   {
     num: 7,
     unit: 'дней',
     text: `бесплатно <br>полная версия`,
     src: bagImg
-  },
-  {
-    num: 1,
-    unit: 'час',
-    text: `от идеи до запуска <br>с рекламой`,
-    src: rocketImg
   }
 ]
 
@@ -34,8 +34,9 @@ export default function Facts() {
         <div className="facts__inner">
           <h2 className="title facts__title">Вместо сайта и лендинга</h2>
           <p className="facts__text">
-            Не нужен большой сайт, чтобы рассказать <br class="max-sm:hidden" />
-            о себе и своих услугах. Посадочная страница готова за 10 минут.
+            Не нужен большой сайт, чтобы рассказать о себе и своих услугах.{' '}
+            <br class="max-sm:hidden" /> Страница, куда приводить клиентов,
+            готова за 10 минут.
           </p>
           <Image
             class="facts__decor"
