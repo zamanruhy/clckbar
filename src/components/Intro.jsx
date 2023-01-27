@@ -19,10 +19,10 @@ import Button from './Button'
 import './Intro.css'
 
 const sentences = [
-  ['Получай', 'больше клиентов ·'],
-  ['Начни', 'своё дело ·'],
-  ['Привлекай', 'новых подписчиков ·'],
-  ['Бюджетно', 'тестируй идеи ·']
+  ['Получай', 'больше клиентов·'],
+  ['Начни', 'своё дело·'],
+  ['Привлекай', 'новых подписчиков·'],
+  ['Бюджетно', 'тестируй идеи·']
 ]
 
 const upCircleIcon = (
@@ -74,10 +74,12 @@ function script() {
     timer = setTimeout(update, interval)
   }
 
-  // createEffect(() => {
-  //   if (playing()) update()
-  //   else clearTimeout(timer)
-  // })
+  createEffect(() => {
+    if (playing()) update()
+    else clearTimeout(timer)
+  })
+
+  el.addEventListener('click', () => setInited(!inited()))
 
   windowLoaded(() => setTimeout(setInited, 2000, true))
 
@@ -109,14 +111,16 @@ export default function Intro() {
             <h1 className="intro__title">
               <div className="intro__title-lines">
                 <div className="intro__title-line">
-                  <Image
-                    className="intro__emoji"
-                    src={emojiImg}
-                    alt="🤩"
-                    fetchpriority="high"
-                    draggable="false"
-                  />{' '}
-                  <span className="intro__phrase">{sentences[0][0]}</span>
+                  <span className="intro__phrase-wrap">
+                    <Image
+                      className="intro__emoji"
+                      src={emojiImg}
+                      alt="🤩"
+                      fetchpriority="high"
+                      draggable="false"
+                    />
+                    <span className="intro__phrase">{sentences[0][0]}</span>
+                  </span>
                 </div>
                 <div className="intro__title-line text-pink">
                   <span className="intro__phrase">
