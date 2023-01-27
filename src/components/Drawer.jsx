@@ -4,12 +4,12 @@ import {
   onMount,
   onCleanup,
   createSignal,
-  createMemo,
-  Show
+  createMemo
+  // Show
 } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Transition } from 'solid-transition-group'
-import { Motion, Presence } from '@motionone/solid'
+// import { Transition } from 'solid-transition-group'
+// import { Motion, Presence } from '@motionone/solid'
 import useModal from '@/hooks/use-modal'
 
 import './Drawer.css'
@@ -60,12 +60,24 @@ export default function Drawer(props) {
     returnFocusEl = null
     unregisterModal(drawer)
   }
-  function onMotionStart() {
-    open() ? onBeforeEnter() : onBeforeLeave()
+  // function onMotionStart() {
+  //   open() ? onBeforeEnter() : onBeforeLeave()
+  // }
+  // function onMotionComplete() {
+  //   open() ? onAfterEnter() : onAfterLeave()
+  // }
+
+  function onTransitionStart(e) {
+    if (e.propertyName === 'transform') {
+      open() ? onBeforeEnter() : onBeforeLeave()
+    }
   }
-  function onMotionComplete() {
-    open() ? onAfterEnter() : onAfterLeave()
+  function onTransitionEnd(e) {
+    if (e.propertyName === 'transform') {
+      open() ? onAfterEnter() : onAfterLeave()
+    }
   }
+
   function onEscape(e) {
     if (props.closeOnEscape && e.key === 'Escape') {
       props.onRequestClose?.()
@@ -79,13 +91,33 @@ export default function Drawer(props) {
 
   onMount(() => {
     setMounted(true)
-
     onCleanup(() => unregisterModal(drawer))
   })
 
   return (
     <Portal mount={document.body}>
-      <Presence exitBeforeEnter>
+      <div
+        class="drawer"
+        classList={{
+          [props.class]: Boolean(props.class),
+          drawer_open: open()
+        }}
+        role="dialog"
+        aria-modal="true"
+        {...rest}
+        tabindex="-1"
+        ref={el}
+        onKeydown={(e) => {
+          onEscape(e)
+          trapFocus(e)
+        }}
+        onTransitionStart={onTransitionStart}
+        onTransitionEnd={onTransitionEnd}
+      >
+        {props.children}
+      </div>
+
+      {/* <Presence exitBeforeEnter>
         <Show when={open()}>
           <Motion.div
             initial={{ x: '100%' }}
@@ -121,7 +153,8 @@ export default function Drawer(props) {
             {props.children}
           </Motion.div>
         </Show>
-      </Presence>
+      </Presence> */}
+
       {/* <Transition
         enterActiveClass="drawer_in"
         enterClass="will-change-transform"

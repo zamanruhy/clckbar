@@ -1,6 +1,6 @@
 import womanImg from '../images/woman.png?format=png;webp;avif&width=700;1184'
 import skateImg from '../images/skateboarder.png?format=png;webp;avif'
-import emojiWomanImg from '../images/emoji-woman.png?format=png;webp;avif'
+import emojiWomanImg from '../images/emoji-woman-technologist.png?format=png;webp;avif&quality=80'
 import UpRightIcon from '../icons/up-right.svg?component'
 import easyImg from '../images/easy.svg?metadata'
 import Image from './Image'

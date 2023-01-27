@@ -127,6 +127,7 @@
     z-index: -1;
     top: 47.1%;
     right: 119%;
+    transform: translateZ(0);
 
     @screen max-xl {
       width: 110px;

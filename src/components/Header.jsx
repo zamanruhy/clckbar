@@ -5,26 +5,29 @@ import Hamburger from './Hamburger'
 import Logo from './Logo'
 import Nav from './Nav'
 import Drawer from './Drawer'
+import Button from './Button'
 import useMediaQuery from '@/hooks/use-media-query'
 
 import './Header.css'
-import Button from './Button'
 
 function script() {
   const el = document.querySelector('.header')
   if (!el) return
-  const navEl = el.querySelector('.header__nav')
+  const navEl = el.querySelector('.nav')
   const commentNode = document.createComment('.nav')
   const mobile = useMediaQuery('not all and (min-width: 992px)')
+  const [slotEl, setSlotEl] = createSignal(null)
 
   navEl.classList.remove('max-lg:hidden')
 
   createEffect(() => {
     if (mobile()) {
       navEl.replaceWith(commentNode)
+      setSlotEl(navEl)
     } else {
       commentNode.replaceWith(navEl)
       setNavOpen(false)
+      setSlotEl(null)
     }
   })
 
@@ -40,7 +43,7 @@ function script() {
         <>
           {mobile() && (
             <Drawer open={navOpen()} onRequestClose={() => setNavOpen(false)}>
-              {navEl}
+              {slotEl()}
             </Drawer>
           )}
         </>
@@ -62,7 +65,7 @@ export default function Header() {
         <div className="header__inner">
           <Logo className="header__logo" />
 
-          <Nav className="header__nav max-lg:hidden" />
+          <Nav className="max-lg:hidden" />
 
           <Button as="a" href="#" variant="primary" class="header__auth">
             Войти

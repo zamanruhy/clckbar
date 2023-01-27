@@ -20,6 +20,7 @@
     height: 3px;
     width: 18px;
     background-color: currentColor;
+    will-change: transform;
   }
   &_active &__bar:first-child {
     transform: translateY(3.5px) rotate(45deg);

@@ -1,7 +1,27 @@
 .drawer {
-  @apply fixed top-[var(--header-height)] bottom-0 right-0 z-[2000] w-full outline-none will-change-transform;
+  visibility: hidden;
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0px;
+  right: 0px;
+  z-index: 2000;
+  width: 100%;
+  transform: translateX(100%);
+  outline-width: 0px;
+  transition-property: transform, visibility;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  will-change: transform, visibility;
 
-  &_in {
+  &_open {
+    visibility: visible;
+    transform: translateX(0);
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* &_in {
     animation: slide-in 200ms theme(transitionTimingFunction.out);
 
     @keyframes slide-in {
@@ -24,5 +44,4 @@
         transform: translateX(100%);
       }
     }
-  }
-}
+  } */

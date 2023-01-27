@@ -2,8 +2,8 @@
   flex-shrink: 0;
   position: relative;
   z-index: 1000;
-  background-color: #fff;
-  transform: translateZ(0);
+  background-color: #ffffff;
+  /* transform: translateZ(0); */
 
   @screen max-lg {
     /* position: sticky;
@@ -31,7 +31,7 @@
     height: 52px;
     padding: 0 24px;
     margin-left: 48px;
-    will-change: transform;
+    /* will-change: transform; */
 
     @screen max-xl {
       margin-left: 40px;

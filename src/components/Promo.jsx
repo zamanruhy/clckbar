@@ -1,4 +1,4 @@
-import emojiImg from '../images/emoji-thumb-up.png?format=png;webp;avif'
+import emojiImg from '../images/emoji-thumbs-up.png?format=png;webp;avif&quality=80'
 import manImg from '../images/man.png?format=png;webp;avif'
 import PlayIcon from '../icons/play.svg?component'
 import howImg from '../images/how.svg?metadata'

@@ -1,5 +1,5 @@
 const modals = new Set()
-// let top = 0
+let top = 0
 
 export default function useModal() {
   return { registerModal, unregisterModal, trapFocus }
@@ -9,7 +9,7 @@ function registerModal(modal) {
   if (modals.has(modal)) return
   modals.add(modal)
   if (modals.size === 1) {
-    enter()
+    enterFirst()
   }
 }
 
@@ -17,37 +17,39 @@ function unregisterModal(modal) {
   if (!modals.has(modal)) return
   modals.delete(modal)
   if (modals.size === 0) {
-    exit()
+    exitLast()
   }
 }
 
-function enter() {
-  document.documentElement.style.setProperty(
-    '--scrollbar-visible-width',
-    `${window.innerWidth - document.documentElement.clientWidth}px`
-  )
-  // top = window.scrollY
+function enterFirst() {
+  // document.documentElement.style.setProperty(
+  //   '--scrollbar-visible-width',
+  //   `${window.innerWidth - document.documentElement.clientWidth}px`
+  // )
+  top = window.scrollY
   Object.assign(document.body.style, {
-    paddingRight: 'var(--scrollbar-visible-width)',
-    overflow: 'hidden'
-    // position: 'fixed',
-    // width: '100%',
-    // top: `${top * -1}px`
+    paddingRight: `${
+      window.innerWidth - document.documentElement.clientWidth
+    }px`,
+    overflow: 'hidden',
+    position: 'fixed',
+    width: '100%',
+    top: `${top * -1}px`
   })
 }
 
-function exit() {
-  document.documentElement.style.removeProperty('--scrollbar-visible-width')
+function exitLast() {
+  // document.documentElement.style.removeProperty('--scrollbar-visible-width')
   Object.assign(document.body.style, {
     paddingRight: '',
-    overflow: ''
-    // position: '',
-    // width: '',
-    // top: ''
+    overflow: '',
+    position: '',
+    width: '',
+    top: ''
   })
-  // document.documentElement.style.scrollBehavior = 'auto'
-  // window.scrollTo(0, top)
-  // document.documentElement.style.scrollBehavior = ''
+  document.documentElement.style.scrollBehavior = 'auto'
+  window.scrollTo(0, top)
+  document.documentElement.style.scrollBehavior = ''
 }
 
 function getFocusable(node) {

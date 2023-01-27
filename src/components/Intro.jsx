@@ -1,6 +1,8 @@
 import { createEffect, createMemo, createSignal, onMount } from 'solid-js'
 import { imageLoaded, windowLoaded } from '@/utils'
-import emojiImg from '../images/emoji.png?format=png;webp;avif'
+// import emojiImg from '../images/emoji.png?format=png;webp;avif&quality=100'
+// import emojisImg from '../images/emoji-star-struck.jpg?format=jpg;webp;avif&quality=100'
+import emojiImg from '../images/emoji-star-struck.png?format=png;webp;avif&quality=80'
 // import catImg from '../images/cat.png?format=png;webp'
 import previewImg from '../images/preview.png?format=png;webp;avif'
 import phoneImg from '../images/phone.png?format=png;webp;avif&width=700;1022'
@@ -17,11 +19,21 @@ import Button from './Button'
 import './Intro.css'
 
 const sentences = [
-  ['Получай', 'больше клиентов'],
-  ['Начни', 'своё дело'],
-  ['Привлекай', 'новых подписчиков'],
-  ['Бюджетно', 'тестируй идеи']
+  ['Получай', 'больше клиентов ·'],
+  ['Начни', 'своё дело ·'],
+  ['Привлекай', 'новых подписчиков ·'],
+  ['Бюджетно', 'тестируй идеи ·']
 ]
+
+const upCircleIcon = (
+  <UpCircleIcon className="intro__pointer" aria-hidden="true" />
+)
+
+const upCircleIconHTML = upCircleIcon?.outerHTML
+
+function format(str) {
+  return str.replace('·', upCircleIconHTML)
+}
 
 function script() {
   const el = document.querySelector('.intro')
@@ -45,10 +57,9 @@ function script() {
     const phrases = sentences[sentsIndex]
     const sentence = phrases.join('')
 
-    phraseEls[0].textContent = phrases[0].slice(0, length)
-    phraseEls[1].textContent = phrases[1].slice(
-      0,
-      Math.max(length - phrases[0].length, 0)
+    phraseEls[0].innerHTML = phrases[0].slice(0, length)
+    phraseEls[1].innerHTML = format(
+      phrases[1].slice(0, Math.max(length - phrases[0].length, 0))
     )
 
     if (length === sentence.length) {
@@ -63,10 +74,10 @@ function script() {
     timer = setTimeout(update, interval)
   }
 
-  createEffect(() => {
-    if (playing()) update()
-    else clearTimeout(timer)
-  })
+  // createEffect(() => {
+  //   if (playing()) update()
+  //   else clearTimeout(timer)
+  // })
 
   windowLoaded(() => setTimeout(setInited, 2000, true))
 
@@ -101,16 +112,30 @@ export default function Intro() {
                   <Image
                     className="intro__emoji"
                     src={emojiImg}
-                    alt=""
+                    alt="🤩"
                     fetchpriority="high"
+                    draggable="false"
                   />{' '}
                   <span className="intro__phrase">{sentences[0][0]}</span>
                 </div>
                 <div className="intro__title-line text-pink">
-                  <span className="intro__phrase">{sentences[0][1]}</span>{' '}
-                  <UpCircleIcon className="intro__pointer" aria-hidden="true" />
+                  <span className="intro__phrase">
+                    {sentences[0][1].replace('·', '')}
+                    {upCircleIcon}
+                  </span>
                 </div>
               </div>
+              {/* <div
+                className="intro__title-line"
+                innerHTML={
+                  (
+                    <UpCircleIcon
+                      className="intro__pointer"
+                      aria-hidden="true"
+                    />
+                  ).outerHTML
+                }
+              ></div> */}
               <div className="intro__title-line">
                 с живой
                 <picture>
@@ -122,6 +147,7 @@ export default function Intro() {
                     height="144"
                     alt=""
                     fetchpriority="high"
+                    draggable="false"
                   />
                 </picture>
                 {/* <video
@@ -143,7 +169,12 @@ export default function Intro() {
               <div className="intro__title-line">
                 кликбар <span class="text-pink">уже сегодня</span>
               </div>
-              <Image className="intro__hook" src={hookImg} alt="" />
+              <Image
+                className="intro__hook"
+                src={hookImg}
+                alt=""
+                draggable="false"
+              />
             </h1>
             <p className="intro__text">
               Создай страницу кликбар, настрой рекламу по нашему гайду и собирай
