@@ -17,7 +17,7 @@ export default function Promo() {
             <Image
               class="promo__emoji"
               src={emojiImg}
-              alt=""
+              alt="😎"
               loading="lazy"
               decoding="async"
             />

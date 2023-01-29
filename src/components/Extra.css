@@ -12,6 +12,11 @@
       margin-bottom: 24px;
     }
   }
+  &__emoji {
+    display: inline;
+    width: 1em;
+    vertical-align: -0.15em;
+  }
   &__items {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -34,6 +39,7 @@
     overflow: hidden;
     width: 100%;
     min-height: 400px;
+    color: theme(colors.body.DEFAULT);
     /* transform: translateZ(0); */
 
     &::before {
@@ -59,25 +65,10 @@
     }
 
     &_one {
-      background-color: theme(colors.violet.DEFAULT);
-      color: #ffffff;
+      background-color: #cef3ff;
     }
     &_two {
-      background-color: theme(colors.lime.DEFAULT);
-      color: theme(colors.body.DEFAULT);
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border: 1px solid theme(colors.lime.DEFAULT);
-        border-radius: inherit;
-        z-index: -1;
-        pointer-events: none;
-      }
+      background-color: #fddff5;
     }
   }
   &__item-inner {
@@ -86,7 +77,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 41px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
 
     @screen max-lg {
       padding: 30px;
@@ -109,6 +102,10 @@
     @screen max-md {
       @apply text-18;
     }
+  }
+  &__item_one &__item-text {
+    max-width: 16ch;
+    margin-top: auto;
   }
   &__item-pointer {
     @apply transition circle-fix;
@@ -146,6 +143,39 @@
     left: 0;
     bottom: 0;
     z-index: -1;
+  }
+  &__carousel {
+    position: absolute;
+    top: max(8.1%, 30px);
+    left: 0;
+    right: 0;
+    height: 34.46%;
+    z-index: -1;
+    animation: carousel 10s linear infinite alternate;
+
+    @keyframes carousel {
+      0% {
+        transform: translateX(-1%);
+      }
+      100% {
+        transform: translateX(101%);
+      }
+    }
+  }
+  &__carousel-img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    animation: carouselImg 10s linear infinite alternate;
+
+    @keyframes carouselImg {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
   }
 
   &__button {

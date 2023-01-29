@@ -18,7 +18,7 @@ export default function Appeal() {
               <Image
                 class="appeal__emoji"
                 src={emojiWomanImg}
-                alt=""
+                alt="👩‍💻"
                 loading="lazy"
                 decoding="async"
               />{' '}

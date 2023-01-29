@@ -23,13 +23,11 @@ export default function Footer() {
               <Image
                 className="footer__emoji"
                 src={emojiImg}
-                alt=""
+                alt="🥳"
                 loading="lazy"
                 decoding="async"
               />
               <br />
-              {/* Создай <br />
-              страницу кликбар */}
               Создай кликбар и&nbsp;получай клиентов уже&nbsp;сегодня
             </h3>
             <Button
