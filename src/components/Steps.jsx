@@ -5,29 +5,33 @@ import stepDecorThreeImg from '../images/step-decor-three.svg?metadata'
 import spotTwoImg from '../images/blurry-spot-two.svg?metadata'
 import spotThreeImg from '../images/blurry-spot-three.svg?metadata'
 
+// import Anim from './Anim'
+
 import './Steps.css'
 
 const items = [
   {
     mod: 'one',
-    title_: `Загрузи видео <br>и фото в сторис`,
     title: `Загрузи видео и фото <br>в сторис кликбара`,
     text: `Просто сними видео или фото в формате рассказа о своих услугах или товарах.`,
     decor: stepDecorOneImg,
-    spot: spotTwoImg
+    spot: spotTwoImg,
+    src: 'static/video/step-one.mp4'
   },
   {
     mod: 'two',
     title: `Добавь нужные <br>способы связи`,
     text: `Кликбар соберет все ссылки <br class="max-sm:hidden">на одну страницу за пару кликов. `,
     decor: stepDecorTwoImg,
-    spot: spotThreeImg
+    spot: spotThreeImg,
+    src: 'static/video/step-two.mp4'
   },
   {
     mod: 'three',
     title: `Или добавь <br>форму для заявок`,
     text: `Заявки от клиентов будут приходить <br class="max-sm:hidden">тебе на почту или в телеграм.`,
-    decor: stepDecorThreeImg
+    decor: stepDecorThreeImg,
+    src: 'static/video/step-three.mp4'
   }
 ]
 
@@ -41,31 +45,22 @@ export default function Steps() {
           </h2>
           <div className="steps__stack">
             {items.map((item, i) => (
-              <Step index={i} {...item} />
+              <Step
+                index={i}
+                {...item}
+                slot={
+                  <video
+                    src={item.src}
+                    autoplay
+                    muted
+                    playsinline
+                    loop
+                    disablepictureinpicture
+                  ></video>
+                }
+              />
             ))}
           </div>
-          {/* <svg class="steps__bg">
-            <defs>
-              <filter
-                id="steps-bg-blur"
-                width="200%"
-                height="200%"
-                x="-50%"
-                y="-50%"
-              >
-                <feGaussianBlur
-                  in="SourceGraphic"
-                  stdDeviation="122"
-                ></feGaussianBlur>
-              </filter>
-            </defs>
-            <circle
-              cx="50%"
-              cy="50%"
-              r="50%"
-              filter="url(#steps-bg-blur)"
-            ></circle>
-          </svg> */}
         </div>
       </div>
     </section>

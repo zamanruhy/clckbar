@@ -305,29 +305,46 @@
   &__phone-img {
     width: 100%;
   }
-  &__phone-content {
-    background-color: #ffffff;
+  // &__phone-content {
+  //   background-color: tomato;
+  //   position: absolute;
+  //   top: 2%;
+  //   left: 16.7%;
+  //   right: 25.8%;
+  //   bottom: 28.6%;
+  //   z-index: -1;
+  //   border-top-left-radius: 35px;
+  //   border-top-right-radius: 35px;
+
+  //   @screen max-md {
+  //     border-top-left-radius: 10px;
+  //     border-top-right-radius: 10px;
+  //   }
+  // }
+  &__phone-media {
+    // position: absolute;
+    // top: 4.5%;
+    // left: -0.5%;
+    // width: 101%;
+    // height: 96%;
+    // object-fit: cover;
+    // max-width: none;
+
     position: absolute;
     top: 2%;
-    left: 16.7%;
-    right: 25.8%;
-    bottom: 28.6%;
+    left: 16.4%;
+    width: 58.2%;
+    height: 82.4%;
+
+    object-fit: cover;
     z-index: -1;
-    border-top-left-radius: 35px;
-    border-top-right-radius: 35px;
+
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
 
     @screen max-md {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
-  }
-  &__phone-media {
-    position: absolute;
-    top: 4.5%;
-    left: -0.5%;
-    width: 101%;
-    height: 96%;
-    object-fit: cover;
-    max-width: none;
   }
 }

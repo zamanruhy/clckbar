@@ -44,6 +44,8 @@
     color: #ffffff;
     text-align: center;
     padding: 40px;
+    position: relative;
+    z-index: 1;
 
     @screen max-md {
       padding: 24px 16px;
@@ -104,11 +106,12 @@
   }
 
   &__side {
+    font-size: 1px;
     flex-shrink: 0;
     margin-top: 72px;
     margin-left: 124px;
     margin-right: 45px;
-    width: 375px;
+    width: 375em;
     position: relative;
     order: -1;
 
@@ -117,32 +120,48 @@
       margin-right: 0;
     }
     @screen max-lg {
+      font-size: 0.8px;
       order: 0;
       margin-left: 0;
       margin-top: 40px;
-      width: 300px;
+      // width: 300px;
     }
     @screen max-md {
-      width: 197px;
+      font-size: 0.525px;
+      // width: 197px;
       margin-top: 1px;
     }
   }
-  &__img {
-    width: 100%;
-  }
-  &__bg {
-    opacity: 0.2;
-    width: 211%;
-    position: absolute;
-    bottom: 0;
-    left: -84.1%;
-    z-index: -1;
-    max-width: none;
+  // &__img {
+  //   width: 100%;
+  // }
+  // &__bg {
+  //   opacity: 0.2;
+  //   width: 211%;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: -84.1%;
+  //   z-index: -1;
+  //   max-width: none;
 
-    @screen max-md {
-      width: 219%;
-      left: -86.1%;
-    }
+  //   @screen max-md {
+  //     width: 219%;
+  //     left: -86.1%;
+  //   }
+  // }
+  // &__slot {
+  //   position: absolute;
+  //   top: 44em;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 21em;
+  // }
+  video {
+    max-width: none;
+    margin-top: -19.5%;
+    margin-left: -35.7%;
+    width: 166.5%;
+    // mix-blend-mode: lighten;
   }
   &__spot {
     width: 1000px;

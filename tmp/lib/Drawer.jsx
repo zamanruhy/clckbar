@@ -136,5 +136,37 @@ export default function Dialog(props) {
         </div>
       </TransitionChild>
     </Transition>
+
+    {/* <Transition
+        enterActiveClass="drawer_in"
+        enterClass="will-change-transform"
+        // enterClass="translate-x-full"
+        // enterToClass="translate-x-0"
+        exitActiveClass="drawer_out"
+        // exitClass="translate-x-0"
+        // exitToClass="translate-x-full"
+        onBeforeEnter={onBeforeEnter}
+        onAfterEnter={onAfterEnter}
+        onBeforeExit={onBeforeLeave}
+        onAfterExit={onAfterLeave}
+      >
+        {open() && (
+          <div
+            class="drawer"
+            classList={{ [props.class]: Boolean(props.class) }}
+            role="dialog"
+            aria-modal="true"
+            {...rest}
+            tabindex="-1"
+            ref={el}
+            onKeydown={(e) => {
+              onEscape(e)
+              trapFocus(e)
+            }}
+          >
+            {props.children}
+          </div>
+        )}
+      </Transition> */}
   )
 }

@@ -34,42 +34,63 @@
       url(/static/fonts/MullerExtraBold.woff) format("woff");
   }
 
+  // @font-face {
+  //   font-family: "Adjusted Verdana";
+  //   src: local(Verdana);
+  //   font-weight: 400;
+  //   size-adjust: 92%;
+  //   ascent-override: 78%;
+  //   descent-override: 22%;
+  //   line-gap-override: 11%;
+  // }
+
   @font-face {
-    font-family: "Adjusted Verdana";
-    src: local(Verdana);
+    font-family: "Muller Fallback";
+    font-style: normal;
     font-weight: 400;
-    size-adjust: 92%;
-    ascent-override: 78%;
-    descent-override: 22%;
-    line-gap-override: 11%;
-  }
-
-  /* @font-face {
-    font-family: "Adjusted Verdana Fallback";
-    src: local(Verdana);
-    size-adjust: 94%;
-    ascent-override: 78%;
-    descent-override: 22%;
-    line-gap-override: 7%;
-  }
-
-  @font-face {
-    font-family: "Adjusted Arial";
-    src: local(Arial);
-    size-adjust: 103%;
-    ascent-override: 78%;
-    descent-override: 22%;
+    src: local("Arial");
+    ascent-override: 74.73%;
+    descent-override: 21.08%;
     line-gap-override: 0%;
+    size-adjust: 104.38%;
   }
+  // @font-face {
+  //   font-family: "Muller Fallback";
+  //   font-style: normal;
+  //   font-weight: 800;
+  //   src: local("Arial");
+  //   ascent-override: 73.28%;
+  //   descent-override: 20.67%;
+  //   line-gap-override: 0%;
+  //   size-adjust: 106.44%;
+  // }
 
-  @font-face {
-    font-family: "Adjusted Trebuchet MS";
-    src: local(Trebuchet MS);
-    size-adjust: 103%;
-    ascent-override: 78%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-  } */
+  // @font-face {
+  //   font-family: "Adjusted Verdana Fallback";
+  //   src: local(Verdana);
+  //   size-adjust: 94%;
+  //   ascent-override: 78%;
+  //   descent-override: 22%;
+  //   line-gap-override: 7%;
+  // }
+
+  // @font-face {
+  //   font-family: "Adjusted Arial";
+  //   src: local(Arial);
+  //   size-adjust: 103%;
+  //   ascent-override: 78%;
+  //   descent-override: 22%;
+  //   line-gap-override: 0%;
+  // }
+
+  // @font-face {
+  //   font-family: "Adjusted Trebuchet MS";
+  //   src: local(Trebuchet MS);
+  //   size-adjust: 103%;
+  //   ascent-override: 78%;
+  //   descent-override: 22%;
+  //   line-gap-override: 0%;
+  // }
 
   :focus-visible {
     outline: 3px solid theme(colors.pink.DEFAULT);
@@ -91,7 +112,7 @@
   html {
     height: 100%;
     -webkit-font-smoothing: antialiased;
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
   }
 
   body {
@@ -101,10 +122,5 @@
     font-size: 16px;
     line-height: 1.5;
     color: theme(colors.body.DEFAULT);
-  }
-
-  section,
-  footer {
-    content-visibility: auto;
   }
 }

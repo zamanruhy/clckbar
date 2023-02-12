@@ -26,14 +26,16 @@ function script() {
       setSlotEl(navEl)
     } else {
       commentNode.replaceWith(navEl)
-      setNavOpen(false)
       setSlotEl(null)
     }
   })
 
   createEffect(() => {
     if (navOpen()) {
-      el.scrollIntoView()
+      document.documentElement.style.scrollBehavior = 'auto'
+      document.documentElement.getBoundingClientRect()
+      window.scrollTo(0, 0)
+      document.documentElement.style.scrollBehavior = ''
     }
   })
 

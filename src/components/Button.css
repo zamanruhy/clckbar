@@ -19,7 +19,9 @@
     transform: scale(0.98);
   }
 
-  > * {
+  > div,
+  > span,
+  > svg {
     align-self: center;
   }
 

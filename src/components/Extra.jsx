@@ -7,7 +7,7 @@ import Button from './Button'
 import Image from './Image'
 import './Extra.css'
 
-console.log('extraOneImg', extraOneImg)
+// console.log('extraOneImg', extraOneImg)
 
 export default function Extra() {
   return (

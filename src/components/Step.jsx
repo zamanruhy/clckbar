@@ -1,5 +1,5 @@
-import profileImg from '../images/profile.png?format=png;webp'
-import bgImg from '../images/step-bg.svg?metadata'
+// import frameImg from '../images/motion-frame.svg?metadata'
+// import bgImg from '../images/step-bg.svg?metadata'
 import Image from './Image'
 
 import './Step.css'
@@ -24,20 +24,22 @@ export default function Step(props) {
           <p className="step__text" innerHTML={props.text}></p>
         </div>
         <div className="step__side">
-          <Image
+          {/* <Image
             class="step__img"
-            src={profileImg}
+            src={frameImg}
             alt=""
             loading="lazy"
             decoding="async"
           />
-          <Image
+          <div className="step__slot">{props.slot}</div> */}
+          {props.slot}
+          {/* <Image
             class="step__bg"
             src={bgImg}
             alt=""
             loading="lazy"
             decoding="async"
-          />
+          /> */}
         </div>
       </div>
       {props.spot && (

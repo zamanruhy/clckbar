@@ -1,9 +1,14 @@
+import { createSignal } from 'solid-js'
+
 const modals = new Set()
 let top = 0
+const [scrollbarWidth, setScrollbarWidth] = createSignal(0)
 
 export default function useModal() {
   return { registerModal, unregisterModal, trapFocus }
 }
+
+export { scrollbarWidth }
 
 function registerModal(modal) {
   if (modals.has(modal)) return
@@ -27,10 +32,12 @@ function enterFirst() {
   //   `${window.innerWidth - document.documentElement.clientWidth}px`
   // )
   top = window.scrollY
+
+  const sbWidth = window.innerWidth - document.documentElement.clientWidth
+  setScrollbarWidth(sbWidth)
+
   Object.assign(document.body.style, {
-    paddingRight: `${
-      window.innerWidth - document.documentElement.clientWidth
-    }px`,
+    paddingRight: `${sbWidth}px`,
     overflow: 'hidden',
     position: 'fixed',
     width: '100%',
@@ -40,6 +47,7 @@ function enterFirst() {
 
 function exitLast() {
   // document.documentElement.style.removeProperty('--scrollbar-visible-width')
+  setScrollbarWidth(0)
   Object.assign(document.body.style, {
     paddingRight: '',
     overflow: '',
@@ -48,6 +56,7 @@ function exitLast() {
     top: ''
   })
   document.documentElement.style.scrollBehavior = 'auto'
+  document.documentElement.getBoundingClientRect()
   window.scrollTo(0, top)
   document.documentElement.style.scrollBehavior = ''
 }
